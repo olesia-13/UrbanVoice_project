@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,13 +7,294 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFAE6">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/bgImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/churches"
+            android:scaleType="centerCrop"
+            android:alpha="0.2"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintVertical_bias="1.0"
+            />
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sett_lines"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/app_name"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_part1"
+                android:textSize="40sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#201010"
+                android:includeFontPadding="false"
+                android:layout_marginBottom="8dp"  />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Urban"
+                    android:textSize="40sp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="#201010"
+                    android:includeFontPadding="false"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Voice"
+                    android:textSize="40sp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="#1828BD"
+                    android:includeFontPadding="false"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="238dp"
+                android:layout_height="5dp"
+                android:background="@drawable/rounded_line_background"
+                android:layout_marginTop="13dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slogan"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_regular"
+                android:gravity="center"
+                android:textColor="#201010"
+                android:layout_marginTop="25dp"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnStartJourney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_journey"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:backgroundTint="#FFC31F"
+            android:textColor="#201010"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/nunito_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="225dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/nav_drawer"
+        android:layout_width="302dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageButton
+                android:id="@+id/btnCloseDrawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/closing"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:contentDescription="@string/app_name"
+                android:layout_marginBottom="24dp"
+                />
+
+            <TextView
+                android:id="@+id/tvHowAppWorks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/how_app_works"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#201010"
+                android:paddingBottom="16dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="20dp"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language_choice"
+                    android:textSize="15sp"
+                    android:textColor="#201010"
+                    android:fontFamily="@font/nunito_regular"
+                    android:layout_marginEnd="40dp"
+                    android:layout_gravity="bottom"   />
+
+                <ImageView
+                    android:id="@+id/lang_en"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/lang_en"
+                    android:contentDescription="@string/app_name"
+                    android:layout_marginEnd="30dp"/>
+
+                <ImageView android:id="@+id/lang_ua"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/lang_ua"
+                    android:contentDescription="@string/app_name"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/music_genre_choice"
+                android:textSize="15sp"
+                android:textColor="#201010"
+                android:fontFamily="@font/nunito_regular"
+                android:layout_marginTop="48dp"
+                android:paddingBottom="16dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="35dp"/>
+
+            <RadioGroup
+                android:id="@+id/musicGenreGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <RadioButton
+                    android:id="@+id/radioMelody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre_melody"
+                    android:textColor="#201010"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:buttonTint="#FFC31F"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radioClassical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#201010"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:buttonTint="#FFC31F"
+                    android:text="@string/genre_classical"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radioNone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#201010"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:buttonTint="#FFC31F"
+                    android:text="@string/genre_none"/>
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contacts_title"
+                android:textColor="#201010"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_regular"
+                android:layout_marginTop="48dp"
+                android:paddingBottom="16dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="35dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/developer_contacts"
+                android:textColor="#201010"
+                android:fontFamily="@font/nunito_regular"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

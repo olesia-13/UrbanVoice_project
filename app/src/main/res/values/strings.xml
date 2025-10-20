@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">UrbanVoice</string>
+    <string name="welcome_part1">Вітаємо в</string>
+    <string name="Urban">Urban</string>
+    <string name="Voice">Voice</string>
+    <string name="slogan">історії, що звучать\nдорогою міста</string>
+    <string name="start_journey">Почни свою подорож</string>
+    <string name="how_app_works">Як працює застосунок</string>
+    <string name="language_choice">Мова:</string>
+    <string name="music_genre_choice">Вибір жанру музики</string>
+    <string name="genre_melody">Мелодія</string>
+    <string name="genre_classical">Класична музика</string>
+    <string name="genre_none">Без музики</string>
+    <string name="contacts_title">Контакти:</string>
+    <string name="developer_contacts">
+        osipolesia13@gmail.com\n
+    vladonkapol@gmail.com\n
+    ivanandryeyev@gmail.com\n
+    nadin110820@gmail.com\n
+    miroslava.holomoza@gmail.com</string>
+
+
+
+
 </resources>
