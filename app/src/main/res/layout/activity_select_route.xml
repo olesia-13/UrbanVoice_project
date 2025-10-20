@@ -53,19 +53,25 @@
 
     <EditText
         android:id="@+id/edit_name"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
         android:hint="Search"
+        android:textSize="17sp"
         android:textColor="@android:color/black"
-        android:padding="12dp"
+        android:textColorHint="@android:color/black"
+        android:padding="10dp"
         android:background="@drawable/search_rect"
         android:drawableStart="@drawable/maglas"
-        android:drawablePadding="10dp"
+        android:drawablePadding="13dp"
         android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
         android:layout_marginTop="80dp"/>
+
+
+
 
 
 
