@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         btnStartJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent intent = new Intent(MainActivity.this, NextActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, SelectRoute.class);
+                startActivity(intent);
             }
         });
 
