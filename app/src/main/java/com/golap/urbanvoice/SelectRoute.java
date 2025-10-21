@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -92,10 +93,20 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
 
     @Override
     public void onRouteClick(Route route) {
-        // TODO: Пізніше додамо RouteMapActivity
-        android.widget.Toast.makeText(this,
+        Toast.makeText(this,
                 "Обрано маршрут: " + route.getDisplayText(),
-                android.widget.Toast.LENGTH_SHORT).show();
+                Toast.LENGTH_SHORT).show();
+
+        // 2. Створення Intent для запуску RouteMap
+        Intent mapIntent = new Intent(this, RouteMap.class);
+
+        // 3. Передача даних маршруту, які RouteMap використає для ініціалізації
+        mapIntent.putExtra("ROUTE_KEY", route.getKey());
+        mapIntent.putExtra("ROUTE_DISPLAY_NAME", route.getDisplayText());
+        mapIntent.putExtra("ROUTE_ICON_ID", route.getIconResId());
+
+        // 4. Запуск нової активності
+        startActivity(mapIntent);
     }
 
     private List<Route> generateSampleRoutes() {

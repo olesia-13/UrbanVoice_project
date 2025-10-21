@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,6 +24,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB-r_4lXymQ1jo3M2pYzhEDDR1i8blPR2w" />
+
+        <service
+            android:name=".LocationAudioService"
+            android:foregroundServiceType="location"
+            android:enabled="true"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

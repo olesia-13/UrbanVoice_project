@@ -42,6 +42,9 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
 
         holder.typeNumberTextView.setText(route.getDisplayText());
         holder.descriptionTextView.setText(route.getDescription());
+        holder.iconImageView.setImageResource(route.getIconResId());
+
+        holder.itemView.setOnClickListener(v -> listener.onRouteClick(route));
 
         if (route.getType().equals("Тролейбус")) {
             holder.iconImageView.setImageResource(R.drawable.trolleybus_icon);

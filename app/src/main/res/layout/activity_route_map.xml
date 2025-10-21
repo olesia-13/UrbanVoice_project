@@ -13,19 +13,46 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="20dp"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageButton
+        <LinearLayout
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Повернутися" />
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp">
+
+            <ImageView
+                android:id="@+id/arrow_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/arrow"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/go_back_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retur"
+                android:fontFamily="@font/nunito_regular"
+                android:textSize="20sp"
+                android:textColor="#201010"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
 
         <View
             android:layout_width="0dp"
@@ -38,7 +65,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="На головну" />
+            android:contentDescription="@string/app_name" />
 
     </LinearLayout>
 
@@ -72,17 +99,18 @@
                 android:id="@+id/route_map_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#201010"
                 tools:text="Трамвай №1"/>
 
             <TextView
                 android:id="@+id/next_station_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#201010"
                 tools:text="Наступна станція: ст. м. Почайна"/>
         </LinearLayout>
 
@@ -91,9 +119,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
-
             tools:src="@drawable/ic_tram"
-            android:contentDescription="Іконка транспорту"/>
+            android:contentDescription="@string/app_name"/>
     </LinearLayout>
 
     <fragment
@@ -119,29 +146,26 @@
 
         <ImageButton
             android:id="@+id/photo_button"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
             android:layout_marginEnd="30dp"
-            android:background="@drawable/rounded_line_background"
             android:src="@drawable/ic_photos"
-            android:contentDescription="Фото маршруту" />
+            android:contentDescription="@string/app_name" />
 
         <ImageButton
             android:id="@+id/start_audio_button"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/rounded_line_background"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
             android:src="@drawable/ic_start"
-            android:contentDescription="Почати аудіогід" />
+            android:contentDescription="@string/app_name" />
 
         <ImageButton
             android:id="@+id/text_button"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
             android:layout_marginStart="30dp"
-            android:background="@drawable/rounded_line_background"
             android:src="@drawable/ic_text"
-            android:contentDescription="Текст маршруту" />
+            android:contentDescription="@string/app_name" />
 
     </LinearLayout>
 
