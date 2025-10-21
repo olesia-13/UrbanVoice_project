@@ -168,7 +168,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="#201010"
-                android:paddingBottom="16dp"
+                android:paddingBottom="14dp"
                 />
 
             <View
@@ -222,13 +222,13 @@
                 android:textColor="#201010"
                 android:fontFamily="@font/nunito_regular"
                 android:layout_marginTop="25dp"
-                android:paddingBottom="16dp"
+                android:paddingBottom="14dp"
                 />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#201010"
-                android:layout_marginBottom="35dp"/>
+                android:layout_marginBottom="20dp"/>
 
             <RadioGroup
                 android:id="@+id/musicGenreGroup"
@@ -245,8 +245,8 @@
                     android:textColor="#201010"
                     android:textSize="15sp"
                     android:fontFamily="@font/nunito_regular"
-                    android:buttonTint="#FFC31F"
-                    android:layout_marginBottom="8dp"/>
+                    app:buttonTint="#FFC31F"
+                    android:layout_marginBottom="5dp"/>
 
                 <RadioButton
                     android:id="@+id/radioClassical"
@@ -255,9 +255,9 @@
                     android:textColor="#201010"
                     android:textSize="15sp"
                     android:fontFamily="@font/nunito_regular"
-                    android:buttonTint="#FFC31F"
+                    app:buttonTint="#FFC31F"
                     android:text="@string/genre_classical"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="5dp"/>
 
                 <RadioButton
                     android:id="@+id/radioNone"
@@ -266,7 +266,7 @@
                     android:textColor="#201010"
                     android:textSize="15sp"
                     android:fontFamily="@font/nunito_regular"
-                    android:buttonTint="#FFC31F"
+                    app:buttonTint="#FFC31F"
                     android:text="@string/genre_none"/>
             </RadioGroup>
 
@@ -278,8 +278,8 @@
                 android:textColor="#201010"
                 android:textSize="15sp"
                 android:fontFamily="@font/nunito_regular"
-                android:layout_marginTop="30dp"
-                android:paddingBottom="16dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="14dp"
                 />
 
             <View
