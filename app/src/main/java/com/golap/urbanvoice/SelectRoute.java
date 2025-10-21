@@ -92,10 +92,9 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
 
     @Override
     public void onRouteClick(Route route) {
-        // TODO: Здесь позже откроем RouteMapActivity
-        // Пока можно выводить просто Toast
+        // TODO: Пізніше додамо RouteMapActivity
         android.widget.Toast.makeText(this,
-                "Выбран маршрут: " + route.getDisplayText(),
+                "Обрано маршрут: " + route.getDisplayText(),
                 android.widget.Toast.LENGTH_SHORT).show();
     }
 

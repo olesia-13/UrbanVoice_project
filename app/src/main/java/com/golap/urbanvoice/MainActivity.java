@@ -40,14 +40,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        getWindow().setStatusBarColor(android.graphics.Color.parseColor("#FFFAE6"));
+        getWindow().setNavigationBarColor(android.graphics.Color.parseColor("#FFFAE6"));
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR |
+                            View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            );
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
+
+        setContentView(R.layout.activity_main);
 
         drawerLayout = findViewById(R.id.main);
         btnSettings = findViewById(R.id.btnSettings);
