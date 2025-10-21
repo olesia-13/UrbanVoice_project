@@ -26,14 +26,6 @@
     <string name="retur">Повернутися</string>
 
     <string name="route_111_desc_ab">ст. м. Площа українських героїв - пл. Дарницька</string>
-    <string name="route_111_desc_ba">пл. Дарницька - ст. м. Площа українських героїв</string>
     <string name="route_38_desc_ab">Національний музей історії України у Другій Світовій війні - ст. м. Видубучі</string>
-    <string name="route_38_desc_ba">ст. м. Видубучі - Національний музей історії України у Другій Світовій війні</string>
     <string name="route_1_desc_ab">Михайлівська Борщагівка - Старовокзальна</string>
-    <string name="route_1_desc_ba">Старовокзальна - Михайлівська Борщагівка</string>
-
-
-
-
-
 </resources>
