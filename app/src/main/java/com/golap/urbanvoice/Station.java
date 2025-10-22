@@ -2,24 +2,23 @@ package com.golap.urbanvoice;
 
 public class Station {
 
-    private final String name;
+    private final int nameResId;
     private final double latitude;
     private final double longitude;
-    private final String audioResName;
-    private final String textResKey;
+    private final String audioResKey;
 
-    public Station(String name, double latitude, double doubleLongitude, String audioResName, String textResKey) {
-        this.name = name;
+
+    public Station(int nameResId, double latitude, double longitude, String audioResKey) {
+        this.nameResId = nameResId;
         this.latitude = latitude;
-        this.longitude = doubleLongitude;
-        this.audioResName = audioResName;
-        this.textResKey = textResKey;
+        this.longitude = longitude;
+        this.audioResKey = audioResKey;
+
     }
 
-    public String getName() { return name; }
+    public int getNameResId() { return nameResId; }
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
-    public String getAudioResName() { return audioResName; }
-    public String getTextResKey() { return textResKey; }
+    public String getAudioResKey() { return audioResKey; }
 
 }
