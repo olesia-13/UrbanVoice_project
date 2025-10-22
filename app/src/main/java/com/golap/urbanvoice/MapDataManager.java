@@ -11,6 +11,8 @@ public class MapDataManager {
 
     public static final float GEOFENCE_RADIUS_METERS = 50f;
     public static final String ROUTE_TRAM_1_KEY = "R001";
+    public static final String ROUTE_TROLLEYBUS_111_KEY = "R111";
+    public static final String ROUTE_TROLLEYBUS_38_KEY = "R038";
     public static final String DIRECTION_FORWARD = "FORWARD";
     public static final String DIRECTION_BACKWARD = "BACKWARD";
 
@@ -129,7 +131,290 @@ public class MapDataManager {
                 R.string.text_r001_backward
         ));
 
-        // ДОДАЙТЕ СЮДИ ІНШІ МАРШРУТИ (R038, R111, тощо)
+        // -----------------------------------------------------------------
+        // 🚨 МАРШРУТ 2: Тролейбус №111 (R111)
+        // Пл. Українських Героїв (1) <-> Пл. Дарницька (23)
+        // -----------------------------------------------------------------
+
+        // Координати R111 (23 станції)
+        final double R111_LAT_1 = 50.439600; final double R111_LON_1 = 30.516380; // Ст. м. “Площа Українських Героїв”
+        final double R111_LAT_2 = 50.440994; final double R111_LON_2 = 30.511385; // Університет
+        final double R111_LAT_3 = 50.441457; final double R111_LON_3 = 30.511390; // Володимирська вулиця
+        final double R111_LAT_4 = 50.443261; final double R111_LON_4 = 30.520735; // Центральний Універмаг
+        final double R111_LAT_5 = 50.447115; final double R111_LON_5 = 30.522072; // ст. м. Хрещатик
+        final double R111_LAT_6 = 50.449543; final double R111_LON_6 = 30.523213; // Майдан Незалежності
+        final double R111_LAT_7 = 50.450927; final double R111_LON_7 = 30.525458; // Алея Героїв Небесної Сотні
+        final double R111_LAT_8 = 50.459535; final double R111_LON_8 = 30.523943; // Ст. м. Поштова площа
+        final double R111_LAT_9 = 50.470203; final double R111_LON_9 = 30.518838; // Набережно-Хрещатицька
+        final double R111_LAT_10 = 50.476486; final double R111_LON_10 = 30.575350; // вул. 20-та Садова
+        final double R111_LAT_11 = 50.468751; final double R111_LON_11 = 30.582053; // Вул. 5-та Садова
+        final double R111_LAT_12 = 50.467421; final double R111_LON_12 = 30.583257; // Вул. 3-я Садова
+        final double R111_LAT_13 = 50.462329; final double R111_LON_13 = 30.587029; // Житловий масив Микільська Слобідка
+        final double R111_LAT_14 = 50.462730; final double R111_LON_14 = 30.590176; // Сільгосптехніка
+        final double R111_LAT_15 = 50.458940; final double R111_LON_15 = 30.590582; // Вул. Митрополита Андрея Шептицького
+        final double R111_LAT_16 = 50.455740; final double R111_LON_16 = 30.593273; // вул. Микільсько-Слобідська
+        final double R111_LAT_17 = 50.451483; final double R111_LON_17 = 30.598516; // ст. м. Лівобережна
+        final double R111_LAT_18 = 50.447818; final double R111_LON_18 = 30.603175; // вул. Ованеса Туманяна
+        final double R111_LAT_19 = 50.444533; final double R111_LON_19 = 30.608248; // вул. Євгена Сверстюка
+        final double R111_LAT_20 = 50.440040; final double R111_LON_20 = 30.610552; // станція Русанівка
+        final double R111_LAT_21 = 50.439560; final double R111_LON_21 = 30.615757; // вул. Тампере
+        final double R111_LAT_22 = 50.440376; final double R111_LON_22 = 30.619584; // ж/к “Комфорт-Таун”
+        final double R111_LAT_23 = 50.441474; final double R111_LON_23 = 30.623657; // пл. Дарницька
+
+
+        // --- 1. Станції "Вперед" (1 -> 23) ---
+        List<Station> forwardStationsR111 = new ArrayList<>();
+
+        // FWD_01: Площа Українських Героїв
+        forwardStationsR111.add(new Station(R.string.station_r111_1, R111_LAT_1, R111_LON_1, "r111_fwd_01"));
+        // FWD_02: Університет
+        forwardStationsR111.add(new Station(R.string.station_r111_2, R111_LAT_2, R111_LON_2, "r111_fwd_02"));
+        // FWD_03: Володимирська вулиця
+        forwardStationsR111.add(new Station(R.string.station_r111_3, R111_LAT_3, R111_LON_3, "r111_fwd_03"));
+        // FWD_04: Центральний Універмаг
+        forwardStationsR111.add(new Station(R.string.station_r111_4, R111_LAT_4, R111_LON_4, "r111_fwd_04"));
+        // FWD_05: ст. м. Хрещатик
+        forwardStationsR111.add(new Station(R.string.station_r111_5, R111_LAT_5, R111_LON_5, "r111_fwd_05"));
+        // FWD_06: Майдан Незалежності
+        forwardStationsR111.add(new Station(R.string.station_r111_6, R111_LAT_6, R111_LON_6, "r111_fwd_06"));
+        // FWD_07: Алея Героїв Небесної Сотні
+        forwardStationsR111.add(new Station(R.string.station_r111_7, R111_LAT_7, R111_LON_7, "r111_fwd_07"));
+        // FWD_08: Ст. м. Поштова площа
+        forwardStationsR111.add(new Station(R.string.station_r111_8, R111_LAT_8, R111_LON_8, "r111_fwd_08"));
+        // FWD_09: Набережно-Хрещатицька
+        forwardStationsR111.add(new Station(R.string.station_r111_9, R111_LAT_9, R111_LON_9, "r111_fwd_09"));
+        // FWD_10: вул. 20-та Садова
+        forwardStationsR111.add(new Station(R.string.station_r111_10, R111_LAT_10, R111_LON_10, "r111_fwd_10"));
+        // FWD_11: Вул. 5-та Садова
+        forwardStationsR111.add(new Station(R.string.station_r111_11, R111_LAT_11, R111_LON_11, "r111_fwd_11"));
+        // FWD_12: Вул. 3-я Садова
+        forwardStationsR111.add(new Station(R.string.station_r111_12, R111_LAT_12, R111_LON_12, "r111_fwd_12"));
+        // FWD_13: Житловий масив Микільська Слобідка
+        forwardStationsR111.add(new Station(R.string.station_r111_13, R111_LAT_13, R111_LON_13, "r111_fwd_13"));
+        // FWD_14: Сільгосптехніка
+        forwardStationsR111.add(new Station(R.string.station_r111_14, R111_LAT_14, R111_LON_14, "r111_fwd_14"));
+        // FWD_15: Вул. Митрополита Андрея Шептицького
+        forwardStationsR111.add(new Station(R.string.station_r111_15, R111_LAT_15, R111_LON_15, "r111_fwd_15"));
+        // FWD_16: вул. Микільсько-Слобідська
+        forwardStationsR111.add(new Station(R.string.station_r111_16, R111_LAT_16, R111_LON_16, "r111_fwd_16"));
+        // FWD_17: ст. м. Лівобережна
+        forwardStationsR111.add(new Station(R.string.station_r111_17, R111_LAT_17, R111_LON_17, "r111_fwd_17"));
+        // FWD_18: вул. Ованеса Туманяна
+        forwardStationsR111.add(new Station(R.string.station_r111_18, R111_LAT_18, R111_LON_18, "r111_fwd_18"));
+        // FWD_19: вул. Євгена Сверстюка
+        forwardStationsR111.add(new Station(R.string.station_r111_19, R111_LAT_19, R111_LON_19, "r111_fwd_19"));
+        // FWD_20: станція Русанівка
+        forwardStationsR111.add(new Station(R.string.station_r111_20, R111_LAT_20, R111_LON_20, "r111_fwd_20"));
+        // FWD_21: вул. Тампере
+        forwardStationsR111.add(new Station(R.string.station_r111_21, R111_LAT_21, R111_LON_21, "r111_fwd_21"));
+        // FWD_22: ж/к “Комфорт-Таун”
+        forwardStationsR111.add(new Station(R.string.station_r111_22, R111_LAT_22, R111_LON_22, "r111_fwd_22"));
+        // FWD_23: пл. Дарницька (Кінцева)
+        forwardStationsR111.add(new Station(R.string.station_r111_23, R111_LAT_23, R111_LON_23, "r111_fwd_23"));
+
+
+        // --- 2. Станції "Назад" (23 -> 1) ---
+        List<Station> backwardStationsR111 = new ArrayList<>();
+
+        // BWD_01: пл. Дарницька (Початок) - Використовуємо координати FWD_23
+        backwardStationsR111.add(new Station(R.string.station_r111_23, R111_LAT_23, R111_LON_23, "r111_bwd_01"));
+        // BWD_02: ж/к “Комфорт-Таун” - Використовуємо координати FWD_22
+        backwardStationsR111.add(new Station(R.string.station_r111_22, R111_LAT_22, R111_LON_22, "r111_bwd_02"));
+        // BWD_03: вул. Тампере - Використовуємо координати FWD_21
+        backwardStationsR111.add(new Station(R.string.station_r111_21, R111_LAT_21, R111_LON_21, "r111_bwd_03"));
+        // BWD_04: станція Русанівка - Використовуємо координати FWD_20
+        backwardStationsR111.add(new Station(R.string.station_r111_20, R111_LAT_20, R111_LON_20, "r111_bwd_04"));
+        // BWD_05: вул. Євгена Сверстюка - Використовуємо координати FWD_19
+        backwardStationsR111.add(new Station(R.string.station_r111_19, R111_LAT_19, R111_LON_19, "r111_bwd_05"));
+        // BWD_06: вул. Ованеса Туманяна - Використовуємо координати FWD_18
+        backwardStationsR111.add(new Station(R.string.station_r111_18, R111_LAT_18, R111_LON_18, "r111_bwd_06"));
+        // BWD_07: ст. м. Лівобережна - Використовуємо координати FWD_17
+        backwardStationsR111.add(new Station(R.string.station_r111_17, R111_LAT_17, R111_LON_17, "r111_bwd_07"));
+        // BWD_08: вул. Микільсько-Слобідська - Використовуємо координати FWD_16
+        backwardStationsR111.add(new Station(R.string.station_r111_16, R111_LAT_16, R111_LON_16, "r111_bwd_08"));
+        // BWD_09: Вул. Митрополита Андрея Шептицького - Використовуємо координати FWD_15
+        backwardStationsR111.add(new Station(R.string.station_r111_15, R111_LAT_15, R111_LON_15, "r111_bwd_09"));
+        // BWD_10: Сільгосптехніка - Використовуємо координати FWD_14
+        backwardStationsR111.add(new Station(R.string.station_r111_14, R111_LAT_14, R111_LON_14, "r111_bwd_10"));
+        // BWD_11: Житловий масив Микільська Слобідка - Використовуємо координати FWD_13
+        backwardStationsR111.add(new Station(R.string.station_r111_13, R111_LAT_13, R111_LON_13, "r111_bwd_11"));
+        // BWD_12: Вул. 3-я Садова - Використовуємо координати FWD_12
+        backwardStationsR111.add(new Station(R.string.station_r111_12, R111_LAT_12, R111_LON_12, "r111_bwd_12"));
+        // BWD_13: Вул. 5-та Садова - Використовуємо координати FWD_11
+        backwardStationsR111.add(new Station(R.string.station_r111_11, R111_LAT_11, R111_LON_11, "r111_bwd_13"));
+        // BWD_14: вул. 20-та Садова - Використовуємо координати FWD_10
+        backwardStationsR111.add(new Station(R.string.station_r111_10, R111_LAT_10, R111_LON_10, "r111_bwd_14"));
+        // BWD_15: Набережно-Хрещатицька - Використовуємо координати FWD_09
+        backwardStationsR111.add(new Station(R.string.station_r111_9, R111_LAT_9, R111_LON_9, "r111_bwd_15"));
+        // BWD_16: Ст. м. Поштова площа - Використовуємо координати FWD_08
+        backwardStationsR111.add(new Station(R.string.station_r111_8, R111_LAT_8, R111_LON_8, "r111_bwd_16"));
+        // BWD_17: Алея Героїв Небесної Сотні - Використовуємо координати FWD_07
+        backwardStationsR111.add(new Station(R.string.station_r111_7, R111_LAT_7, R111_LON_7, "r111_bwd_17"));
+        // BWD_18: Майдан Незалежності - Використовуємо координати FWD_06
+        backwardStationsR111.add(new Station(R.string.station_r111_6, R111_LAT_6, R111_LON_6, "r111_bwd_18"));
+        // BWD_19: ст. м. Хрещатик - Використовуємо координати FWD_05
+        backwardStationsR111.add(new Station(R.string.station_r111_5, R111_LAT_5, R111_LON_5, "r111_bwd_19"));
+        // BWD_20: Центральний Універмаг - Використовуємо координати FWD_04
+        backwardStationsR111.add(new Station(R.string.station_r111_4, R111_LAT_4, R111_LON_4, "r111_bwd_20"));
+        // BWD_21: Володимирська вулиця - Використовуємо координати FWD_03
+        backwardStationsR111.add(new Station(R.string.station_r111_3, R111_LAT_3, R111_LON_3, "r111_bwd_21"));
+        // BWD_22: Університет - Використовуємо координати FWD_02
+        backwardStationsR111.add(new Station(R.string.station_r111_2, R111_LAT_2, R111_LON_2, "r111_bwd_22"));
+        // BWD_23: Ст. м. “Площа Українських Героїв” (Кінцева) - Використовуємо координати FWD_01
+        backwardStationsR111.add(new Station(R.string.station_r111_1, R111_LAT_1, R111_LON_1, "r111_bwd_23"));
+
+
+        // --- 3. Збереження об'єкта RouteData (R111) ---
+        // ЗАМІНІТЬ 'polylineEncodedTram1' на закодовану полілінію для TROLLEYBUS_111
+        String polylineEncodedTrolleybus111 = "onzrHkfgyDuGd^}A?gJky@aWkGeNcFuGaMyt@nHsaAz^if@e`Jjo@{h@hGqFx^qVoAuRtVoA~RyOrYy_@zUc\\pSu^`[kM~Aq_@cD{VyEoX";
+
+        ALL_ROUTES_DATA.put(ROUTE_TROLLEYBUS_111_KEY, new RouteData(
+                forwardStationsR111,
+                backwardStationsR111,
+                polylineEncodedTrolleybus111,
+                R.string.text_r111_forward,
+                R.string.text_r111_backward
+        ));
+
+        // =================================================================
+        // 🚨 МАРШРУТ 3: Тролейбус №38 (R038)
+        // National Museum of Ukrainian History in World War II (1) <-> Vydubychi Metro (21)
+        // =================================================================
+
+        // Координати R038 (21 станція)
+        final double R038_LAT_1 = 50.432605; final double R038_LON_1 = 30.556219; // 1. National Museum of Ukrainian History in World War II
+        final double R038_LAT_2 = 50.434985; final double R038_LON_2 = 30.554430; // 2. Kyiv-Pechersk Lavra
+        final double R038_LAT_3 = 50.438174; final double R038_LON_3 = 30.553835; // 3. Holodomor Victims Memorial
+        final double R038_LAT_4 = 50.439616; final double R038_LON_4 = 30.551053; // 4. Park of Eternal Glory
+        final double R038_LAT_5 = 50.441096; final double R038_LON_5 = 30.549513; // 5. Glory Square
+        final double R038_LAT_6 = 50.443051; final double R038_LON_6 = 30.547045; // 6. Arsenalna Metro
+        final double R038_LAT_7 = 50.440102; final double R038_LON_7 = 30.544874; // 7. Arsenal Factory
+        final double R038_LAT_8 = 50.437101; final double R038_LON_8 = 30.544935; // 8. Pechersk District
+        final double R038_LAT_9 = 50.431888; final double R038_LON_9 = 30.544236; // 9. Kopylenko Street
+        final double R038_LAT_10 = 50.430354; final double R038_LON_10 = 30.542871; // 10. General Almazov Street
+        final double R038_LAT_11 = 50.428683; final double R038_LON_11 = 30.539814; // 11. Arsenalna Street
+        final double R038_LAT_12 = 50.428184; final double R038_LON_12 = 30.539541; // 12. Lesya Ukrainka Square
+        final double R038_LAT_13 = 50.424676; final double R038_LON_13 = 30.542087; // 13. Round Tower
+        final double R038_LAT_14 = 50.423273; final double R038_LON_14 = 30.543657; // 14. John McCain Street
+        final double R038_LAT_15 = 50.419110; final double R038_LON_15 = 30.548375; // 15. Pechersk Bridge
+        final double R038_LAT_16 = 50.417078; final double R038_LON_16 = 30.548817; // 16. Nimanska Street
+        final double R038_LAT_17 = 50.412499; final double R038_LON_17 = 30.548927; // 17. Optics Shop
+        final double R038_LAT_18 = 50.409914; final double R038_LON_18 = 30.550198; // 18. Boychuk Academy of Arts
+        final double R038_LAT_19 = 50.406706; final double R038_LON_19 = 30.552223; // 19. Dormitory No. 4.
+        final double R038_LAT_20 = 50.404031; final double R038_LON_20 = 30.551844; // 20. Zaliznychne Highway
+        final double R038_LAT_21 = 50.402066; final double R038_LON_21 = 30.559669; // 21. Vydubychi Metro
+
+
+        // --- 1. Станції "Вперед" (1 -> 21) ---
+        List<Station> forwardStationsR038 = new ArrayList<>();
+
+        // FWD_01: National Museum of Ukrainian History in World War II (Початок)
+        forwardStationsR038.add(new Station(R.string.station_r038_1, R038_LAT_1, R038_LON_1, "r038_fwd_01"));
+        // FWD_02: Kyiv-Pechersk Lavra
+        forwardStationsR038.add(new Station(R.string.station_r038_2, R038_LAT_2, R038_LON_2, "r038_fwd_02"));
+        // FWD_03: Holodomor Victims Memorial
+        forwardStationsR038.add(new Station(R.string.station_r038_3, R038_LAT_3, R038_LON_3, "r038_fwd_03"));
+        // FWD_04: Park of Eternal Glory
+        forwardStationsR038.add(new Station(R.string.station_r038_4, R038_LAT_4, R038_LON_4, "r038_fwd_04"));
+        // FWD_05: Glory Square
+        forwardStationsR038.add(new Station(R.string.station_r038_5, R038_LAT_5, R038_LON_5, "r038_fwd_05"));
+        // FWD_06: Arsenalna Metro
+        forwardStationsR038.add(new Station(R.string.station_r038_6, R038_LAT_6, R038_LON_6, "r038_fwd_06"));
+        // FWD_07: Arsenal Factory
+        forwardStationsR038.add(new Station(R.string.station_r038_7, R038_LAT_7, R038_LON_7, "r038_fwd_07"));
+        // FWD_08: Pechersk District
+        forwardStationsR038.add(new Station(R.string.station_r038_8, R038_LAT_8, R038_LON_8, "r038_fwd_08"));
+        // FWD_09: Kopylenko Street
+        forwardStationsR038.add(new Station(R.string.station_r038_9, R038_LAT_9, R038_LON_9, "r038_fwd_09"));
+        // FWD_10: General Almazov Street
+        forwardStationsR038.add(new Station(R.string.station_r038_10, R038_LAT_10, R038_LON_10, "r038_fwd_10"));
+        // FWD_11: Arsenalna Street
+        forwardStationsR038.add(new Station(R.string.station_r038_11, R038_LAT_11, R038_LON_11, "r038_fwd_11"));
+        // FWD_12: Lesya Ukrainka Square
+        forwardStationsR038.add(new Station(R.string.station_r038_12, R038_LAT_12, R038_LON_12, "r038_fwd_12"));
+        // FWD_13: Round Tower
+        forwardStationsR038.add(new Station(R.string.station_r038_13, R038_LAT_13, R038_LON_13, "r038_fwd_13"));
+        // FWD_14: John McCain Street
+        forwardStationsR038.add(new Station(R.string.station_r038_14, R038_LAT_14, R038_LON_14, "r038_fwd_14"));
+        // FWD_15: Pechersk Bridge
+        forwardStationsR038.add(new Station(R.string.station_r038_15, R038_LAT_15, R038_LON_15, "r038_fwd_15"));
+        // FWD_16: Nimanska Street
+        forwardStationsR038.add(new Station(R.string.station_r038_16, R038_LAT_16, R038_LON_16, "r038_fwd_16"));
+        // FWD_17: Optics Shop
+        forwardStationsR038.add(new Station(R.string.station_r038_17, R038_LAT_17, R038_LON_17, "r038_fwd_17"));
+        // FWD_18: Boychuk Academy of Arts
+        forwardStationsR038.add(new Station(R.string.station_r038_18, R038_LAT_18, R038_LON_18, "r038_fwd_18"));
+        // FWD_19: Dormitory No. 4.
+        forwardStationsR038.add(new Station(R.string.station_r038_19, R038_LAT_19, R038_LON_19, "r038_fwd_19"));
+        // FWD_20: Zaliznychne Highway
+        forwardStationsR038.add(new Station(R.string.station_r038_20, R038_LAT_20, R038_LON_20, "r038_fwd_20"));
+        // FWD_21: Vydubychi Metro (Кінцева)
+        forwardStationsR038.add(new Station(R.string.station_r038_21, R038_LAT_21, R038_LON_21, "r038_fwd_21"));
+
+
+        // --- 2. Станції "Назад" (21 -> 1) ---
+        List<Station> backwardStationsR038 = new ArrayList<>();
+
+        // BWD_01: Vydubychi Metro (Початок) - Використовуємо координати FWD_21
+        backwardStationsR038.add(new Station(R.string.station_r038_21, R038_LAT_21, R038_LON_21, "r038_bwd_01"));
+        // BWD_02: Zaliznychne Highway - Використовуємо координати FWD_20
+        backwardStationsR038.add(new Station(R.string.station_r038_20, R038_LAT_20, R038_LON_20, "r038_bwd_02"));
+        // BWD_03: Dormitory No. 4. - Використовуємо координати FWD_19
+        backwardStationsR038.add(new Station(R.string.station_r038_19, R038_LAT_19, R038_LON_19, "r038_bwd_03"));
+        // BWD_04: Boychuk Academy of Arts - Використовуємо координати FWD_18
+        backwardStationsR038.add(new Station(R.string.station_r038_18, R038_LAT_18, R038_LON_18, "r038_bwd_04"));
+        // BWD_05: Optics Shop - Використовуємо координати FWD_17
+        backwardStationsR038.add(new Station(R.string.station_r038_17, R038_LAT_17, R038_LON_17, "r038_bwd_05"));
+        // BWD_06: Nimanska Street - Використовуємо координати FWD_16
+        backwardStationsR038.add(new Station(R.string.station_r038_16, R038_LAT_16, R038_LON_16, "r038_bwd_06"));
+        // BWD_07: Pechersk Bridge - Використовуємо координати FWD_15
+        backwardStationsR038.add(new Station(R.string.station_r038_15, R038_LAT_15, R038_LON_15, "r038_bwd_07"));
+        // BWD_08: John McCain Street - Використовуємо координати FWD_14
+        backwardStationsR038.add(new Station(R.string.station_r038_14, R038_LAT_14, R038_LON_14, "r038_bwd_08"));
+        // BWD_09: Round Tower - Використовуємо координати FWD_13
+        backwardStationsR038.add(new Station(R.string.station_r038_13, R038_LAT_13, R038_LON_13, "r038_bwd_09"));
+        // BWD_10: Lesya Ukrainka Square - Використовуємо координати FWD_12
+        backwardStationsR038.add(new Station(R.string.station_r038_12, R038_LAT_12, R038_LON_12, "r038_bwd_10"));
+        // BWD_11: Arsenalna Street - Використовуємо координати FWD_11
+        backwardStationsR038.add(new Station(R.string.station_r038_11, R038_LAT_11, R038_LON_11, "r038_bwd_11"));
+        // BWD_12: General Almazov Street - Використовуємо координати FWD_10
+        backwardStationsR038.add(new Station(R.string.station_r038_10, R038_LAT_10, R038_LON_10, "r038_bwd_12"));
+        // BWD_13: Kopylenko Street - Використовуємо координати FWD_09
+        backwardStationsR038.add(new Station(R.string.station_r038_9, R038_LAT_9, R038_LON_9, "r038_bwd_13"));
+        // BWD_14: Pechersk District - Використовуємо координати FWD_08
+        backwardStationsR038.add(new Station(R.string.station_r038_8, R038_LAT_8, R038_LON_8, "r038_bwd_14"));
+        // BWD_15: Arsenal Factory - Використовуємо координати FWD_07
+        backwardStationsR038.add(new Station(R.string.station_r038_7, R038_LAT_7, R038_LON_7, "r038_bwd_15"));
+        // BWD_16: Arsenalna Metro - Використовуємо координати FWD_06
+        backwardStationsR038.add(new Station(R.string.station_r038_6, R038_LAT_6, R038_LON_6, "r038_bwd_16"));
+        // BWD_17: Glory Square - Використовуємо координати FWD_05
+        backwardStationsR038.add(new Station(R.string.station_r038_5, R038_LAT_5, R038_LON_5, "r038_bwd_17"));
+        // BWD_18: Park of Eternal Glory - Використовуємо координати FWD_04
+        backwardStationsR038.add(new Station(R.string.station_r038_4, R038_LAT_4, R038_LON_4, "r038_bwd_18"));
+        // BWD_19: Holodomor Victims Memorial - Використовуємо координати FWD_03
+        backwardStationsR038.add(new Station(R.string.station_r038_3, R038_LAT_3, R038_LON_3, "r038_bwd_19"));
+        // BWD_20: Kyiv-Pechersk Lavra - Використовуємо координати FWD_02
+        backwardStationsR038.add(new Station(R.string.station_r038_2, R038_LAT_2, R038_LON_2, "r038_bwd_20"));
+        // BWD_21: National Museum of Ukrainian History in World War II (Кінцева) - Використовуємо координати FWD_01
+        backwardStationsR038.add(new Station(R.string.station_r038_1, R038_LAT_1, R038_LON_1, "r038_bwd_21"));
+
+
+        // --- 3. Збереження об'єкта RouteData (R038) ---
+        // ЗАМІНІТЬ 'key' на закодовану полілінію для TROLLEYBUS_38
+        String polylineEncodedTrolleybus38 = "ybyrHk_oyDyMdJ}RvBiQ~YeKjNlQrLvQKp_@hCrHpGlIbR~WgMxGyH~Xo\\tKwAr[UdO}F~RsKvOjAfK}o@";
+
+        ALL_ROUTES_DATA.put(ROUTE_TROLLEYBUS_38_KEY, new RouteData(
+                forwardStationsR038,
+                backwardStationsR038,
+                polylineEncodedTrolleybus38,
+                R.string.text_r038_forward,
+                R.string.text_r038_backward
+        ));
+
+
+
+
+
     }
 
     /**
