@@ -5,7 +5,7 @@
     <string name="welcome_part1">Welcome to</string>
     <string name="Urban">Urban</string>
     <string name="Voice">Voice</string>
-    <string name="slogan">stories, that echo along thecity road</string>
+    <string name="slogan">stories, that echo along the\ncity road</string>
     <string name="start_journey">Start your journey</string>
     <string name="how_app_works">How it works </string>
     <string name="language_choice">Language:</string>
@@ -14,10 +14,10 @@
     <string name="genre_classical">Classic music</string>
     <string name="genre_none">No music</string>
     <string name="contacts_title">Contacts:</string>
-    <string name="developer_contacts">osipolesia13@gmail.com
-    vladonkapol@gmail.com
-    ivanandryeyev@gmail.com
-    nadin110820@gmail.com
+    <string name="developer_contacts">osipolesia13@gmail.com\n
+    vladonkapol@gmail.com\n
+    ivanandryeyev@gmail.com\n
+    nadin110820@gmail.com\n
     miroslava.holomoza@gmail.com</string>
 
     <string name="search_hint">Search</string>
@@ -52,29 +52,27 @@
     <string name="station_r001_16">Starovokzalna</string>
 
 
-    <string name="text_r001_forward">
-
-        <![CDATA[We set off from Mykhailivska Borshchahivka station, a quiet and somewhat dreamy part of Kyiv. Here, you can still hear the wind blowing across the remains of old fields and the asphalt crunching under your feet.
+    <string name="text_r001_forward"><![CDATA[We set off from Mykhailivska Borshchahivka station, a quiet and somewhat dreamy part of Kyiv. Here, you can still hear the wind blowing across the remains of old fields and the asphalt crunching under your feet.
 But we are not on foot. We are on a tram.
 And that means that a routine trip is no longer just “from point A to point B.” It is a little journey.
 This area began to develop actively in the 1970s as part of a grand plan to expand the capital. Once upon a time, there were fields, dachas, and dirt roads here. Now there are supermarkets, residential complexes, overpasses, and schools.
-We approach a stop named after a man who united generations - Vakhtang Kikabidze.
-Yes, the very same - “Mimino,” “My Country - My Georgia,” a voice you recognize immediately. But for us, he is not just an artist.
-In 2022, when Russia unleashed a full-scale war, Kikabidze spoke out against the aggression, supported Ukraine, and refused titles, concerts, and awards from Moscow. He did not just sing - he had backbone.
-And that is why one of the new streets in Borshchahivka is named after him. Because here, on this land, we remember those who are with us not with a passport - but with their hearts.
-Vakhtang Kikabidze Street station. If you get off, take a closer look at the name on the sign. It is not just a name. It is a position.
+We approach a stop named after a man who united generations — Vakhtang Kikabidze.
+Yes, the very same — “Mimino,” “My Country — My Georgia,” a voice you recognize immediately. But for us, he is not just an artist.
+In 2022, when Russia unleashed a full-scale war, Kikabidze spoke out against the aggression, supported Ukraine, and refused titles, concerts, and awards from Moscow. He didn’t just sing — he had backbone.
+And that is why one of the new streets in Borshchahivka is named after him. Because here, on this land, we remember those who are with us not with a passport — but with their hearts.
+Vakhtang Kikabidze Street station. If you get off, take a closer look at the name on the sign. It’s not just a name. It’s a position.
 We have just left a stop named after a man who sang about dignity, and now we are heading to a place named after someone who literally held dignity in his hands. Not with words. Not with poems. But with weapons.
-The tram sways slowly along the tracks. Borshchahivka outside the window seems unchanged - the same high-rise buildings where thousands of ordinary people live their everyday lives. But the next stop is not about everyday life at all.
+The tram sways slowly along the tracks. Borshchahivka outside the window seems unchanged — the same high-rise buildings where thousands of ordinary people live their everyday lives. But the next stop is not about everyday life at all.
 Oleksandr Makhov is a journalist, veteran, and volunteer. He was one of those who was on the front lines back in 2014. Then he returned from the trenches to the television studio and told the truth from places where even the mail did not always reach. Directly, without censorship, sometimes brutally. Because war is not a filtered Instagram feed.
 In May 2022, he died near Izium. He left behind not just texts and videos, but a feeling: what it means to live honestly.
 He did not live to see victory, but he did everything to make it happen.
-Now one of the streets we drive on is named after him. It is not much. But it is a memory. And it matters.
+Now one of the streets we drive on is named after him. It’s not much. But it’s a memory. And it matters.
 Oleksandra Makhova Street station. If you get off, pause for a moment in your thoughts. The person after whom this stop is named deserves not silence, but gratitude.
-Let us move on. We have just left a stop named after a true warrior. Now we are moving on to a street that honors those who created the space in which we live.
+Let’s move on. We have just left a stop named after a true warrior. Now we are moving on to a street that honors those who created the space in which we live.
 Architect is an old word. It is deeper than just “architects.” An architect is someone who thinks in terms of form, who sees the city as a living being, not just a set of boxes.
 And although it seems that Borshchahivka is nothing but prefabricated buildings, there is also an architectural concept behind it. Well, at least that was the idea…
 In the 1970s, Borshchahivka was built as a “model microdistrict of the future.” The architects wanted to create a comfortable, bright garden city: with wide streets, kindergartens in the courtyards, and bus stops nearby. Everything was supposed to be smart, functional, “for the people.”
-But somewhere along the way, things went a little wrong. Panel after panel, idea after idea - and instead of a garden city, we got a compromise city.
+But somewhere along the way, things went a little wrong. Panel after panel, idea after idea — and instead of a garden city, we got a compromise city.
 However, today these “boxes” are ours. They are decorated with murals, trees grow in the courtyards, and satellite antennas are on the roofs. Architecture is transforming, the city is alive.
 And what is interesting: once upon a time, architects worked for the “bright future” of a country that no longer exists. Now, the future is being built right now. And no longer according to instructions from Moscow, but with the experience of war, pain, and freedom.
 The architects of the 21st century are also heroes. They too are holding the front line. The front line of beauty, logic, and humanity.
@@ -82,26 +80,26 @@ Zodchykh Street station. If you get off, note that the city around you is not ac
 We depart from the stop where form was born and head to where content was born.
 Because Mykola Rudenko is not just a writer. He is a man who proved that words can be sharper than a blade.
 He is called the “Ukrainian Socrates.” A philosopher, poet, thinker, dissident. Founder of the Ukrainian Helsinki Group, for which he was, of course, imprisoned.
-He was tried for “anti-Soviet propaganda” - but he was simply writing about the truth. About the Holodomor, about freedom of thought, about dignity.
-Imagine, it was the 1970s. All around - monolithic silence, camps, censorship. And he spoke. He did not shout. He just spoke. And that was enough to break him. But he did not break.
+He was tried for “anti-Soviet propaganda” — but he was simply writing about the truth. About the Holodomor, about freedom of thought, about dignity.
+Imagine, it was the 1970s. All around — monolithic silence, camps, censorship. And he spoke. He didn’t shout. He just spoke. And that was enough to break him. But he didn’t break.
 In an interview after his exile, he said:
-“I do not care what they call me. I care whether I was honest with myself.”
+“I don’t care what they call me. I care whether I was honest with myself.”
 And now an entire boulevard in Kyiv is named after him. Not an alley, not a backstreet. A boulevard. Space. Space for thought.
-When riding the tram along this stretch, take a look around: nothing special, just the same old buildings, shops, and courtyards. But knowing that this is where a free mans thoughts ran, you look out the window differently.
-Mykola Rudenko Boulevard station. If you get off, ask yourself: what am I standing for? If you stay on, let us continue. Kyiv has many more answers.
-We leave behind the boulevard that breathes freedom of speech. Ahead of us is a man who sought answers in texts, history, and… Kobzars lines.
-We are going to Vasyl Domanytsky Street. And here is a note: if the surname is not very familiar, it is no surprise. Domanytsky was a man of quiet greatness. But if it were not for him, we might never have read Kobzar in the form that Shevchenko intended.
+When riding the tram along this stretch, take a look around: nothing special, just the same old buildings, shops, and courtyards. But knowing that this is where a free man’s thoughts ran, you look out the window differently.
+Mykola Rudenko Boulevard station. If you get off, ask yourself: what am I standing for? If you stay on, let’s continue. Kyiv has many more answers.
+We leave behind the boulevard that breathes freedom of speech. Ahead of us is a man who sought answers in texts, history, and… Kobzar’s lines.
+We are going to Vasyl Domanytsky Street. And here’s a note: if the surname is not very familiar, it’s no surprise. Domanytsky was a man of quiet greatness. But if it weren’t for him, we might never have read Kobzar in the form that Shevchenko intended.
 Domanytsky was a historian, literary scholar, editor, and publicist. In 1907, he prepared one of the most complete editions of Kobzar at that time for publication, checking manuscripts, censorship edits, insertions, and cuts. He restored the text to its original power, as if scraping away layer after layer of lies added by “editors with permission.”
-It was almost like detective work. Because every line of Shevchenkos work had political potential at that time. And Domanitsky literally saved those lines.
+It was almost like detective work. Because every line of Shevchenko’s work had political potential at that time. And Domanitsky literally saved those lines.
 He died in 1910, at the age of 33. But he accomplished so much that his name is now the name of a street in Kyiv. In the city he loved so much. In Ukraine, for which he cared so deeply.
 Domanitsky gave Shevchenko back to us. And now we are giving him his rightful place in the city.
 Vasyl Domanytsky Street station. If you get off, take a deep breath. You are now standing on the name of a man who cherished his word like a treasure.
-The tram departs from the Vasyl Domanytskyi stop - a street that honors a man who worked quietly, almost unnoticed. Because without Domanytskyi, Hnat Yura might not have had that same Kobzar in his hands as an actor.
-We are driving through the streets of a residential area, but in our imagination, a scene opens up. Perhaps from the darkness. Perhaps with a spotlight on his face. Because ahead is Hnat Yuras stop.
+The tram departs from the Vasyl Domanytskyi stop — a street that honors a man who worked quietly, almost unnoticed. Because without Domanytskyi, Hnat Yura might not have had that same Kobzar in his hands as an actor.
+We are driving through the streets of a residential area, but in our imagination, a scene opens up. Perhaps from the darkness. Perhaps with a spotlight on his face. Because ahead is Hnat Yura’s stop.
 This name is well known to anyone who has ever been to the Frank Theatre. He was one of its founders.
 And it was he who made the theater not “entertainment for the intelligentsia,” but a lively conversation with the people. A real one. In Ukrainian.
 Yura started with the “Young Theater,” worked with Kurbas, survived Soviet censorship, reforms, and “instructions from above.”
-And still - he created.
+And still — he created.
 He acted. He lived on stage.
 And here is the irony of fate: if Domanytsky is the letter “a” with which everything begins, then Yura is already the voice of “I” on stage.
 And now we are traveling on rails between them.
@@ -111,45 +109,45 @@ From the stage to books.
 From roles written by playwrights to roles that history throws at us.
 We are traveling from the stop named after Hnat Yuri, a master of the stage and an actor who gave voice to characters, to the stop named after Ivan Dziuba, who gave voice to an entire nation.
 Ivan Dziuba is not just a literary scholar. He is the conscience of the Ukrainian intelligentsia. He is the author of the legendary text “Internationalism or Russification?”, which was a real bombshell in the 1960s.
-He did not shout or call for barricades. He simply asked questions - profound, precise, honest questions. And this made him more dangerous to the Soviet system than any slogan.
+He did not shout or call for barricades. He simply asked questions — profound, precise, honest questions. And this made him more dangerous to the Soviet system than any slogan.
 His main weapons were essays, analysis, and text.
 And in every sentence, there was an understanding that without language, there is no people. That without memory, there is no future. That culture is not decoration, but the backbone.
 He was arrested in 1972 for his beliefs. He was forced to renounce some of his texts and was banned from publishing. But they did not break him.
-And when Ukraine became independent, he was there - at the most crucial moment. He became Minister of Culture. He became an academician. He became a moral authority.
+And when Ukraine became independent, he was there — at the most crucial moment. He became Minister of Culture. He became an academician. He became a moral authority.
 Ivan Dziuba station. If you get off, pause for a moment and reflect. Do we appreciate enough those who spoke for us when we were still silent?
-The tram departs from the stop named after Ivan Dziuba - a man who believed in the power of words more than in the power of authority.
+The tram departs from the stop named after Ivan Dziuba — a man who believed in the power of words more than in the power of authority.
 And now we are heading to a stop named after someone who took the floor and turned it into political reality.
 Václav Havel is the Czech Republic, he is theater, he is dissidence, but even more than that, he is an example that moral revolution is possible.
-He started out as a playwright. His plays are not about kings and love dramas - they are about the absurdity of a system where bureaucracy eats people alive.
+He started out as a playwright. His plays are not about kings and love dramas — they are about the absurdity of a system where bureaucracy eats people alive.
 What could come of this, one might think? What came of it was a president.
 In 1989, when the communist dictatorship fell in Prague, it was Havel whom the people chose as a symbol of honesty.
 Not because of his popularity rating. Not because of television. But because of trust. Because of his courage to be honest in a dishonest world.
 We drive through the streets of Kyiv, and one phrase Havel once said keeps running through my head:
 “Truth and love must prevail over lies and hatred.”
-Vaclav Havel station. If you get off here, remember: being honest in an unjust world is already a revolution.
+Václav Havel station. If you get off here, remember: being honest in an unjust world is already a revolution.
 We depart from the stop named after Václav Havel, an intellectual who showed that even in a post-totalitarian world, honesty has a chance.
-And we are heading to a stop that reminds us that sometimes heroes do not wear uniforms or ties - they wear surgical gowns.
+And we are heading to a stop that reminds us that sometimes heroes don’t wear uniforms or ties — they wear surgical gowns.
 Oleksandr Shalimov is one of the most famous surgeons in the history of Ukraine.
 A legend in medicine. An academician, professor, and founder of the Ukrainian school of surgery, which was recognized not only in the USSR but throughout the world.
 He performed over 40,000 operations.
 Four zeros.
-It is like saving an entire city.
-And what is interesting is that he did it without fanfare. Simply - professionally. Deeply. Humanely.
+It’s like saving an entire city.
+And what’s interesting is that he did it without fanfare. Simply — professionally. Deeply. Humanely.
 The Institute of Surgery and Transplantology, located nearby, is named after him.
-And that is why this stop bears his name - Academician Shalimov. Not somewhere in the center, not for prestige. But next to the place where he lived and worked.
-They say he came to work at 6 a.m. and left late at night. Even in his old age, he still went into the operating room. Because he could not do otherwise.
+And that is why this stop bears his name — Academician Shalimov. Not somewhere in the center, not for prestige. But next to the place where he lived and worked.
+They say he came to work at 6 a.m. and left late at night. Even in his old age, he still went into the operating room. Because he couldn’t do otherwise.
 Because that was his front line. And he held it.
-Akademika Shalimova station. If you get off, pause for a moment. And let us thank everyone who saves lives - without microphones, without cameras, just every day.
+Akademika Shalimova station. If you get off, pause for a moment. And let’s thank everyone who saves lives — without microphones, without cameras, just every day.
 So we leave the medical front and embark on an even more incredible journey.
 Have you ever dreamed of flying?
-Most people have thought about it at least once in their childhood. But those who get off at the NAU stop don not just dream - they study. The National Aviation University is one of the largest technical universities in Europe in the field of aviation. Founded in 1933 as the Kyiv Aviation Institute, it survived occupation, evacuation, and post-war reconstruction… Today, it trains not only pilots, but also specialists in cybersecurity, drones, and aerospace systems.
-By the way, few people know that during World War II, the university was evacuated to Ufa, and after its return, it became the center of aviation education throughout the USSR. And in the 1960s, they worked here on technology for the space industry - the very technology that launched Soviet satellites into orbit.
+Most people have thought about it at least once in their childhood. But those who get off at the NAU stop don’t just dream — they study. The National Aviation University is one of the largest technical universities in Europe in the field of aviation. Founded in 1933 as the Kyiv Aviation Institute, it survived occupation, evacuation, and post-war reconstruction… Today, it trains not only pilots, but also specialists in cybersecurity, drones, and aerospace systems.
+By the way, few people know that during World War II, the university was evacuated to Ufa, and after its return, it became the center of aviation education throughout the USSR. And in the 1960s, they worked here on technology for the space industry — the very technology that launched Soviet satellites into orbit.
 National Aviation University station. If you get off here, remember how much this place has changed history. If not, get ready to hear even more interesting stories.
 We are approaching Industrialna. A stop with a name that hides nothing.
-This is an area of factories, warehouses, and workshops. Once upon a time, life was bustling here: the Kyiv Electrical Equipment Factory, the Tochelectroprylad Factory, and dozens of other enterprises that supplied not only the capital but the entire Soviet Union. Dynasties worked here - father, son, grandson.
-Imagine, in the 1970s, in workshops standing right next to each other, parts for the first Soviet televisions and radio receivers were manufactured. And also parts for military communication systems. And all this - simply under the modest name of “Industrialna.”
+This is an area of factories, warehouses, and workshops. Once upon a time, life was bustling here: the Kyiv Electrical Equipment Factory, the Tochelectroprylad Factory, and dozens of other enterprises that supplied not only the capital but the entire Soviet Union. Dynasties worked here — father, son, grandson.
+Imagine, in the 1970s, in workshops standing right next to each other, parts for the first Soviet televisions and radio receivers were manufactured. And also parts for military communication systems. And all this — simply under the modest name of “Industrialna.”
 Now the factories have either been turned into business centers or lie dormant, silent witnesses to the past. But if you look closely through the window, you may see an old sign or a brick chimney that remembers the smoke of working days.
-Industrial Station. If you get off, do not forget to look under your feet: there may be a nut from 1973 here. And if you continue on, it gets even more interesting ahead.
+Industrial Station. If you get off, don’t forget to look under your feet: there may be a nut from 1973 here. And if you continue on, it gets even more interesting ahead.
 The rails under the wheels rattle as if someone is whispering old stories. The high-speed tram breaks away from the industrial past and takes us to a place named after a man who did not submit to the system.
 Oleksa Tykhyi. A man who refused to remain silent. A teacher, linguist, and human rights activist. One of the founders of the Ukrainian Helsinki Group. He was persecuted for speaking Ukrainian, writing about human rights, and opposing the Russification of Donbas back in the 1960s. Can you imagine?
 In 1977, he was arrested again, this time for “anti-Soviet activities.” The real reason? His writings, which contained more truth than party newspapers had in decades. He was sentenced to 10 years in prison camps and 5 years in exile. He did not survive his imprisonment. He died in a camp in 1984.
@@ -157,196 +155,194 @@ But look how time puts everything in its place. Now you ride the tram to the sto
 This stop is not just a point on the map. It is a reminder. A reminder that silence is also a choice.
 Oleksa Tykhyi station. If you get off, pause for a moment. Perhaps this place will inspire you not to remain silent when it is important to speak up.
 The tram gently pulls away from the Oleksa Tykhy stop.
-And it is interesting - as soon as you leave behind thoughts of camps, language, dignity - you are already rushing towards those who are creating the present. Because Polytechnic is a place where ideas do not stay in your head, but immediately come out into the world in the form of diagrams, formulas, and inventions.
-But let us first talk about what you do not usually see from the window.
-The route that the tram is currently traveling is part of Ukraines first (!) high-speed tram line. It was opened in 1978. And back then, it was not just a “fast tram,” but a real breakthrough: a separate track, stops with glass pavilions, automated dispatch centers. Kyiv was truly preparing to become the city of the future.
-Incidentally, it was on this line that Czechoslovakian-made Tatra cars were once tested - at the time, they seemed super futuristic. People came specifically to see them: soft upholstered seats, smooth ride, sound - like in the metro, only closer to the sky.
+And it’s interesting — as soon as you leave behind thoughts of camps, language, dignity — you are already rushing towards those who are creating the present. Because Polytechnic is a place where ideas don’t stay in your head, but immediately come out into the world in the form of diagrams, formulas, and inventions.
+But let’s first talk about what you don’t usually see from the window.
+The route that the tram is currently traveling is part of Ukraine’s first (!) high-speed tram line. It was opened in 1978. And back then, it wasn’t just a “fast tram,” but a real breakthrough: a separate track, stops with glass pavilions, automated dispatch centers. Kyiv was truly preparing to become the city of the future.
+Incidentally, it was on this line that Czechoslovakian-made Tatra cars were once tested — at the time, they seemed super futuristic. People came specifically to see them: soft upholstered seats, smooth ride, sound — like in the metro, only closer to the sky.
 And now we are approaching Polytechnic. KPI is about brains, mathematics, electricity, IT specialists, inventors, sometimes a little eccentric…
-Founded in 1898, Kyiv Polytechnic became a forge of engineers for the whole of Eastern Europe. Paton himself taught here, and Igor Sikorsky, who later invented the helicopter in the US, studied here. Yes, he started here - he walked these same streets, maybe even sat on the same bench as you are now.
+Founded in 1898, Kyiv Polytechnic became a forge of engineers for the whole of Eastern Europe. Paton himself taught here, and Igor Sikorsky, who later invented the helicopter in the US, studied here. Yes, he started here — he walked these same streets, maybe even sat on the same bench as you are now.
 If you exit near Polytechnic, you can get lost between the buildings. Or you can simply walk past the wall with graffiti about science and remember that in this city, intelligence has always been valued no less than strength.
-Polytehnichna station. The next one is another page in the citys rich history. But for now, take a deep breath and let us head into the city of ideas.
-The tram picks up speed. Polytechnic is left behind, along with the smell of baked goods, energy drinks, and a bit of pre-exam fatigue. We rush onward. Ahead is a place that some called Pershotravneva, others Serova, and still others Shevchenko… And now - Galytska Square.
-Why “Galytska”? Its no coincidence. The name was changed in 2023 as part of the decolonization of urban space. And it makes sense: Kyiv is not the outskirts of an empire. It is the center of the Ukrainian cultural world, including its connection to Galicia - the region that stood firm in the struggle for language, faith, and identity when it was still forbidden here.
-It also used to be the border between “old Kyiv” and the microdistricts that were built after the war. Thats why the architecture here is mosaic-like: pre-revolutionary buildings can be found next to typical “Khrushchevkas,” and around the corner, there might be an unexpected Baroque chapel or a surviving line of cobblestones.
+Polytehnichna station. The next one is another page in the city’s rich history. But for now, take a deep breath and let’s head into the city of ideas.
+The tram picks up speed. Polytechnic is left behind, along with the smell of baked goods, energy drinks, and a bit of pre-exam fatigue. We rush onward. Ahead is a place that some called Pershotravneva, others Serova, and still others Shevchenko… And now — Galytska Square.
+Why “Galytska”? It’s no coincidence. The name was changed in 2023 as part of the decolonization of urban space. And it makes sense: Kyiv is not the outskirts of an empire. It is the center of the Ukrainian cultural world, including its connection to Galicia — the region that stood firm in the struggle for language, faith, and identity when it was still forbidden here.
+It also used to be the border between “old Kyiv” and the microdistricts that were built after the war. That’s why the architecture here is mosaic-like: pre-revolutionary buildings can be found next to typical “Khrushchevkas,” and around the corner, there might be an unexpected Baroque chapel or a surviving line of cobblestones.
 It is a kind of transition zone where history begins to speak louder.
 Incidentally, until 2023, this stop was called “Victory Square.” But whose victory and over whom is a complicated question. That is why they changed it.
 Galytska Square station. The story continues. If you get off, pay attention to the signs: many of them, although new, carry the shadow of the past. If you continue on, the next stop is a place where new names are replacing old meanings, rapidly approaching a place that has not changed its essence for over a hundred years.
 Starovokzalna.
-Sounds like the ending of a movie, doesnt it? But for many, this is not the end, but the beginning: the first breath of Kyiv, the first ladder on the platform, the first argument with a taxi driver. The station is always a little drama, a little romance, and a little chaos.
-Kyiv-Pasazhyrskyi, the capitals main railway station, was built in the 1870s, when the empire was stretching its rails to the borders. At that time, it was an architectural marvel - with elements of modernism, carved facades, and most importantly, the promise of a great journey.
-At that time, Kyiv was not yet the capital, but it was already a hub city. And you could feel it right away: the platforms were buzzing with languages from all over the world - Polish, Yiddish, German, French… And later - whispers of evacuations, military trains, cattle cars, camp lists.
+Sounds like the ending of a movie, doesn’t it? But for many, this is not the end, but the beginning: the first breath of Kyiv, the first ladder on the platform, the first argument with a taxi driver. The station is always a little drama, a little romance, and a little chaos.
+Kyiv-Pasazhyrskyi, the capital’s main railway station, was built in the 1870s, when the empire was stretching its rails to the borders. At that time, it was an architectural marvel — with elements of modernism, carved facades, and most importantly, the promise of a great journey.
+At that time, Kyiv was not yet the capital, but it was already a hub city. And you could feel it right away: the platforms were buzzing with languages from all over the world — Polish, Yiddish, German, French… And later — whispers of evacuations, military trains, cattle cars, camp lists.
 People waited here. They said goodbye. They did not return.
 In 1941, the station was bombed during the defense of Kyiv. It was rebuilt in a different, more restrained style. But it was no less majestic. This is the “new” station we see today.
 If you exit at Starovokzalna and walk a little further, you enter a world of contrasts. Here, you are just as likely to meet a grandmother with homemade pies as an IT specialist with a suitcase on wheels. It smells of buns, diesel, and a little bit of adventure.
-And one more thing: there used to be a market next to this bus stop. It was a world of its own, with its own rules: you could buy a charger, radio parts, chebureki, slippers - and get a life lesson as a bonus.
-Starovokzalna station. This is where routes that are not listed in any app begin. Have a safe trip!]]>
-    </string>
+And one more thing: there used to be a market next to this bus stop. It was a world of its own, with its own rules: you could buy a charger, radio parts, chebureki, slippers — and get a life lesson as a bonus.
+Starovokzalna station. This is where routes that are not listed in any app begin. Have a safe trip!
 
-    <string name="text_r001_backward">
+]]></string>
 
-        <![CDATA[The tram, like an old, wise storyteller, pushes off from the noisy heart of the city - Starovokzalna.
+    <string name="text_r001_backward"><![CDATA[The tram, like an old, wise storyteller, pushes off from the noisy heart of the city — Starovokzalna.
  Here, where thousands of destinies intertwine every day, it begins its short but vivid route.
-We are heading toward Halytska Square (formerly Victory Square). And this is not just a stop - its a powerful transport hub, a legendary place. Once known as Halytska Square, it was a bustling, colorful marketplace - one of the liveliest in Kyiv - which was later replaced by a circus.
-Here, at Halytska Square, the tram pauses for a moment. Its where time seems to slow down - just enough to prepare you for a new start, whether deeper into the high-speed line or into the busy whirl of the city center.
+We are heading toward Halytska Square (formerly Victory Square). And this is not just a stop — it’s a powerful transport hub, a legendary place. Once known as Halytska Square, it was a bustling, colorful marketplace — one of the liveliest in Kyiv — which was later replaced by a circus.
+Here, at Halytska Square, the tram pauses for a moment. It’s where time seems to slow down — just enough to prepare you for a new start, whether deeper into the high-speed line or into the busy whirl of the city center.
 
 
 Station - Halytska Square. The story continues.
- If youre getting off, look at the shop signs - many of them, though new, still carry the shadow of the past.
-We move on to Politekhnichna - not just a station, but a gateway to a world of science, engineering, and the eternal rush of student life. The name speaks for itself: this is home to the legendary Kyiv Polytechnic Institute (KPI).
-When you step off here, you can feel a special kind of energy. People come here to build the future - to create new technologies, design machines, dream of spacecraft. Its a place where the gray walls of university buildings glow with the light of discovery.
+ If you’re getting off, look at the shop signs — many of them, though new, still carry the shadow of the past.
+We move on to Politekhnichna — not just a station, but a gateway to a world of science, engineering, and the eternal rush of student life. The name speaks for itself: this is home to the legendary Kyiv Polytechnic Institute (KPI).
+When you step off here, you can feel a special kind of energy. People come here to build the future — to create new technologies, design machines, dream of spacecraft. It’s a place where the gray walls of university buildings glow with the light of discovery.
  This place never sleeps: at night, the windows of researchers shine bright; by day, trams rumble past, carrying a new generation toward knowledge.
 
 
 Station - Politekhnichna.
- The next one - another page of the citys living history. For now: take a breath - and off we go.
-But before we reach the next stop - Oleksa Tykhy - lets talk about what usually goes unnoticed from the window.
-The route were on is part of Ukraines very first high-speed tram line, opened in 1978.
- Back then, it wasnt just “a fast tram.” It was a true breakthrough: a separate track, glass pavilions, automated control systems - Kyiv was preparing to become the city of the future.
-Oleksa Tykhy - a man who refused to be silent. A teacher, linguist, human rights defender. One of the founders of the Ukrainian Helsinki Group. He was persecuted simply for speaking Ukrainian, writing about human rights, and opposing the russification of Donbas - as early as the 1960s.
-In 1977, he was arrested again - this time for “anti-Soviet activities.” The real reason? His writings contained more truth than a decades worth of party newspapers. He was sentenced to 10 years in labor camps and 5 years in exile. He did not survive imprisonment, dying in 1984.
-But look how time sets things right. Today, you ride a tram to a stop bearing his name. Through streets where his words were once forbidden - now proudly remembered.
+ The next one — another page of the city’s living history. For now: take a breath — and off we go.
+But before we reach the next stop — Oleksa Tykhy — let’s talk about what usually goes unnoticed from the window.
+The route we’re on is part of Ukraine’s very first high-speed tram line, opened in 1978.
+ Back then, it wasn’t just “a fast tram.” It was a true breakthrough: a separate track, glass pavilions, automated control systems — Kyiv was preparing to become the city of the future.
+Oleksa Tykhy — a man who refused to be silent. A teacher, linguist, human rights defender. One of the founders of the Ukrainian Helsinki Group. He was persecuted simply for speaking Ukrainian, writing about human rights, and opposing the russification of Donbas — as early as the 1960s.
+In 1977, he was arrested again — this time for “anti-Soviet activities.” The real reason? His writings contained more truth than a decade’s worth of party newspapers. He was sentenced to 10 years in labor camps and 5 years in exile. He did not survive imprisonment, dying in 1984.
+But look how time sets things right. Today, you ride a tram to a stop bearing his name. Through streets where his words were once forbidden — now proudly remembered.
 
 
 Station - Oleksa Tykhy.
- If youre getting off - take a moment. This place might inspire you not to stay silent when your voice matters.
-Next station- Industrialna.
+ If you’re getting off — take a moment. This place might inspire you not to stay silent when your voice matters.
+Next station— Industrialna.
  A district once filled with factories, workshops, and the hum of labor. In Soviet times, this was the realm of engineers and machinists: the Kyiv Electrical Equipment Plant, “Tochelektroprylad,” and dozens of others producing everything from television parts to military communication systems.
-Entire families worked here - father, son, grandson.
+Entire families worked here — father, son, grandson.
  Imagine: in the 1970s, just nearby, they were crafting pieces for the first Soviet televisions and radios.
-Now, many factories have turned into business centers, while others stand silent - witnesses to an industrious past. Look closely from the window - you might still see an old sign or a brick chimney remembering the smoke of working days.
+Now, many factories have turned into business centers, while others stand silent — witnesses to an industrious past. Look closely from the window — you might still see an old sign or a brick chimney remembering the smoke of working days.
 
 
 Station - Industrialna.
- If you step out - check your feet. You might find a bolt from 1973 lying nearby. If you stay - ahead lies even more.
-We leave the factories behind. Our next stop - National Aviation University (NAU).
- Not just a station, but a gateway to a vast campus where future pilots, engineers, and cybersecurity experts take flight. Founded in 1933, the university has grown into one of Europes largest aviation schools.
-When the tram halts here, you see an imposing structure ahead - the Main Building of NAU, often compared to a giant ship poised for takeoff. It dominates the landscape, embodying ambition and scale.
- This is a place where you come to leave the ground - if not physically, then intellectually.
+ If you step out — check your feet. You might find a bolt from 1973 lying nearby. If you stay — ahead lies even more.
+We leave the factories behind. Our next stop — National Aviation University (NAU).
+ Not just a station, but a gateway to a vast campus where future pilots, engineers, and cybersecurity experts take flight. Founded in 1933, the university has grown into one of Europe’s largest aviation schools.
+When the tram halts here, you see an imposing structure ahead — the Main Building of NAU, often compared to a giant ship poised for takeoff. It dominates the landscape, embodying ambition and scale.
+ This is a place where you come to leave the ground — if not physically, then intellectually.
 
 
 Station - National Aviation University.
- If youre getting off - remember: this place helped shape the history of flight.
-And now - a stop named after a man who wore not armor, but a surgeons gown.
- Academician Oleksandr Shalimov - a legendary Ukrainian surgeon, one of the founders of modern surgery and transplantology in Ukraine. A man who saved thousands of lives, whose name became synonymous with medical mastery.
+ If you’re getting off — remember: this place helped shape the history of flight.
+And now — a stop named after a man who wore not armor, but a surgeon’s gown.
+ Academician Oleksandr Shalimov — a legendary Ukrainian surgeon, one of the founders of modern surgery and transplantology in Ukraine. A man who saved thousands of lives, whose name became synonymous with medical mastery.
 Nearby stands the National Institute of Surgery and Transplantology, a stronghold in the fight for life. Here, time is measured not by clocks, but by heartbeats and surgical threads.
  The atmosphere is one of quiet, focused intensity.
 
 
 Station - Academician Shalimov.
- If youre getting off - pause and give silent thanks to all those who save lives every day, without applause or spotlight.
-Next - Václav Havel Street.
- A name not everyone remembers at first, but one that changed history. Václav Havel - the last president of Czechoslovakia and the first of the Czech Republic - playwright, dissident, and a symbol of resistance to totalitarianism.
+ If you’re getting off — pause and give silent thanks to all those who save lives every day, without applause or spotlight.
+Next — Václav Havel Street.
+ A name not everyone remembers at first, but one that changed history. Václav Havel — the last president of Czechoslovakia and the first of the Czech Republic — playwright, dissident, and a symbol of resistance to totalitarianism.
 Previously named after Ivan Lepse, a Soviet revolutionary, this street has now become part of the decommunization and reimagining of urban space. Now it is not just a transport hub, it is a symbol of change on the map of Kyiv, where each new name is part of a new national history.
 
 
-Station - Vaclav Havel.
- If youre getting off - remember: being honest in an unjust world is already a revolution.
+Station — Václav Havel.
+ If you’re getting off — remember: being honest in an unjust world is already a revolution.
 And the tram rushes toward a new story.
- This station is named after Ivan Dziuba - one of the most prominent Ukrainian literary critics, scholars, dissidents, and public figures of the 20th century. His work “Internationalism or Russification?” became a key manifesto of the Ukrainian cultural movement of the Sixtiers, criticizing national oppression in the USSR.
- Dziuba is a symbol of intellectual resistance, a man who fought with words for Ukrainians right to be themselves.
+ This station is named after Ivan Dziuba — one of the most prominent Ukrainian literary critics, scholars, dissidents, and public figures of the 20th century. His work “Internationalism or Russification?” became a key manifesto of the Ukrainian cultural movement of the Sixtiers, criticizing national oppression in the USSR.
+ Dziuba is a symbol of intellectual resistance, a man who fought with words for Ukrainians’ right to be themselves.
  This stretch of the route is a daily path for thousands: students heading to universities, workers on their way to jobs, and pensioners going about their errands.
- So the name of this station serves as a reminder of the price of freedom - flashing past us in the window of the high-speed tram.
+ So the name of this station serves as a reminder of the price of freedom — flashing past us in the window of the high-speed tram.
 
 
-Station - Ivan Dziuba.
- If youre getting off - take a moment in thought. Do we truly value those who spoke for us when we were still silent?
+Station — Ivan Dziuba.
+ If you’re getting off — take a moment in thought. Do we truly value those who spoke for us when we were still silent?
 Our journey continues.
- Now were heading toward a station named after Hnat Yura.
- He wasnt just an actor - he was a pillar upon which the entire Ukrainian theatre stood. One of the founders of the Ivan Franko Theatre, Yura was its constant artistic director and stage visionary for over forty years.
- He made theatre not a place for elites but a living arena where real human passions unfolded - vivid, heartfelt, and understood by everyone.
- Yura survived through the harsh Soviet system, leading his theatre through censorship, war, and ideological pressure - while keeping its Ukrainian heart alive.
+ Now we’re heading toward a station named after Hnat Yura.
+ He wasn’t just an actor — he was a pillar upon which the entire Ukrainian theatre stood. One of the founders of the Ivan Franko Theatre, Yura was its constant artistic director and stage visionary for over forty years.
+ He made theatre not a place for elites but a living arena where real human passions unfolded — vivid, heartfelt, and understood by everyone.
+ Yura survived through the harsh Soviet system, leading his theatre through censorship, war, and ideological pressure — while keeping its Ukrainian heart alive.
 
 
-Station - Hnat Yura.
- If youre getting off, remember: youre stepping onto ground named after a Master who knew that the greatest performance is your own life.
+Station — Hnat Yura.
+ If you’re getting off, remember: you’re stepping onto ground named after a Master who knew that the greatest performance is your own life.
 And from the stage, we now move into the realm of words, history, and tireless work.
- Vasyl Domanytskyi - a name that recently entered Kyivs map, replacing a Soviet figure, bringing with it immense cultural power. Domanytskyi lived a short but incredibly rich life.
+ Vasyl Domanytskyi — a name that recently entered Kyiv’s map, replacing a Soviet figure, bringing with it immense cultural power. Domanytskyi lived a short but incredibly rich life.
  He was a brilliant literary scholar, historian, folklorist, and public activist of the early 20th century.
- His greatest achievement - preparing and publishing the first complete, scholarly, and annotated edition of Taras Shevchenkos Kobzar.
- It wasnt just a book of poems - it was a monumental scientific act that returned Shevchenko to Ukrainians in his full voice, free from imperial censorship.
- Domanytskyi was an architect of Ukrainian identity, building it not with bricks - but with the Word.
+ His greatest achievement — preparing and publishing the first complete, scholarly, and annotated edition of Taras Shevchenko’s Kobzar.
+ It wasn’t just a book of poems — it was a monumental scientific act that returned Shevchenko to Ukrainians in his full voice, free from imperial censorship.
+ Domanytskyi was an architect of Ukrainian identity, building it not with bricks — but with the Word.
 
 
-Station - Vasyl Domanytskyi Street.
- If youre getting off - take a deep breath. Youre standing on the name of a man who guarded the Word like a treasure.
+Station — Vasyl Domanytskyi Street.
+ If you’re getting off — take a deep breath. You’re standing on the name of a man who guarded the Word like a treasure.
 And now the tram moves from philological precision to philosophical resilience.
- Mykola Rudenko - a Ukrainian writer, philosopher-cosmist, dissident, and most importantly, founder of the Ukrainian Helsinki Group.
+ Mykola Rudenko — a Ukrainian writer, philosopher-cosmist, dissident, and most importantly, founder of the Ukrainian Helsinki Group.
  This organization became the first open human rights movement in Ukraine, demanding that the USSR honor its own international obligations.
 Thus, Rudenko stood against the system.
  He consciously gave up comfort when his conscience screamed about injustice.
- His philosophic ideas made him a legendary defender of human rights - a title he paid for with years of imprisonment.
+ His philosophic ideas made him a legendary defender of human rights — a title he paid for with years of imprisonment.
 Today, the boulevard leading to this station is typical of 1970s development, surrounded by a dense ring of residential districts.
- But its name brings deep meaning into this gray everyday life - a reminder that even in the dullest neighborhoods, there are people willing to fight for the highest ideals of freedom and justice.
+ But its name brings deep meaning into this gray everyday life — a reminder that even in the dullest neighborhoods, there are people willing to fight for the highest ideals of freedom and justice.
 
 
-Station - Mykola Rudenko Boulevard.
- If youre getting off - ask yourself: What do I stand for?
- If youre staying - lets move on. Kyiv still has many answers.
+Station — Mykola Rudenko Boulevard.
+ If you’re getting off — ask yourself: What do I stand for?
+ If you’re staying — let’s move on. Kyiv still has many answers.
 Ahead lies Zodchykh Street.
- Who are the Zodchi - the architects? Its an old word, one that goes deeper than “builders.”
+ Who are the Zodchi — the architects? It’s an old word, one that goes deeper than “builders.”
  A zodchyi is someone who thinks in form, who sees the city as a living being, not just a collection of boxes.
-Though Borshchahivka may seem like endless concrete panels - it too was once a grand design.
- In the 1970s, Borshchahivka was meant to be a “model district of the future”: wide streets, kindergartens in every yard, tram stops nearby - everything logical, functional, “for the people.”
+Though Borshchahivka may seem like endless concrete panels — it too was once a grand design.
+ In the 1970s, Borshchahivka was meant to be a “model district of the future”: wide streets, kindergartens in every yard, tram stops nearby — everything logical, functional, “for the people.”
  But somewhere along the way, things went a little off track.
- Panel by panel, idea by idea - and instead of a city-garden, a city of compromise emerged.
+ Panel by panel, idea by idea — and instead of a city-garden, a city of compromise emerged.
 Yet today, these “boxes” are ours.
  They bloom with murals, courtyards full of trees, and rooftops crowned with satellite dishes.
  Architecture transforms. The city lives.
 Once, architects built for a “bright future” of a country that no longer exists.
- Now - the future is being built right here and now.
- Not by Moscows blueprints, but through experience - of war, of pain, of freedom.
+ Now — the future is being built right here and now.
+ Not by Moscow’s blueprints, but through experience — of war, of pain, of freedom.
 Architects of the 21st century are heroes, too.
- They hold the front - of beauty, logic, and humanity.
+ They hold the front — of beauty, logic, and humanity.
 
 
-Station - Zodchykh Street.
- If youre getting off - notice: the city around you isnt random. Someone once imagined it.
+Station — Zodchykh Street.
+ If you’re getting off — notice: the city around you isn’t random. Someone once imagined it.
 We leave behind the Zodchi who built the physical walls of Borshchahivka, and now our tram heads toward a station named for a man who built bridges between the front and the home.
- Who was Makhov, whose name so quickly - and rightfully - became part of Kyivs landscape?
+ Who was Makhov, whose name so quickly — and rightfully — became part of Kyiv’s landscape?
  He was a journalist, a voice of truth, who decided his microphone should sound from the front lines, and his pen should become a weapon.
 Oleksandr was from Luhansk. He saw, like few others, how his native land was destroyed.
- When Russias full-scale invasion began in 2022, he didnt stay safe behind the lines.
+ When Russia’s full-scale invasion began in 2022, he didn’t stay safe behind the lines.
  He put on his pixel uniform once more, joined the legendary 95th Brigade, and went to defend his home.
 Makhov was a man who always chose the epicenter of events.
- And in May 2022, during heavy fighting near Izium - he fell.
+ And in May 2022, during heavy fighting near Izium — he fell.
 This street is a memorial to everyday heroism, reminding every passenger that we live in the time of heroes.
 
 
-Station - Oleksandr Makhov Street.
- If youre getting off here - pause for a moment in thought.
- The person this station is named after deserves not silence - but gratitude.
-And now, were heading toward the next station.
- Here awaits a true gift of fate and friendship - Station - Vakhtang Kikabidze Street.
- This renaming isnt just a new sign - its a grand diplomatic gesture.
+Station — Oleksandr Makhov Street.
+ If you’re getting off here — pause for a moment in thought.
+ The person this station is named after deserves not silence — but gratitude.
+And now, we’re heading toward the next station.
+ Here awaits a true gift of fate and friendship — Station — Vakhtang Kikabidze Street.
+ This renaming isn’t just a new sign — it’s a grand diplomatic gesture.
  Before, this place bore the name of a controversial Kyiv figure whose vision of “independence” was deeply imperial.
- Now, in his place, lives the beloved “Mimino” - a Georgian actor, singer, and director whose name Ukrainians say with warmth and respect.
+ Now, in his place, lives the beloved “Mimino” — a Georgian actor, singer, and director whose name Ukrainians say with warmth and respect.
 Remember how principled he was!
- After Russias invasion of his native Georgia, Vakhtang Kikabidze forever cut ties with Russian show business, refusing concerts and state awards.
+ After Russia’s invasion of his native Georgia, Vakhtang Kikabidze forever cut ties with Russian show business, refusing concerts and state awards.
  He said clearly: no compromises with the aggressor.
  But for Ukraine, he opened his great heart.
- Since 2014, he stood with us - dedicating concerts to the Heroes of the Heavenly Hundred, performing even in front-line Mariupol, raising funds for the Armed Forces.
-So this station isnt just a name - its a bright, warm, Caucasian toast to our victory.
+ Since 2014, he stood with us — dedicating concerts to the Heroes of the Heavenly Hundred, performing even in front-line Mariupol, raising funds for the Armed Forces.
+So this station isn’t just a name — it’s a bright, warm, Caucasian toast to our victory.
 
 
-Station - Vakhtang Kikabidze Street.
- If youre getting off - take a closer look at the nameplate.
- Its more than just a name. Its a stance.
-And now the route softens again - the line returns to a simple tram track, weaving quietly through the outskirts.
+Station — Vakhtang Kikabidze Street.
+ If you’re getting off — take a closer look at the nameplate.
+ It’s more than just a name. It’s a stance.
+And now the route softens again — the line returns to a simple tram track, weaving quietly through the outskirts.
  We feel the pulse of the city slow down, as concrete and asphalt give way to a more intimate, almost rural landscape.
 Mykhailivska Borshchahivka.
  This name is a true historical anchor.
- Its not just one neighborhood - its a cluster of villages that once belonged to Kyivs monasteries.
- And Mykhailivska Borshchahivka is among the oldest: its name dates back to the 12th century, when these lands were gifted to the St. Michaels Golden-Domed Monastery.
- A place whose story stretches back to the era of Kyivan Rus - to Prince Sviatopolk-Mykhail himself.
+ It’s not just one neighborhood — it’s a cluster of villages that once belonged to Kyiv’s monasteries.
+ And Mykhailivska Borshchahivka is among the oldest: its name dates back to the 12th century, when these lands were gifted to the St. Michael’s Golden-Domed Monastery.
+ A place whose story stretches back to the era of Kyivan Rus — to Prince Sviatopolk-Mykhail himself.
 
 
-Station - Mykhailivska Borshchahivka.
+Station — Mykhailivska Borshchahivka.
 Our journey ends here.
 For now.
-So - until we meet again.]]>
+So — until we meet again.
 
-
-    </string>
+]]></string>
 
     <string name="station_r111_1">Ukrainian Heroes Square</string>
     <string name="station_r111_2">University</string>
@@ -373,436 +369,432 @@ So - until we meet again.]]>
     <string name="station_r111_23">Darnytska Square</string>
 
 
-    <string name="text_r111_forward">
-
-        <![CDATA[The route begins at a station that, until recently, had another name.
- Now its “Ukrainian Heroes Square.”
- This isnt just a renaming - its the return of memory, the restoration of truth.
- Its an attempt to weave into the citys map not abstract “glory,” but the names of real people who gave their lives for independence.
-We move on - toward the University.
+    <string name="text_r111_forward"><![CDATA[The route begins at a station that, until recently, had another name.
+ Now it’s “Ukrainian Heroes Square.”
+ This isn’t just a renaming — it’s the return of memory, the restoration of truth.
+ It’s an attempt to weave into the city’s map not abstract “glory,” but the names of real people who gave their lives for independence.
+We move on — toward the University.
  Ahead lie old buildings, the red main hall, Shevchenko Park, and hundreds of students passing these streets every day.
- Here, they dream, argue, fall in love, discover the world - and sometimes, themselves.
-Station - University.
- If youre getting off - take a deep breath. The air here is thick with ideas.
+ Here, they dream, argue, fall in love, discover the world — and sometimes, themselves.
+Station — University.
+ If you’re getting off — take a deep breath. The air here is thick with ideas.
 Next comes a street named after Prince Volodymyr the Great.
- But its not about princes - its about the greatness of Kyiv as an intellectual and cultural center.
+ But it’s not about princes — it’s about the greatness of Kyiv as an intellectual and cultural center.
  Nearby stand the National Museum, a theatre, architectural landmarks.
- And this street has long been a place of meetings, demonstrations, performances, love - and protest.
+ And this street has long been a place of meetings, demonstrations, performances, love — and protest.
 Its cobblestones remember the voices of many generations.
 
 
-Station - Volodymyrska.
- If youre getting off - listen to the city.
+Station — Volodymyrska.
+ If you’re getting off — listen to the city.
  It speaks, even in silence.
-And now - TSUM, a place that has seen it all.
+And now — TSUM, a place that has seen it all.
  From pre-war glamour to Soviet shortages.
  From stiff mannequins to sleek European fashion.
- Its not just a department store - its a social barometer.
+ It’s not just a department store — it’s a social barometer.
  A place where you can feel how fashion, culture, and comfort in the city have changed over time.
-And its also a landmark - because “lets meet under TSUM” is a phrase every Kyivite knows.
+And it’s also a landmark — because “let’s meet under TSUM” is a phrase every Kyivite knows.
 
 
-Station - Central Department Store.
- If youre getting off - take a look at the windows. Theyre a mirror of their era.
-And here it is - Khreshchatyk, the artery that flows straight through the heart of the capital.
- Today its cafés, brands, fountains, and government buildings.
- But yesterday - it was barricades, armored vehicles, slogans, and unbroken spirit.
+Station — Central Department Store.
+ If you’re getting off — take a look at the windows. They’re a mirror of their era.
+And here it is — Khreshchatyk, the artery that flows straight through the heart of the capital.
+ Today it’s cafés, brands, fountains, and government buildings.
+ But yesterday — it was barricades, armored vehicles, slogans, and unbroken spirit.
  Khreshchatyk has seen everything: parades and fires, betrayal and heroism, emptiness and triumph.
  All within a single block.
 
 
-Station - Khreshchatyk.
- If youre getting off - remember: the main street of the city isnt always about fun.
- Often - its about choice.
-Maidan - its not just a square or a plaza.
- Its an idea. A state of mind. A response to injustice.
+Station — Khreshchatyk.
+ If you’re getting off — remember: the main street of the city isn’t always about fun.
+ Often — it’s about choice.
+Maidan — it’s not just a square or a plaza.
+ It’s an idea. A state of mind. A response to injustice.
  2004, 2013, 2022… Here, history was made live.
- And its still being written.
-Every stone here is more than pavement - its a witness.
- And you - are a witness of the witness
-Station - Independence Square.
- If youre getting off - stand here for a few minutes.
+ And it’s still being written.
+Every stone here is more than pavement — it’s a witness.
+ And you — are a witness of the witness
+Station — Independence Square.
+ If you’re getting off — stand here for a few minutes.
  This is not a place you simply walk past.
-The last station in this fragment - Heavenly Hundred Heroes Alley.
- Its not a park - its a morning that never became ordinary.
+The last station in this fragment — Heavenly Hundred Heroes Alley.
+ It’s not a park — it’s a morning that never became ordinary.
  Here stood barricades, burning tires, and prayers.
  Here, shots rang out from behind.
- And here - the whole nation knelt.
-But even here - memory grows.
- Every portrait, every candle, every inscription - its not pathos, its duty.
+ And here — the whole nation knelt.
+But even here — memory grows.
+ Every portrait, every candle, every inscription — it’s not pathos, it’s duty.
  A duty not to betray.
 
 
-Station - Heavenly Hundred Heroes Alley.
- If youre getting off - bow your head.
+Station — Heavenly Hundred Heroes Alley.
+ If you’re getting off — bow your head.
  This street became an altar of our freedom.
-And now, descending toward the Dnipro, you feel the countrys history flowing through you - from the hill to the riverbank, from loss to remembrance.
-And here it is - Poshtova Square.
+And now, descending toward the Dnipro, you feel the country’s history flowing through you — from the hill to the riverbank, from loss to remembrance.
+And here it is — Poshtova Square.
  The place where the city began.
  Right here, at the meeting of river and land, stood the first warehouses, the first markets, the first words of Kyiv.
- “Poshtova” - because this was once a hub for exchanging messages, long before Wi-Fi was invented.
- Its the heart of old Podil.
- And Podil, as Kyivites say, isnt “lower” - its deeper.
-Everything here is about connection - between times, between generations, between shores.
+ “Poshtova” — because this was once a hub for exchanging messages, long before Wi-Fi was invented.
+ It’s the heart of old Podil.
+ And Podil, as Kyivites say, isn’t “lower” — it’s deeper.
+Everything here is about connection — between times, between generations, between shores.
 
 
-Station - Poshtova Square.
- If youre getting off - look at the Dnipro.
+Station — Poshtova Square.
+ If you’re getting off — look at the Dnipro.
  Sometimes, to understand something, you just have to float deeper.
-Now the trolleybus rides along the Dnipro - down the old Naberezhno-Khreschatytska Street,
+Now the trolleybus rides along the Dnipro — down the old Naberezhno-Khreschatytska Street,
  a road that remembers merchants, lamplighters, fires, and floods.
- Its both an industrial zone and a spiritual one.
+ It’s both an industrial zone and a spiritual one.
  Here, church bells mingle with the sirens of port cranes.
  Here, the air smells of the river, fish, and history.
 
 
 Naberezhno-Khreshchatytska station. If you get off, take a deep breath. Here, the Dnipro speaks silently.
-We enter the garden districts of Podil - areas where the city suddenly becomes quiet.
+We enter the garden districts of Podil — areas where the city suddenly becomes quiet.
 20th Sadova Street is like embroidery between dachas, private houses, and silence, which is not always found in the capital.
 This is not glamour. This is the spirit of Podil, with lilac petals in spring, street cats, and strange neighbors who barbecue in the middle of the sidewalk every summer.
-Station - 20th Sadova.
- If youre getting off - breathe in the scent of coziness.
+Station — 20th Sadova.
+ If you’re getting off — breathe in the scent of coziness.
  Here, Kyiv speaks in whispers.
-You pass through the calm grid of the Sadova streets - like layers of old Kyiv fabric.
- Each one has a number, but behind those numbers is life - uncounted, unhurried.
+You pass through the calm grid of the Sadova streets — like layers of old Kyiv fabric.
+ Each one has a number, but behind those numbers is life — uncounted, unhurried.
  Here, neighbors have known each other for decades.
  Here, the old “Kyiv courtesy” still lives:
  say good morning, wish a good night.
-The whole area seems frozen in time - few people rush here.
- And thats a good thing.
+The whole area seems frozen in time — few people rush here.
+ And that’s a good thing.
 
 
-Station - 5th Sadova.
- If youre getting off - dont hurry.
- Maybe this is the pause youve been looking for.
+Station — 5th Sadova.
+ If you’re getting off — don’t hurry.
+ Maybe this is the pause you’ve been looking for.
 As you travel between these streets, it feels like a separate Kyiv.
- Not because the houses are different - but because the rhythm is.
+ Not because the houses are different — but because the rhythm is.
 Behind the fences, real gardens still grow.
- In summer, the air smells of grilled smoke; in winter - of wood stoves.
+ In summer, the air smells of grilled smoke; in winter — of wood stoves.
  There are still houses with doorbells that sound like bicycle chimes,
  and benches where neighbors discuss the weather as if it could change the national budget.
 
 
-Station - 3rd Sadova.
- If youre getting off - slow down.
+Station — 3rd Sadova.
+ If you’re getting off — slow down.
  Here, time walks barefoot.
-And now - a transition into a new reality.
- Mykilska Slobidka - already the Left Bank, yet not the typical “sleeping district.”
- Its a place where tradition meets urbanism:
- on one side - modern high-rises,
- on the other - traces of the old settlement once home to fishermen, craftsmen, and settlers.
-Today its schools, skate parks, supermarkets, concrete - and graffiti.
+And now — a transition into a new reality.
+ Mykilska Slobidka — already the Left Bank, yet not the typical “sleeping district.”
+ It’s a place where tradition meets urbanism:
+ on one side — modern high-rises,
+ on the other — traces of the old settlement once home to fishermen, craftsmen, and settlers.
+Today it’s schools, skate parks, supermarkets, concrete — and graffiti.
 
 
-Station - Mykilska Slobidka.
- If youre getting off - remember that “Slobidka” is not just geography. Its a state of mind.
+Station — Mykilska Slobidka.
+ If you’re getting off — remember that “Slobidka” is not just geography. It’s a state of mind.
 This name sounds almost cinematic: “Silhosptekhnika.”
- A station from another era - and it truly is.
- Once, there was a base here for machinery that served agriculture - tractors, harvesters, trucks.
-Now - only traces remain: warehouses, offices, repair shops.
- But the name survived - like a fragment of another time. And thats why people love it.
- Its a greeting from the 1970s that somehow slipped into digital 2025.
+ A station from another era — and it truly is.
+ Once, there was a base here for machinery that served agriculture — tractors, harvesters, trucks.
+Now — only traces remain: warehouses, offices, repair shops.
+ But the name survived — like a fragment of another time. And that’s why people love it.
+ It’s a greeting from the 1970s that somehow slipped into digital 2025.
 
 
-Station - Silhosptekhnika. If youre getting off - take a look around. The past still breathes here calmly, even if the engines have long fallen silent.
-And next - a powerful station. Historical. Spiritual.
+Station — Silhosptekhnika. If you’re getting off — take a look around. The past still breathes here calmly, even if the engines have long fallen silent.
+And next — a powerful station. Historical. Spiritual.
 Myitropolyt Andrey Sheptytsky Street is named after one of the greatest figures in Ukrainian history.
- He wasnt just the head of the Greek-Catholic Church - he was a moral authority who supported education, science, and unity between religions.
+ He wasn’t just the head of the Greek-Catholic Church — he was a moral authority who supported education, science, and unity between religions.
  During the war, he saved Jews. During Soviet persecution, he defended Ukrainian identity.
  And even today, his words still give you goosebumps.
 
 
-Station - Metropolitan Andrey Sheptytsky Street. If youre getting off - remember: true authority doesnt impose. It uplifts.
-And here it is - the entrance to Mykilsko-Slobidska.
+Station — Metropolitan Andrey Sheptytsky Street. If you’re getting off — remember: true authority doesn’t impose. It uplifts.
+And here it is — the entrance to Mykilsko-Slobidska.
  A different rhythm lives here. Younger. More urban.
- New buildings, playgrounds, shops on the first floors, and thousands of windows glowing at night - like a coded Kyiv beehive, where every apartment is its own world.
+ New buildings, playgrounds, shops on the first floors, and thousands of windows glowing at night — like a coded Kyiv beehive, where every apartment is its own world.
 Mykilska Slobidka is about transition.
- From the old - to the new.
- From intimate - to grand.
- But somewhere between the cafes and convenience stores, the old Slobidka still lives - in the scent of poplars, in the cracks of the asphalt, in the grandmas on benches who see more than Google Maps ever will.
+ From the old — to the new.
+ From intimate — to grand.
+ But somewhere between the cafes and convenience stores, the old Slobidka still lives — in the scent of poplars, in the cracks of the asphalt, in the grandmas on benches who see more than Google Maps ever will.
 
 
-Station - Mykilsko-Slobidska Street. If youre getting off - take a look around. Here, what we once were meets what we want to become.
-And here - Livoberezhna.
-Its not just a metro stop. Its a crossroads of everything: people, routes, thoughts, and tempos.
+Station — Mykilsko-Slobidska Street. If you’re getting off — take a look around. Here, what we once were meets what we want to become.
+And here — Livoberezhna.
+It’s not just a metro stop. It’s a crossroads of everything: people, routes, thoughts, and tempos.
  From here, some go to work, some to the exhibition center, and some just pop intо the shop for cheese.
- Around you - noise, ads, traffic, the always-crowded underpass, and market stalls that seem eternal.
+ Around you — noise, ads, traffic, the always-crowded underpass, and market stalls that seem eternal.
 But this is Kyiv. Unfiltered. Unpolished.
  Alive. Tired. Wise.
- And its in places like this that you realize: this is not just a station, but a knot where dozens of stories intertwine.
+ And it’s in places like this that you realize: this is not just a station, but a knot where dozens of stories intertwine.
 
 
-Station - Livoberezhna Metro. If youre getting off - dont get lost in the crowd. Even here, you can find silence - if you listen not with your ears, but with your heart.
-And just around the corner - a street with a beautifully poetic name: Hovhannes Tumanyan.
+Station — Livoberezhna Metro. If you’re getting off — don’t get lost in the crowd. Even here, you can find silence — if you listen not with your ears, but with your heart.
+And just around the corner — a street with a beautifully poetic name: Hovhannes Tumanyan.
 An Armenian poet, philosopher, and storyteller. His works were read long before this residential district even existed.
  But here, among the Left Bank courtyards, his name feels right at home.
- Because this part of Kyiv is like a poem - without rhyme, but full of meaning.
+ Because this part of Kyiv is like a poem — without rhyme, but full of meaning.
 
 
-Station - Hovhannes Tumanyan Street. If youre getting off - feel how the city fades into memory. Sometimes, thats where comfort lives.
-Ahead - Yevhen Sverstiuk Street.
+Station — Hovhannes Tumanyan Street. If you’re getting off — feel how the city fades into memory. Sometimes, that’s where comfort lives.
+Ahead — Yevhen Sverstiuk Street.
 A different kind of energy now.
- Sverstiuk - philosopher, writer, dissident, a man who refused to be silent in the darkest times.
- His books were shared through samizdat, his speeches recorded in secret, his ideas still ring true - a tuning fork for the conscience.
+ Sverstiuk — philosopher, writer, dissident, a man who refused to be silent in the darkest times.
+ His books were shared through samizdat, his speeches recorded in secret, his ideas still ring true — a tuning fork for the conscience.
 Now his name belongs to this street.
  A place between offices, gas stations, and high-rises.
- And that matters. Because memory doesnt only live in museums.
+ And that matters. Because memory doesn’t only live in museums.
 
 
-Station - Yevhen Sverstiuk Street. If youre getting off - remember: sometimes silence is betrayal. And words are a choice.
-Before you - Rusanivka.
-No, its not just a residential district.
- Its an island within the city - born as an urban experiment in the 1960s, when architects dreamed of a “Kyiv on the water.”
- Here, riverboats once replaced buses, and embankments became the citys new promenades.
+Station — Yevhen Sverstiuk Street. If you’re getting off — remember: sometimes silence is betrayal. And words are a choice.
+Before you — Rusanivka.
+No, it’s not just a residential district.
+ It’s an island within the city — born as an urban experiment in the 1960s, when architects dreamed of a “Kyiv on the water.”
+ Here, riverboats once replaced buses, and embankments became the city’s new promenades.
 You can almost hear the splash of the canal.
- And also - the laughter of people on benches, the barking of dogs, the echoes of open windows.
+ And also — the laughter of people on benches, the barking of dogs, the echoes of open windows.
 
 
-Station - Rusanivka. If youre getting off - dont forget to look at the water. It never hurries. And it always remembers.
-And now - Tampere Street.
- It sounds almost exotic. And no wonder - its named after Kyivs sister city in Finland.
+Station — Rusanivka. If you’re getting off — don’t forget to look at the water. It never hurries. And it always remembers.
+And now — Tampere Street.
+ It sounds almost exotic. And no wonder — it’s named after Kyiv’s sister city in Finland.
  This street is like a quiet diplomat, linking two cities through a simple sign on a wall.
-Its calm here. Very calm. Even the traffic seems to slow down as it passes by.
- There are many stories here - but none with loud headlines.
+It’s calm here. Very calm. Even the traffic seems to slow down as it passes by.
+ There are many stories here — but none with loud headlines.
  Because not all heroes live downtown.
  Some live in a three-room apartment on Tampere Street, where the third generation still fries potato pancakes every Sunday.
 
 
-Station - Tampere Street. If youre getting off - take a deep breath. Because here, the city smells not of speed, but of memory.
-And here it is - Comfort Town.
+Station — Tampere Street. If you’re getting off — take a deep breath. Because here, the city smells not of speed, but of memory.
+And here it is — Comfort Town.
 Skeptics call it an “Instagram neighborhood,”
- romantics - an “urban paradise,”
- and realists - simply home, where youre not afraid to share your address.
+ romantics — an “urban paradise,”
+ and realists — simply home, where you’re not afraid to share your address.
 But it truly has its own magic:
  kids racing on scooters between colorful facades,
  cafés serving croissants by the windows,
  passersby constantly taking photos,
- and silence - unexpected, for a place with so many people.
+ and silence — unexpected, for a place with so many people.
 
 
-Station - Comfort Town Residential Complex. If youre getting off - look up. Sometimes a city becomes better when it allows itself to be bright.
-Ahead - Darnytska Square.
-Once - the heart of Kyivs transport system.
+Station — Comfort Town Residential Complex. If you’re getting off — look up. Sometimes a city becomes better when it allows itself to be bright.
+Ahead — Darnytska Square.
+Once — the heart of Kyiv’s transport system.
  Here, routes from the Left Bank, Kharkivskyi, Osokorky, and Chervony Khutir all collided.
-Darnytska - its the citys nerve.
+Darnytska — it’s the city’s nerve.
  Maybe not the prettiest. Paved in concrete. A bit overloaded. But honest.
- Here, you can see how Kyiv breathes - not with showiness, but with work, motion, and purpose.
+ Here, you can see how Kyiv breathes — not with showiness, but with work, motion, and purpose.
 
 
-Station - Darnytska Square. And thats where we end our journey. See you next time!]]>
-
-
+Station — Darnytska Square. And that’s where we end our journey. See you next time!
 
 
 
-    </string>
+]]></string>
 
-    <string name="text_r111_backward">
-
-        <![CDATA[Here we are at the start: the square where a checkpoint once stood - where the city began, surrounded by pines and railways.
- Were departing from Darnytska Square and approaching Darnytskyi Department Store Station.
+    <string name="text_r111_backward"><![CDATA[Here we are at the start: the square where a checkpoint once stood — where the city began, surrounded by pines and railways.
+ We’re departing from Darnytska Square and approaching Darnytskyi Department Store Station.
  But first, a few words about the square itself.
-Darnytska Square is a major transport hub of Kyivs Left Bank. Once, this was the main entrance to the city - surrounded by pine forests - and the name “Darnytsia” comes from an ancient locality first mentioned in the 16th century.
- In the mid-20th century, the square was called Leningradska, but in 2015, it regained its historical name - Darnytska.
- Today its filled with highways, buses, trolleybuses, and people rushing somewhere - yet still holding the memory of when the district grew out of the forest and the railway.
+Darnytska Square is a major transport hub of Kyiv’s Left Bank. Once, this was the main entrance to the city — surrounded by pine forests — and the name “Darnytsia” comes from an ancient locality first mentioned in the 16th century.
+ In the mid-20th century, the square was called Leningradska, but in 2015, it regained its historical name — Darnytska.
+ Today it’s filled with highways, buses, trolleybuses, and people rushing somewhere — yet still holding the memory of when the district grew out of the forest and the railway.
 
 
-Station - Darnytskyi Department Store.
- If youre getting off - look at the façade: its not just commerce, its a symbol of change.
+Station — Darnytskyi Department Store.
+ If you’re getting off — look at the façade: it’s not just commerce, it’s a symbol of change.
 And now we move on, slowly approaching the residential complex Komfort Town.
- This is more than just housing - its a “city within a city”: modern buildings, colorful facades, playgrounds, and coffee shops right by home.
- It shows how the Left Bank of Kyiv is searching for livable, human-centered spaces. Families live here, children play, people take photos of the vibrant walls - and the whole area forms a new character.
- Here, the hum of traffic blends with laughter, childrens noise, and calm conversations.
+ This is more than just housing — it’s a “city within a city”: modern buildings, colorful facades, playgrounds, and coffee shops right by home.
+ It shows how the Left Bank of Kyiv is searching for livable, human-centered spaces. Families live here, children play, people take photos of the vibrant walls — and the whole area forms a new character.
+ Here, the hum of traffic blends with laughter, children’s noise, and calm conversations.
 
 
-Station - Komfort Town Residential Complex.
- If youre getting off - sit on a bench, take a deep breath, look up, and notice the windows: each one tells a different story.
-We leave Komfort Town behind and head toward Tampere Street - a remarkable name that makes you pause and think.
- This street in the Sotsmisto neighborhood is named after Tampere, a sister city in Finland - a symbol of friendship and international cooperation.
+Station — Komfort Town Residential Complex.
+ If you’re getting off — sit on a bench, take a deep breath, look up, and notice the windows: each one tells a different story.
+We leave Komfort Town behind and head toward Tampere Street — a remarkable name that makes you pause and think.
+ This street in the Sotsmisto neighborhood is named after Tampere, a sister city in Finland — a symbol of friendship and international cooperation.
  Here you find yourself in a quieter environment: residential buildings, trees, few bright signs or highway noise.
- And thats important - sometimes a city doesnt have to be loud to be real.
+ And that’s important — sometimes a city doesn’t have to be loud to be real.
 
 
-Station - Tampere Street.
- If youre getting off - take a moment and listen: the Left Bank whispers stories that arent always easy to hear.
+Station — Tampere Street.
+ If you’re getting off — take a moment and listen: the Left Bank whispers stories that aren’t always easy to hear.
 We leave Tampere Street and approach Rusanivka Station.
- This residential district was created as an urban experiment in the 1960s, when Kyiv dreamed of a “city on the water” - with embankments, canals, and a new rhythm of life.
- Instead of narrow streets, theres open space, walking alleys, and water.
- This isnt the historic center - its another face of Kyiv: young, watery, peaceful.
- You can come close to the canal and listen to the splashing - because a city can be not just a metropolis, but also an island of calm.
+ This residential district was created as an urban experiment in the 1960s, when Kyiv dreamed of a “city on the water” — with embankments, canals, and a new rhythm of life.
+ Instead of narrow streets, there’s open space, walking alleys, and water.
+ This isn’t the historic center — it’s another face of Kyiv: young, watery, peaceful.
+ You can come close to the canal and listen to the splashing — because a city can be not just a metropolis, but also an island of calm.
 
 
-Station - Rusanivka.
- If youre getting off - notice the water: the canal stretching between the houses and the city itself.
-We continue toward a street named after a writer - another layer of the citys history, more than just architecture: cultural memory.
-Hovhannes Tumanyan Street - named after the Armenian poet and storyteller Hovhannes Tumanyan.
+Station — Rusanivka.
+ If you’re getting off — notice the water: the canal stretching between the houses and the city itself.
+We continue toward a street named after a writer — another layer of the city’s history, more than just architecture: cultural memory.
+Hovhannes Tumanyan Street — named after the Armenian poet and storyteller Hovhannes Tumanyan.
  It symbolizes the cultural heritage that includes not only Ukrainian but also Armenian paths.
  The name was given in 1969, when the cultures of Soviet republics were being honored in city names.
-If you look out the window, youll see that today the street is residential, not a main road - emphasizing that memory can be quiet.
+If you look out the window, you’ll see that today the street is residential, not a main road — emphasizing that memory can be quiet.
  This station is about words, about cultural heritage, about how a city is not just buildings and roads, but also names.
 
 
-Station - Hovhannes Tumanyan Street.
- If youre getting off - notice how the poets name reminds you that a city is made not only of facades, but of words.
+Station — Hovhannes Tumanyan Street.
+ If you’re getting off — notice how the poet’s name reminds you that a city is made not only of facades, but of words.
 And the bus moves on, approaching new stories.
  Livoberezhna Metro Station was opened on November 5, 1965, as part of the expansion of the metro system to the Left Bank.
  It was built to connect the new residential areas with the city center.
  Its opening sparked massive development across the Left Bank.
- Today its a huge transfer hub - buses, trolleys, metro - everything rushing somewhere, part of the living flow.
+ Today it’s a huge transfer hub — buses, trolleys, metro — everything rushing somewhere, part of the living flow.
 
 
-Station - Livoberezhna Metro.
- If youre getting off - stop for a moment and think: this place became a symbol of connection between the Left Bank and Kyivs center.
+Station — Livoberezhna Metro.
+ If you’re getting off — stop for a moment and think: this place became a symbol of connection between the Left Bank and Kyiv’s center.
 We continue and unfold new mysteries.
  Mykilsko-Slobidska Street is named after the historical area “Mykilska Slobidka,” a settlement of fishermen and craftsmen that appeared here in the 18th century.
  The modern name was fixed when new residential streets were built.
  Now, old sidewalks and typical Soviet facades remain, but the name still reminds of the old Sloboda origins.
 
 
-Station - Mykilsko-Slobidska Street.
- If youre getting off - take a closer look; you might still imagine the old settlements traditions and feel its spirit of history.
+Station — Mykilsko-Slobidska Street.
+ If you’re getting off — take a closer look; you might still imagine the old settlement’s traditions and feel its spirit of history.
 The bus keeps flying forward.
- And here it is - Metropolitan Andrey Sheptytsky Street.
+ And here it is — Metropolitan Andrey Sheptytsky Street.
  Who was he? A man who led the Ukrainian Greek Catholic Church from 1901 to 1944; worked in education and culture, and saved people during the war.
 This station is about morality and memory.
  A remarkable person whose story deserves to be heard louder.
 
 
-Station - Metropolitan Andrey Sheptytsky Street.
- If youre getting off - remember this place. The name reminds us: behind every façade - theres a story.
+Station — Metropolitan Andrey Sheptytsky Street.
+ If you’re getting off — remember this place. The name reminds us: behind every façade — there’s a story.
 And now, we move toward Silhosptekhnika Station.
- The name says it all. During Soviet times, this was the base for agricultural machinery - warehouses, parking grounds for tractors, combines, everything you could imagine.
- But later, the area began to fill with residential buildings and offices - all that machinery disappeared, as if it had never existed.
+ The name says it all. During Soviet times, this was the base for agricultural machinery — warehouses, parking grounds for tractors, combines, everything you could imagine.
+ But later, the area began to fill with residential buildings and offices — all that machinery disappeared, as if it had never existed.
 
 
-Station - Silhosptekhnika.
- If youre getting off - remember: Kyiv is an incredible city that blends the old and the new.
+Station — Silhosptekhnika.
+ If you’re getting off — remember: Kyiv is an incredible city that blends the old and the new.
 Our bus hurries on, revealing new tales.
-Mykilska Slobidka Residential District took shape relatively recently - in the 1970s, when the old settlement was replaced with panel apartment blocks.
+Mykilska Slobidka Residential District took shape relatively recently — in the 1970s, when the old settlement was replaced with panel apartment blocks.
  Its name comes from the historical Slobidka that once stood here.
- Now from the bus window, you can see large blocks and uniform facades - yet all of it is part of the citys evolving story.
+ Now from the bus window, you can see large blocks and uniform facades — yet all of it is part of the city’s evolving story.
 
 
-Station - Mykilska Slobidka Residential District.
- If youre getting off - stop and think: how, in just a few decades, everything here changed - from an old settlement to a modern district.
+Station — Mykilska Slobidka Residential District.
+ If you’re getting off — stop and think: how, in just a few decades, everything here changed — from an old settlement to a modern district.
 And the bus keeps moving.
- Were now approaching 3rd Sadova Street.
+ We’re now approaching 3rd Sadova Street.
  It belongs to the so-called Sadovi Streets area on the Left Bank.
  These streets were formed in the late Soviet and early post-Soviet periods as residential quarters with private houses, small yards, and low-density construction.
-Now, instead of panel blocks, youll find homes with individuality - trees, benches, courtyards - all of it contrasting the massive housing blocks.
- This station is about a place where the city becomes human - and real.
+Now, instead of panel blocks, you’ll find homes with individuality — trees, benches, courtyards — all of it contrasting the massive housing blocks.
+ This station is about a place where the city becomes human — and real.
 
 
-Station - 3rd Sadova Street.
- If youre getting off - remember: here, a number isnt just part of an address, but a layer of the citys housing history.
-And we move on - ahead lies 25th Sadova Street.
+Station — 3rd Sadova Street.
+ If you’re getting off — remember: here, a number isn’t just part of an address, but a layer of the city’s housing history.
+And we move on — ahead lies 25th Sadova Street.
  Another piece of the network of Sadovi Streets, built in the 1980s.
- The number “25th” reflects flexible planning - space for future development or renumbering.
- Theres less noise here, more private space than in the big housing blocks.
- This station is about a different rhythm of the city - not grand, not central, but real.
+ The number “25th” reflects flexible planning — space for future development or renumbering.
+ There’s less noise here, more private space than in the big housing blocks.
+ This station is about a different rhythm of the city — not grand, not central, but real.
 
 
-Station - 25th Sadova Street.
- If youre getting off - give yourself a moment: here, silence is subtle but tangible.
+Station — 25th Sadova Street.
+ If you’re getting off — give yourself a moment: here, silence is subtle but tangible.
 The bus moves forward and approaches Bridge Crossing Station.
  What is it? A point where the route crosses a height difference.
- But if we look deeper, its a moment between - between banks, between right and left, between old and new, between motion and stillness.
- Youre literally passing through an architectural and urban bridge - and when the bus stops, look out at the Dnipro, at the waves, at that part of the city that feels just a little different.
+ But if we look deeper, it’s a moment between — between banks, between right and left, between old and new, between motion and stillness.
+ You’re literally passing through an architectural and urban bridge — and when the bus stops, look out at the Dnipro, at the waves, at that part of the city that feels just a little different.
 
 
-Station - Bridge Crossing.
- If youre getting off - think about this: youre standing on the threshold of another Kyiv.
+Station — Bridge Crossing.
+ If you’re getting off — think about this: you’re standing on the threshold of another Kyiv.
  A more historical one, denser, filled with the facades and streets of the past.
 And the bus keeps rolling, carrying us into new stories.
-Borysohlibska Street - an ancient street of Podil, with deep historical roots.
+Borysohlibska Street — an ancient street of Podil, with deep historical roots.
  As early as the 17th century, there were markets, artisan workshops, and trade here.
  Its name comes from the Church of Saints Borys and Hlib, honored in old Kyivan tradition.
  Over time, buildings rose and sidewalks narrowed.
- Its hard to feel the old citys atmosphere now - but its still here, quietly breathing.
+ It’s hard to feel the old city’s atmosphere now — but it’s still here, quietly breathing.
 
 
-Station - Borysohlibska Street.
- If youre getting off - stop and look closely: youre standing on a street built over centuries.
-And we fly onward - bursting into new tales.
-Poshtova Square - a historic space above the Dnipro.
- This is where Kyivs first markets, warehouses, and river docks once stood.
+Station — Borysohlibska Street.
+ If you’re getting off — stop and look closely: you’re standing on a street built over centuries.
+And we fly onward — bursting into new tales.
+Poshtova Square — a historic space above the Dnipro.
+ This is where Kyiv’s first markets, warehouses, and river docks once stood.
  The metro station of the same name opened in 1991.
- Even though the trading ships and noisy bazaars are gone, this remains a place of connection - between shores, between times.
- This station is about the citys roots.
+ Even though the trading ships and noisy bazaars are gone, this remains a place of connection — between shores, between times.
+ This station is about the city’s roots.
 
 
-Station - Poshtova Square Metro.
- If youre getting off - remember: youre on the riverbank, standing between past and present Kyiv.
+Station — Poshtova Square Metro.
+ If you’re getting off — remember: you’re on the riverbank, standing between past and present Kyiv.
 The bus keeps moving, heading for another city landmark.
-Hotel Khreshchatyk - located on one of the main streets of the capital.
- Khreshchatyk is Kyivs central artery, its construction began in the 1930s.
- But it also suffered greatly - during World War II, it was heavily destroyed.
- Hotel Khreshchatyk opened in 1961 as one of the capitals largest hotel complexes.
- Today youll see its grand façade, the large sign “Khreshchatyk,” travelers with suitcases always in a hurry - the citys restless heartbeat.
+Hotel Khreshchatyk — located on one of the main streets of the capital.
+ Khreshchatyk is Kyiv’s central artery, its construction began in the 1930s.
+ But it also suffered greatly — during World War II, it was heavily destroyed.
+ Hotel Khreshchatyk opened in 1961 as one of the capital’s largest hotel complexes.
+ Today you’ll see its grand façade, the large sign “Khreshchatyk,” travelers with suitcases always in a hurry — the city’s restless heartbeat.
  This is where meetings happen, where every morning begins a new chapter.
 
 
-Station - Hotel Khreshchatyk.
- If youre getting off - let yourself dream: youre on a street that has seen parades, protests, celebrations, and change.
-And the bus turns toward one of Kyivs most famous places.
-Independence Square - the heart of Kyiv.
+Station — Hotel Khreshchatyk.
+ If you’re getting off — let yourself dream: you’re on a street that has seen parades, protests, celebrations, and change.
+And the bus turns toward one of Kyiv’s most famous places.
+Independence Square — the heart of Kyiv.
  The modern name was given in 1991, after Ukraine declared independence.
- This square became a symbol of three great Ukrainian revolutions - the Orange Revolution, the Revolution of Dignity, and the movement of resistance in 2022.
+ This square became a symbol of three great Ukrainian revolutions — the Orange Revolution, the Revolution of Dignity, and the movement of resistance in 2022.
  History was made here.
  Every stone, every building bears witness to what happened.
- This station is about responsibility and memory - about how a city is not only what we see, but also what we feel.
+ This station is about responsibility and memory — about how a city is not only what we see, but also what we feel.
 
 
-Station - Independence Square.
- If youre getting off - take a few moments. You cant just walk past this place.
-But the bus cant stay forever - so we turn another page of history.
+Station — Independence Square.
+ If you’re getting off — take a few moments. You can’t just walk past this place.
+But the bus can’t stay forever — so we turn another page of history.
 Khreshchatyk Metro Station opened in 1960.
- Yet above the fast trains lies a completely different city - cafés, brands, fountains, and government buildings.
- When you exit, youll see the usual ticket booths, escalators, people in headphones.
+ Yet above the fast trains lies a completely different city — cafés, brands, fountains, and government buildings.
+ When you exit, you’ll see the usual ticket booths, escalators, people in headphones.
  But remember: beneath your feet lies a road people have traveled for decades.
- This station is about the intersection of the underground and the surface - about a city built in layers.
+ This station is about the intersection of the underground and the surface — about a city built in layers.
 
 
-Station - Khreshchatyk Metro.
- If youre getting off - realize this: youre in the very heart of the capital, where metro lines, people, business, and history intertwine into one.
-And the bus keeps going - toward another chapter.
-Central Department Store - one of Kyivs key shopping landmarks, opened in 1939 on the site of earlier buildings.
- Later, it became the citys main hub for fashion and imports.
+Station — Khreshchatyk Metro.
+ If you’re getting off — realize this: you’re in the very heart of the capital, where metro lines, people, business, and history intertwine into one.
+And the bus keeps going — toward another chapter.
+Central Department Store — one of Kyiv’s key shopping landmarks, opened in 1939 on the site of earlier buildings.
+ Later, it became the city’s main hub for fashion and imports.
  In the 2000s, boutiques and international brands appeared.
  Look at the display windows, the updated façade.
- This station is about the citys commercial pulse.
+ This station is about the city’s commercial pulse.
 
 
-Station - Central Department Store.
- If youre getting off - think about it: around you are storefronts and people with shopping bags, but behind the surface lie decades of trade, culture, and shifting style.
-And we hurry on - opening new pages of Kyivs story.
+Station — Central Department Store.
+ If you’re getting off — think about it: around you are storefronts and people with shopping bags, but behind the surface lie decades of trade, culture, and shifting style.
+And we hurry on — opening new pages of Kyiv’s story.
 Bessarabska Square appeared in the 1910s, around the Bessarabskiy Market Passage.
- It was named after Bessarabia - the region that supplied food to Kyiv in the 19th–20th centuries.
+ It was named after Bessarabia — the region that supplied food to Kyiv in the 19th–20th centuries.
  During the Soviet period, the square transformed, but the market survived.
- Today its a crossroads of metro lines, buses, trolleybuses, the market, and cafés.
- Youll see the market domes, shoppers with bags, the roar of the city.
+ Today it’s a crossroads of metro lines, buses, trolleybuses, the market, and cafés.
+ You’ll see the market domes, shoppers with bags, the roar of the city.
  This station is about the shift from buying and selling to urban meeting and motion.
 
 
-Station - Bessarabska Square.
- If youre getting off - be aware: every day here is a micro-history, but also a glimpse of the citys transformation.
-And here comes the finale of our journey - a station that carries memory in its name.
+Station — Bessarabska Square.
+ If you’re getting off — be aware: every day here is a micro-history, but also a glimpse of the city’s transformation.
+And here comes the finale of our journey — a station that carries memory in its name.
 Ukrainian Heroes Square Metro Station.
- The name speaks for itself - not abstraction, but reality.
+ The name speaks for itself — not abstraction, but reality.
  Heroes who gave their lives for independence.
- Here, memory returns - the connection to truth restored.
- When you step off - bow your head.
+ Here, memory returns — the connection to truth restored.
+ When you step off — bow your head.
  Every portrait, every plaque nearby is a reminder.
- This station isnt just an endpoint - its a beginning.
+ This station isn’t just an endpoint — it’s a beginning.
  A beginning of a new understanding of a city.
 
 
-Station - Ukrainian Heroes Square Metro.
+Station — Ukrainian Heroes Square Metro.
  A place where memory speaks loud and clear.
-And with that - our journey comes to an end.
- See you next time.]]>
+And with that — our journey comes to an end.
+ See you next time.
 
-    </string>
+
+
+]]></string>
 
     <string name="station_r038_1">National Museum of Ukrainian History in World War II</string>
     <string name="station_r038_2">Kyiv-Pechersk Lavra</string>
@@ -827,240 +819,230 @@ And with that - our journey comes to an end.
     <string name="station_r038_21">Vydubychi Metro</string>
 
 
-    <string name="text_r038_forward">
-        <![CDATA[
-    The trolleybus starts from a place where the voice of war has been gathered.
-    The grand monument “Motherland” raises her sword - as a symbol of defense, not attack.
-    In this museum - not just the history of the front, but human destinies, letters from the trenches, and the tears of victories and losses.
-    And now the trolleybus turns toward a place that rings with bronze bells.
-    Kyiv-Pechersk Lavra - not just a monastery.
-    Its a thousand years of spirituality, underground caves with holy relics, ancient frescoes, and domes that gleam in the sun just as they did a hundred years ago.
-    From the window, you can see the domes of the Near and Far Caves, the Lavra walls, and even the modern bell tower - a mirror of the sky.
+    <string name="text_r038_forward"><![CDATA[The trolleybus starts from a place where the voice of war has been gathered.
+The grand monument “Motherland” raises her sword — as a symbol of defense, not attack.
+ In this museum — not just the history of the front, but human destinies, letters from the trenches, and the tears of victories and losses.
+And now the trolleybus turns toward a place that rings with bronze bells.
+ Kyiv-Pechersk Lavra — not just a monastery.
+ It’s a thousand years of spirituality, underground caves with holy relics, ancient frescoes, and domes that gleam in the sun just as they did a hundred years ago.
+From the window, you can see the domes of the Near and Far Caves, the Lavra walls, and even the modern bell tower — a mirror of the sky.
 
 
 
-    Station - Kyiv-Pechersk Lavra.
-    If youre getting off - listen not only to the bells. Listen to the silence. Sometimes it speaks louder.
-    From the spiritual heart, we move to a place where memory is painful - but sacred.
-    On the hill where the Holodomor Memorial stands - silence.
-    Not because nothing happens here. But because there are no words that can describe what happened in 1932–1933.
-    You pass by the Church of the Savior on Berestovo - one of the oldest in Kyiv, where princes once prayed.
-    And beside it - a modern white memorial shaped like a candle.
-    A candle for the millions tortured by hunger, surrounded by silence, indifference, and fear.
+Station — Kyiv-Pechersk Lavra.
+ If you’re getting off — listen not only to the bells. Listen to the silence. Sometimes it speaks louder.
+From the spiritual heart, we move to a place where memory is painful — but sacred.
+On the hill where the Holodomor Memorial stands — silence.
+ Not because nothing happens here. But because there are no words that can describe what happened in 1932–1933.
+Now there is a modern white memorial shaped like a candle.
+ A candle for the millions tortured by hunger, surrounded by silence, indifference, and fear.
 
 
-    Station - Holodomor Victims Memorial.
-    If youre getting off - stop for a moment. Because memory of hunger has no expiration date.
-    And now - from one candle of memory to another.
-    Because the Park of Eternal Glory is a place where people walk every day, carrying flowers, memories, and gratitude.
-    Even without monuments, this park breathes with peace.
-    Everything here seems to say: life goes on. And memory - too.
-    At the top stands the Tomb of the Unknown Soldier, the obelisk, and the panorama of the Dnipro, where time itself seems to pause.
-    You can ride past - but its better to return on foot. This place deserves silence.
+Station — Holodomor Victims Memorial.
+ If you’re getting off — stop for a moment. Because memory of hunger has no expiration date.
+And now — from one candle of memory to another.
+ Because the Park of Eternal Glory is a place where people walk every day, carrying flowers, memories, and gratitude.
+Even without monuments, this park breathes with peace.
+ Everything here seems to say: life goes on. And memory — too.
+At the top stands the Tomb of the Unknown Soldier, the obelisk, and the panorama of the Dnipro, where time itself seems to pause.
+ You can ride past — but it’s better to return on foot. This place deserves silence.
 
 
-    Station - Park of Eternal Glory.
-    If youre getting off - dont hurry. These trees have seen more than we can imagine.
-    A short but powerful stop - Glory Square.
-    This is no longer only about war. Its a meeting place, a crossroads, a space between past and future.
-    People stop here for different reasons: some to remember, some just to cross the street.
-    But the name speaks for itself: Glory isnt about loud fanfares. Its about daily remembrance.
+Station — Park of Eternal Glory.
+ If you’re getting off — don’t hurry. These trees have seen more than we can imagine.
+A short but powerful stop — Glory Square.
+ This is no longer only about war. It’s a meeting place, a crossroads, a space between past and future.
+People stop here for different reasons: some to remember, some just to cross the street.
+ But the name speaks for itself: Glory isn’t about loud fanfares. It’s about daily remembrance.
 
 
-    Station - Glory Square.
-    If youre getting off - remember: glory isnt only victory. Its the ability not to forget those who never returned.
-    And finally - the end of the route.
-    Station - Arsenalna. The deepest metro station in the world, and yet the closest to the essence of history.
-    Right here - the Arsenal, where revolutions once began.
-    Here - hills that witnessed Kyivan Rus and the Maidans.
-    And right here, in the whirl of history, your journey on trolleybus No. 38 comes to an end.
-    But, just like in Kyiv, no stop is truly final.
-    Each one is simply a new perspective.
+Station — Glory Square.
+ If you’re getting off — remember: glory isn’t only victory. It’s the ability not to forget those who never returned.
+But our bus isn’t waiting, we’re rushing on. And finally - Arsenalna station. The deepest metro station in the world, and yet the closest to the essence of history.
+Nearby is the Arsenal, where revolutions began,
+and hills that witnessed both Kievan Rus and the Maidan.
+And it is here, in the whirlwind of events, that a new perspective on Kyiv opens up.
+Station — Arsenalna Metro.
+ If you’re getting off — look around. Beneath these hills lies not only the metro, but countless buried choices, pains, and hopes.
+And now — a few minutes past one of the most iconic sites of Soviet Kyiv — the Arsenal Factory.
+ Once, artillery was forged here. Real, iron, and heavy.
+ Later — optics, instruments for space exploration.
+ And earlier still — in 1918, the Arsenal workers’ uprising took place here. It was brutally suppressed.
+ But from that revolt came the name that still lives — Arsenalna.
+Today, “Arsenal” is a space of transformation.
+ Some workshops have already turned into galleries, startups, creative hubs.
+ Old factories — with new meaning.
 
 
-    Station - Arsenalna Metro.
-    If youre getting off - look around. Beneath these hills lies not only the metro, but countless buried choices, pains, and hopes.
-    And now - a few minutes past one of the most iconic sites of Soviet Kyiv - the Arsenal Factory.
-    Once, artillery was forged here. Real, iron, and heavy.
-    Later - optics, instruments for space exploration.
-    And earlier still - in 1918, the Arsenal workers uprising took place here. It was brutally suppressed.
-    But from that revolt came the name that still lives - Arsenalna.
-    Today, “Arsenal” is a space of transformation.
-    Some workshops have already turned into galleries, startups, creative hubs.
-    Old factories - with new meaning.
+Station — Arsenal Factory.
+ If you’re getting off — look at the bricks. They have outlived empires and now breathe freely — just like we do.
+And we move on.
+ Here in this Administrative Services Center — people register addresses, change surnames, get certificates, documents…
+ It might seem routine. But behind every “window No. 5” — a small life story.
+ A marriage. A divorce. The birth of a child. The loss of a loved one.
+ Every application is about a person — even if it’s typed in a cold font.
 
 
-    Station - Arsenal Factory.
-    If youre getting off - look at the bricks. They have outlived empires and now breathe freely - just like we do.
-    And we move on.
-    Here in this Administrative Services Center - people register addresses, change surnames, get certificates, documents…
-    It might seem routine. But behind every “window No. 5” - a small life story.
-    A marriage. A divorce. The birth of a child. The loss of a loved one.
-    Every application is about a person - even if its typed in a cold font.
+Station — Pechersk District Administrative Services Center.
+ If you’re getting off — remember: even in a queue, you can feel that you’re part of a city that works.
+The trolleybus departs from the epicenter of bureaucratic Kyiv — the ASC.
+ But even here, among certificates and e-queues, lives a city that quietly solves hundreds of small human stories every day.
+Ahead — Kopylenko Street, named after Oleksandr Kopylenko — a Ukrainian writer, publicist, and children’s author.
+ It may seem there’s a gap between the bureaucracy of forms and the warmth of literature — but maybe that’s exactly what makes a city real.
 
 
-    Station - Pechersk District Administrative Services Center.
-    If youre getting off - remember: even in a queue, you can feel that youre part of a city that works.
-    The trolleybus departs from the epicenter of bureaucratic Kyiv - the ASC.
-    But even here, among certificates and e-queues, lives a city that quietly solves hundreds of small human stories every day.
-    Ahead - Kopylenko Street, named after Oleksandr Kopylenko - a Ukrainian writer, publicist, and childrens author.
-    It may seem theres a gap between the bureaucracy of forms and the warmth of literature - but maybe thats exactly what makes a city real.
+Station — Kopylenko Street.
+ If you’re getting off — remember: even next to offices, there can live stories worthy of books.
+The next station sounds strict: General Almazov.
+ That’s Ivan Almazov — Major General of the Medical Service, who made his mark in military medicine.
+ And yes — this is about saving lives, not taking them.
+The street passes hospitals, administrative buildings, and the old quarters of Pechersk.
+ Here, Kyiv is calm, serious, and responsible.
 
 
-    Station - Kopylenko Street.
-    If youre getting off - remember: even next to offices, there can live stories worthy of books.
-    The next station sounds strict: General Almazov.
-    Thats Ivan Almazov - Major General of the Medical Service, who made his mark in military medicine.
-    And yes - this is about saving lives, not taking them.
-    The street passes hospitals, administrative buildings, and the old quarters of Pechersk.
-    Here, Kyiv is calm, serious, and responsible.
+Station — General Almazov Street.
+ If you’re getting off — remember: military uniforms may differ, but dignity is always the same.
+We move toward one of Kyiv’s oldest names. Arsenalna — a word born of explosions in history, real weapons, and symbolic battles.
+Nearby stands the old Kyiv Fortress, the Arsenal Museum, and the places where the fate of the capital was decided more than once.
+ The story of the Arsenal is a story of uprisings, resistance, and courage.
 
 
-    Station - General Almazov Street.
-    If youre getting off - remember: military uniforms may differ, but dignity is always the same.
-    We move toward one of Kyivs oldest names. Arsenalna - a word born of explosions in history, real weapons, and symbolic battles.
-    Nearby stands the old Kyiv Fortress, the Arsenal Museum, and the places where the fate of the capital was decided more than once.
-    The story of the Arsenal is a story of uprisings, resistance, and courage.
+Station — Arsenalna Street.
+ If you’re getting off — don’t forget: Kyiv remembers every shot. And every word of defiance.
+And now — from the history of struggle to the history of spirit.
+ Lesya Ukrainka Square is not just about a woman-poet. It’s about unbreakable strength, love for words, for Ukraine, and for life — even when it hurts.
+Here, among modern towers and offices, we honor that inner front Lesya Kosach carried all her life.
 
 
-    Station - Arsenalna Street.
-    If youre getting off - dont forget: Kyiv remembers every shot. And every word of defiance.
-    And now - from the history of struggle to the history of spirit.
-    Lesya Ukrainka Square is not just about a woman-poet. Its about unbreakable strength, love for words, for Ukraine, and for life - even when it hurts.
-    Here, among modern towers and offices, we honor that inner front Lesya Kosach carried all her life.
+Station — Lesya Ukrainka Square.
+ If you’re getting off — remember: a frail body does not mean a weak voice. Kyiv knows that well.
+This station is mysterious. The Round Tower — remains of the Kyiv Fortress — is one of the few that survived.
+ It stands silently, gazing at modern Kyiv as if wondering: “How did you all grow so tall?”
+Here, Pechersk is stern but beautiful. And if you wander down its side streets, you’ll still find old houses and fragments of fortress walls.
 
 
-    Station - Lesya Ukrainka Square.
-    If youre getting off - remember: a frail body does not mean a weak voice. Kyiv knows that well.
-    This station is mysterious. The Round Tower - remains of the Kyiv Fortress - is one of the few that survived.
-    It stands silently, gazing at modern Kyiv as if wondering: “How did you all grow so tall?”
-    Here, Pechersk is stern but beautiful. And if you wander down its side streets, youll still find old houses and fragments of fortress walls.
+Station — Round Tower.
+ If you’re getting off — look at the stone. It stays silent, but it remembers everything.
+And finally — a modern name with an American accent.
+ John McCain Street — the new name of what once was Ivan Kudria Street. And in that, there’s meaning.
+ McCain was an American senator, a veteran, and a friend of Ukraine who stood firmly against the empire of fear.
+As you ride down this street, remember not just politics, but solidarity — the value of freedom, and the courage to stand for truth.
 
 
-    Station - Round Tower.
-    If youre getting off - look at the stone. It stays silent, but it remembers everything.
-    And finally - a modern name with an American accent.
-    John McCain Street - the new name of what once was Ivan Kudria Street. And in that, theres meaning.
-    McCain was an American senator, a veteran, and a friend of Ukraine who stood firmly against the empire of fear.
-    As you ride down this street, remember not just politics, but solidarity - the value of freedom, and the courage to stand for truth.
+Station — John McCain Street.
+ If you’re getting off — remember: true allies may not always be near, but they’re always on your side.
+And now — toward the Pechersk Bridge. It may seem like just infrastructure, but bridges like this are symbols of connection.
+ This bridge links Lesya Ukrainka Boulevard with the Boulevard of Friendship of Nations, flying over the city’s ravine and holding Kyiv together.
+And by the way — if you dare to cross it on foot, you’ll see one of the most atmospheric views of Pechersk.
 
 
-    Station - John McCain Street.
-    If youre getting off - remember: true allies may not always be near, but theyre always on your side.
-    And now - toward the Pechersk Bridge. It may seem like just infrastructure, but bridges like this are symbols of connection.
-    This bridge links Lesya Ukrainka Boulevard with the Boulevard of Friendship of Nations, flying over the citys ravine and holding Kyiv together.
-    And by the way - if you dare to cross it on foot, youll see one of the most atmospheric views of Pechersk.
+Station — Pechersk Bridge.
+ If you’re getting off — pause for a moment. Bridges don’t just connect cities. They remind us: we’re strong when we stay together.
+And here comes Nimanska Street. Short, narrow, with no grand architecture — yet that’s its charm.
+ This street feels like the living room of a big apartment block: it’s where everyday life begins — the kind of life that truly makes up Kyiv.
+ Named after the Neman River — far from here, but the name remains.
 
 
-    Station - Pechersk Bridge.
-    If youre getting off - pause for a moment. Bridges dont just connect cities. They remind us: were strong when we stay together.
-    And here comes Nimanska Street. Short, narrow, with no grand architecture - yet thats its charm.
-    This street feels like the living room of a big apartment block: its where everyday life begins - the kind of life that truly makes up Kyiv.
-    Named after the Neman River - far from here, but the name remains.
+Station — Nimanska Street.
+ If you’re getting off — don’t look for sensations. Sometimes the warmest stories live without bronze or marble.
+The next stop sounds like a line from a Soviet urban novel: “Optics Shop.”
+ But look closer — places like this hold the city’s true memory.
+This shop has “always” been here. People chose their first glasses here — for their first jobs, first dates, and first school days.
+ The irony? A shop about vision stands in a city that often looks past what matters most.
+ And yet “Optics” reminds us — sometimes, you just need to look a little closer.
 
 
-    Station - Nimanska Street.
-    If youre getting off - dont look for sensations. Sometimes the warmest stories live without bronze or marble.
-    The next stop sounds like a line from a Soviet urban novel: “Optics Shop.”
-    But look closer - places like this hold the citys true memory.
-    This shop has “always” been here. People chose their first glasses here - for their first jobs, first dates, and first school days.
-    The irony? A shop about vision stands in a city that often looks past what matters most.
-    And yet “Optics” reminds us - sometimes, you just need to look a little closer.
+Station — Optics Shop.
+ If you’re getting off — look carefully. Maybe here, you’ll see Kyiv a bit differently.
+And now — a turn ahead.
+ Before you stands the Boychuk Academy of Arts — a place where artists, designers, and dreamers are born.
+ Here you’ll find paint-scented workshops, creative debates echoing through corridors, and windows glowing at dawn as students finish their projects before defense day.
+Mykhailo Boychuk, whose name the academy bears, was both a visionary and a tragic figure — a pioneer of Ukrainian monumental art, executed in 1937.
 
 
-    Station - Optics Shop.
-    If youre getting off - look carefully. Maybe here, youll see Kyiv a bit differently.
-    And now - a turn ahead.
-    Before you stands the Boychuk Academy of Arts - a place where artists, designers, and dreamers are born.
-    Here youll find paint-scented workshops, creative debates echoing through corridors, and windows glowing at dawn as students finish their projects before defense day.
-    Mykhailo Boychuk, whose name the academy bears, was both a visionary and a tragic figure - a pioneer of Ukrainian monumental art, executed in 1937.
+Station — Boychuk Academy of Arts.
+ If you’re getting off — remember: not all art hangs in galleries.
+Almost right after the academy — Dormitory No. 4.
+ It’s more than a neighbor; it’s part of the same living organism. Because art doesn’t live in offices — it sleeps in dorms.
+This building is simple, with typical architecture — but inside, it’s anything but ordinary.
+ There’s life without polish, but full of inspiration: impromptu exhibitions in hallways, philosophical kitchen talks at 2 a.m., and jam sessions in the bathroom — because the acoustics there are just perfect.
+A dormitory is a school of survival — and of space.
 
 
-    Station - Boychuk Academy of Arts.
-    If youre getting off - remember: not all art hangs in galleries.
-    Almost right after the academy - Dormitory No. 4.
-    Its more than a neighbor; its part of the same living organism. Because art doesnt live in offices - it sleeps in dorms.
-    This building is simple, with typical architecture - but inside, its anything but ordinary.
-    Theres life without polish, but full of inspiration: impromptu exhibitions in hallways, philosophical kitchen talks at 2 a.m., and jam sessions in the bathroom - because the acoustics there are just perfect.
-    A dormitory is a school of survival - and of space.
+Station — Dormitory No. 4.
+ If you’re getting off — remember: great art often begins in a room for four.
+Next comes an unexpected shift — from the student world to industrial Kyiv of iron and rails.
+ Zaliznychne Highway — not romantic, but honest.
+ Here, train horns echo, warehouses stand, minibuses weave through — and the city reveals its true, working face. Because even the brightest dreams must arrive on tracks.
 
 
-    Station - Dormitory No. 4.
-    If youre getting off - remember: great art often begins in a room for four.
-    Next comes an unexpected shift - from the student world to industrial Kyiv of iron and rails.
-    Zaliznychne Highway - not romantic, but honest.
-    Here, train horns echo, warehouses stand, minibuses weave through - and the city reveals its true, working face. Because even the brightest dreams must arrive on tracks.
+Station — Zaliznychne Highway.
+ If you’re getting off — don’t ignore the noise. It means the city is still alive.
+And the final station — Vydubychi Metro.
+ But don’t think it’s just a transport hub.
+The name “Vydubychi” comes from legend.
+ When Prince Volodymyr baptized Kyiv, he threw the pagan idols into the Dnipro River.
+ One of them — Perun — floated back up here. The word “vydybal” means “emerged.”
+ That’s how this place got its name — “where it surfaced.”
 
 
-    Station - Zaliznychne Highway.
-    If youre getting off - dont ignore the noise. It means the city is still alive.
-    And the final station - Vydubychi Metro.
-    But dont think its just a transport hub.
-    The name “Vydubychi” comes from legend.
-    When Prince Volodymyr baptized Kyiv, he threw the pagan idols into the Dnipro River.
-    One of them - Perun - floated back up here. The word “vydybal” means “emerged.”
-    Thats how this place got its name - “where it surfaced.”
+Station — Vydubychi Metro.
+And here our journey ends. For now. Until we meet again.
 
+]]></string>
 
-    Station - Vydubychi Metro.
-    And here our journey ends. For now. Until we meet again.]]>
-    </string>
-
-
-    <string name="text_r038_backward">
-
-    <![CDATA[Our route begins here-at the Vydubychi metro station.
+    <string name="text_r038_backward"><![CDATA[Our route begins here—at the Vydubychi metro station.
 This place is steeped in history and bustling with activity.
-We continue on our way. And here we encounter a new story-Zaliznychne Highway. This is not a grand avenue lined with historic facades, but a lively artery of the city. Trains rumble nearby, trucks drive by, depots and warehouses stand. This part of the route is about the real Kyiv, which works, transports, and repairs. It is about the fact that even the greatest monuments in Pechersk would be impossible without these iron highways.
- Zaliznychne stop. If you get off, do not ignore the noise: it means that the city is still working and its steel heart is beating.
-We leave the iron clamor behind and return to a space saturated with youthful energy - Dormitory No. 4.
+We continue on our way. And here we encounter a new story—Zaliznychne Highway. This is not a grand avenue lined with historic facades, but a lively artery of the city. Trains rumble nearby, trucks drive by, depots and warehouses stand. This part of the route is about the real Kyiv, which works, transports, and repairs. It is about the fact that even the greatest monuments in Pechersk would be impossible without these iron highways.
+Нighway Zaliznychne stop. If you get off, don’t ignore the noise: it means that the city is still working and its steel heart is beating.
+We leave the iron clamor behind and return to a space saturated with youthful energy — Dormitory No. 4.
 This typical “box” contains a cosmos of creative ideas. It is a place where future designers, artists, and restorers are formed.
-The dormitory is a survival laboratory where yesterdays coffee is shared with a friend, and the best exhibitions can take place in the corridors.
+The dormitory is a survival laboratory where yesterday’s coffee is shared with a friend, and the best exhibitions can take place in the corridors.
 Dormitory No. 4 stop. If you get off here, remember that great creativity often begins in a room for four.
-Our bus travels a few meters to immerse itself in the very heart of this creativity - the Institute of Mykhailo Boychuk, a brilliant artist and master of his craft.
-He was the founder of a unique Ukrainian school that combined Byzantine traditions with modernism. Unfortunately, like many talented artists of that time, he fell victim to Stalins repressions and was shot in 1937.
+Our bus travels a few meters to immerse itself in the very heart of this creativity — the Institute of Mykhailo Boychuk, a brilliant artist and master of his craft.
+He was the founder of a unique Ukrainian school that combined Byzantine traditions with modernism. Unfortunately, like many talented artists of that time, he fell victim to Stalin’s repressions and was shot in 1937.
 Today, the institute is a place of remembrance. Here, they teach not only how to paint, but also how to see meaning.
 
 
 Boychuk Academy stop. If you get off here, remember: not all art is found in galleries.
-We continue on our way, and the route takes us to a place with a somewhat ironic name for such a profound city - the Optika store. This stop reminds us of everyday Kyiv, when such stores were symbols of a certain stability and scarcity.
+We continue on our way, and the route takes us to a place with a somewhat ironic name for such a profound city — the Optika store. This stop reminds us of everyday Kyiv, when such stores were symbols of a certain stability and scarcity.
 “Optika” here is not just a place to buy glasses; it is a point of fixation of memory. It is a micro-history of the city that contrasts with the majestic hills of Pechersk.
 Optika store station. If you get out, take a closer look: perhaps here you will see Kyiv in a slightly different light, calm and ordinary.
 And we continue on our way. From the noisy thoroughfare, we turn onto the quiet, almost homely Nymanska Street. It is a short, inconspicuous street that does not appear in tourist guidebooks, but that is what makes it special. It is named after the Neman River, which flows through Lithuania and Belarus, reminding us of geographical connections and the historical wanderings of names.
 It is a symbol of cozy Pechersk, hidden behind official buildings.
-Nymanska Street stop. If you get off, do not look for anything sensational: sometimes the warmest stories live without embellishment, right outside the windows.
-And we are already driving out into the open space, to the technical symbol of communication - the Pechersky Bridge. It would seem to be just a structure built for the convenience of transport. But all bridges have a deeper meaning.
+Nymanska Street stop. If you get off, don’t look for anything sensational: sometimes the warmest stories live without embellishment, right outside the windows.
+And we are already driving out into the open space, to the technical symbol of communication — the Pechersky Bridge. It would seem to be just a structure built for the convenience of transport. But all bridges have a deeper meaning.
 This bridge not only connects two points, but also reminds us that a city, like society, is only strong when it sticks together.
 Pechersky Bridge stop. If you get off, pause for a moment: bridges not only connect cities. They unite societies.
-We turn onto a street that has been given a new, highly symbolic name - John McCain Street, after the American senator.
+We turn onto a street that has been given a new, highly symbolic name — John McCain Street, after the American senator.
 This is not just a political act, but a tribute to the memory and a sign of gratitude to a man who was an unbreakable friend of Ukraine and consistently opposed Russian imperialism. It is a manifesto of freedom and international solidarity.
 John McCain Street stop. If you leave, remember that allies are not those who are always around. They are those who always support you.
-And we are heading to one of the most mysterious objects on our route - the Round Tower. This tower is not an elegant architectural decoration, but a remnant of the Kyiv Fortress, a military facility whose construction began in 1831.
+And we are heading to one of the most mysterious objects on our route — the Round Tower. This tower is not an elegant architectural decoration, but a remnant of the Kyiv Fortress, a military facility whose construction began in 1831.
 It stood and stands silently, simply watching Kyiv transform from a military garrison to a modern capital.
 
 
 Krugla Bashta stop. If you get off, take a look at the stone: it remembers everything.
-We are now approaching a large city square dedicated to one of the greatest figures in Ukrainian culture - Lesya Ukrainka Square.
+We are now approaching a large city square dedicated to one of the greatest figures in Ukrainian culture — Lesya Ukrainka Square.
 This is a space where the indomitable spirit is honored. Larisa Kosach was a poet, playwright, and public figure who became a symbol of the struggle for the Ukrainian idea and language. Her words are the inner front that she held throughout her life.
 And Kyiv remembers this.
 
 
 Lesya Ukrainka Square stop. If you get off, remember: a weak body does not mean a weak voice.
-We are heading to a historically explosive place - Arsenalna Street. This name leads to the old Kyiv fortress, located next to the Arsenal factory, where weapons were manufactured for centuries.
+We are heading to a historically explosive place — Arsenalna Street. This name leads to the old Kyiv fortress, located next to the Arsenal factory, where weapons were manufactured for centuries.
 This place remembers not only the tsarist cannons, but also the rebel uprising in January 1918.
 So Arsenalna Street is about determination, the history of popular uprisings, and the fact that this land has never been silent.
 Arsenalska Street stop. If you get off here, remember that Kyiv remembers every shot fired and every word of resistance.
-We continue on our way, and our route takes us to another military name - General Almazov Street.
-Yes, its him, the major general of the medical service who made a significant contribution to military medicine.
+We continue on our way, and our route takes us to another military name — General Almazov Street.
+Yes, it’s him, the major general of the medical service who made a significant contribution to military medicine.
 His name here is a reminder that a military uniform does not always mean weapons and attack. It can mean rescue, treatment, and responsibility for life.
 
 
 General Almazov Street stop. If you get off, remember: military uniforms may vary, but dignity and compassion are universal.
 And we make a small but symbolic turn to a person like Oleksandr Kopylenko
-He is a Ukrainian writer, publicist, and, importantly, author of childrens books.
+He is a Ukrainian writer, publicist, and, importantly, author of children’s books.
 This transition from general to writer is a metaphor for the multifaceted nature of Kyiv. It is in such unexpected combinations that the city lives.
 Kopylenka Street stop. If you get off, remember: Kyiv is a city where stories for books can live, if you look closely.
-And our trolleybus arrives at the epicenter of modern Kyiv everyday life - the Administrative Services Center.
+And our trolleybus arrives at the epicenter of modern Kyiv everyday life — the Administrative Services Center.
 It is not a monument, but a living institution where hundreds of small human stories are resolved every day: marriage registration, change of surname, child registration, certificates, loss of documents. It is a place where the “cold print” of applications intersects with the hot emotions of life.
 
 
@@ -1088,31 +1070,25 @@ Park of Eternal Glory. This is a place where time seems to stand still. The park
 But the park is not only about monuments; it is also a symbol that life goes on, and so does memory.
 
 
-Park of Eternal Glory  stop. If you get out, dont rush. These trees have seen more than we can imagine.
-And we hurry on to a place where memories are painful but sacred - the Holodomor Victims Memorial.
-Here, on a hill, next to ancient history, stands a modern white memorial in the shape of a candle. This is the Candle of Memory - for the millions who were murdered by starvation.
+Park of Eternal Glory  stop. If you get out, don’t rush. These trees have seen more than we can imagine.
+And we hurry on to a place where memories are painful but sacred — the Holodomor Victims Memorial.
+Here, on a hill, next to ancient history, stands a modern white memorial in the shape of a candle. This is the Candle of Memory — for the millions who were murdered by starvation.
 This memorial is silence that speaks louder than any words, because there are no words that could describe the genocide committed by the Soviet authorities.
 Holodomor Victims Memorial stop. If you go outside, stop for a moment and bow your head. This place deserves to be remembered.
-And we return to the spiritual heart of Kyiv, a place that echoes with copper bells - the Kyiv-Pechersk Lavra. This is not just a monastery - it is a thousand years of spirituality.
+And we return to the spiritual heart of Kyiv, a place that echoes with copper bells — the Kyiv-Pechersk Lavra. This is not just a monastery — it is a thousand years of spirituality.
 This historical treasure trove was founded in 1051 by monks Anthony and Theodosius. Here, in the underground caves, the incorruptible relics of saints are kept, and the walls are decorated with ancient frescoes.
 Look out the window: the golden domes of the Lavra are an eternal symbol of Kyiv, a mirror of the heavens.
 
 
 Kyiv-Pecherska Lavra stop. If you get off, just stop and admire the view.
 Our route is gradually coming to an end.
-The last stop is a place where the voice of war is captured in bronze and stone - near the National Museum of the History of Ukraine in World War II.
+The last stop is a place where the voice of war is captured in bronze and stone — near the National Museum of the History of Ukraine in World War II.
 The majestic monument “Motherland-Mother” raises her sword as a symbol of defense and indestructibility. This is not only the history of the front, but also human destinies: letters from the trenches, personal belongings, tears, victories, and losses.
 
 
 National Museum of the History of Ukraine in World War II stop. The trolleybus route is over, but yours is still ahead. See you soon!
 
-]]>
-    </string>
-
-
-
-
-
+]]></string>
 
 
 
