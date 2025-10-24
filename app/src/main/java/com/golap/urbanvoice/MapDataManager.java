@@ -416,9 +416,11 @@ public class MapDataManager {
         ));
     }
 
-    // =================================================================
-    // ПУБЛІЧНІ МЕТОДИ
-    // =================================================================
+    // Припускаючи, що цей файл містить клас MapDataManager, константи та допоміжні класи.
+
+// =================================================================
+// ПУБЛІЧНІ МЕТОДИ (НЕЗМІННІ)
+// =================================================================
 
     /**
      * Повертає повний об'єкт RouteData для заданого ключа маршруту.
@@ -464,83 +466,101 @@ public class MapDataManager {
         return 0;
     }
 
-    // =================================================================
-    // НОВИЙ АЛГОРИТМ ВИЗНАЧЕННЯ НАПРЯМКУ (Працює і в середині маршруту)
-    // =================================================================
+// =================================================================
+// НОВИЙ АЛГОРИТМ ВИЗНАЧЕННЯ НАПРЯМКУ ЗА КУТОМ РУХУ (BEARING)
+// =================================================================
 
     /**
-     * Визначає оптимальний напрямок (FORWARD або BACKWARD), порівнюючи відстань користувача
-     * до найближчої станції та її сусідів.
+     * Визначає оптимальний напрямок (FORWARD або BACKWARD), порівнюючи кут руху користувача (Bearing)
+     * з кутом, який утворює маршрут біля найближчої станції.
+     * * Цей метод замінює стару, менш надійну логіку визначення напрямку за відстанню до сусідів.
      * @param routeKey Ключ маршруту, для якого визначаємо напрямок.
      * @param userLocation Поточне місцезнаходження користувача.
+     * @param userBearing Кут руху користувача (0-360 градусів).
      * @return DIRECTION_FORWARD, DIRECTION_BACKWARD, або null, якщо надто далеко від маршруту.
      */
-    public static String determineOptimalDirection(String routeKey, LatLng userLocation) {
+    public static String determineOptimalDirectionWithBearing(String routeKey, LatLng userLocation, float userBearing) {
         RouteData data = getRouteData(routeKey);
 
         if (userLocation == null || data == null) {
             return null;
         }
 
-        List<Station> allStations = data.getForwardStations();
-        if (allStations.isEmpty()) {
+        List<Station> forwardStations = data.getForwardStations();
+
+        if (forwardStations.isEmpty()) {
             return null;
         }
 
-        // 1. Знаходимо найближчу станцію на маршруті та її індекс
-        int nearestIndex = findNearestStationIndex(allStations, userLocation);
-        Station nearestStation = allStations.get(nearestIndex);
+        // Вкладаємо всю чутливу логіку в try-catch для запобігання крашу
+        try {
+            // 1. Знаходимо найближчу станцію на маршруті та її індекс
+            int nearestIndex = findNearestStationIndex(forwardStations, userLocation);
 
-        // Перевіряємо, чи користувач знаходиться в межах MAX_DISTANCE_FOR_START від найближчої станції
-        float distanceToNearest = calculateDistance(userLocation, nearestStation);
+            // 🚨 КРИТИЧНА ПЕРЕВІРКА ІНДЕКСУ 🚨
+            if (nearestIndex == -1) {
+                return null; // Успішно запобігаємо IndexOutOfBoundsException
+            }
 
-        if (distanceToNearest > MAX_DISTANCE_FOR_START) {
-            // Користувач надто далеко від маршруту
+            Station nearestStation = forwardStations.get(nearestIndex);
+
+            // Перевіряємо, чи користувач знаходиться в межах MAX_DISTANCE_FOR_START
+            float distanceToNearest = calculateDistance(userLocation, nearestStation);
+
+            if (distanceToNearest > MAX_DISTANCE_FOR_START) {
+                // Користувач надто далеко від маршруту
+                return null;
+            }
+
+            // 2. Обчислюємо кути руху (bearing) вздовж маршруту від найближчої точки
+
+            // Кут FWD: Кут від найближчої станції до наступної
+            float forwardRouteBearing;
+
+            // Якщо це не остання станція
+            if (nearestIndex < forwardStations.size() - 1) {
+                Station nextStation = forwardStations.get(nearestIndex + 1);
+                forwardRouteBearing = calculateBearing(nearestStation, nextStation);
+            } else if (nearestIndex > 0) {
+                // Якщо це остання станція (F), беремо кут від попередньої (E) до неї (F)
+                Station prevStation = forwardStations.get(nearestIndex - 1);
+                forwardRouteBearing = calculateBearing(prevStation, nearestStation);
+            } else {
+                // Маршрут занадто короткий (1 або 0 станцій)
+                return DIRECTION_FORWARD;
+            }
+
+            // Кут BWD: Кут у протилежному напрямку (просто розворот FWD)
+            float backwardRouteBearing = normalizeBearing(forwardRouteBearing + 180);
+
+            // 3. Порівнюємо кут користувача з кутами маршруту
+
+            float normalizedUserBearing = normalizeBearing(userBearing);
+
+            // Функція 'angle difference' знаходить найменший кут між двома напрямками
+            float diffForward = getAngleDifference(normalizedUserBearing, normalizeBearing(forwardRouteBearing));
+            float diffBackward = getAngleDifference(normalizedUserBearing, backwardRouteBearing);
+
+            // Вибираємо напрямок з найменшою різницею кута
+            if (diffForward < diffBackward) {
+                return DIRECTION_FORWARD;
+            } else {
+                return DIRECTION_BACKWARD;
+            }
+
+        } catch (Exception e) {
+            // Якщо будь-яка непередбачена помилка (краш) сталася під час обчислень,
+            // ми її ловимо і коректно повертаємо null. Це запобіжить вильоту програми.
+            // e.printStackTrace(); // Можна додати для налагодження
             return null;
-        }
-
-        // 2. Порівнюємо відстані до сусідів для визначення напрямку
-        Station nextStation = null;
-        Station prevStation = null;
-
-        // Визначаємо наступну станцію (якщо не остання)
-        if (nearestIndex < allStations.size() - 1) {
-            nextStation = allStations.get(nearestIndex + 1);
-        }
-
-        // Визначаємо попередню станцію (якщо не перша)
-        if (nearestIndex > 0) {
-            prevStation = allStations.get(nearestIndex - 1);
-        }
-
-        // 3. Логіка вибору:
-        // Випадок А: Найближча станція - початок (A) або кінець (F)
-        if (prevStation == null) {
-            // Користувач біля станції A. Напрямок може бути лише FWD (якщо є наступна)
-            return DIRECTION_FORWARD;
-        }
-        if (nextStation == null) {
-            // Користувач біля станції F. Напрямок може бути лише BWD (якщо є попередня)
-            return DIRECTION_BACKWARD;
-        }
-
-        // Випадок Б: Найближча станція - десь посередині (як C у вашому прикладі)
-        float distanceToNext = calculateDistance(userLocation, nextStation);
-        float distanceToPrev = calculateDistance(userLocation, prevStation);
-
-        if (distanceToNext < distanceToPrev) {
-            // Користувач ближче до наступної станції (C -> D)
-            return DIRECTION_FORWARD;
-        } else {
-            // Користувач ближче до попередньої станції (C -> B)
-            return DIRECTION_BACKWARD;
         }
     }
 
+// =================================================================
+// ПРИВАТНІ ДОПОМІЖНІ МЕТОДИ
+// =================================================================
 
-    // =================================================================
-    // ПРИВАТНІ ДОПОМІЖНІ МЕТОДИ
-    // =================================================================
+// ... (методи calculateDistance та findNearestStationIndex залишаються без змін)
 
     /**
      * Приватний допоміжний метод для швидкого розрахунку відстані між двома точками у метрах.
@@ -577,6 +597,38 @@ public class MapDataManager {
             }
         }
         return nearestIndex;
+    }
+
+    /**
+     * Обчислює Bearing (кут руху) між двома станціями.
+     */
+    private static float calculateBearing(Station from, Station to) {
+        android.location.Location loc1 = new android.location.Location("");
+        loc1.setLatitude(from.getLatitude());
+        loc1.setLongitude(from.getLongitude());
+
+        android.location.Location loc2 = new android.location.Location("");
+        loc2.setLatitude(to.getLatitude());
+        loc2.setLongitude(to.getLongitude());
+
+        // bearingTo повертає кут від першої точки до другої (-180 до 180)
+        return loc1.bearingTo(loc2);
+    }
+
+    /**
+     * Нормалізує кут до діапазону [0, 360).
+     */
+    private static float normalizeBearing(float bearing) {
+        return (bearing % 360 + 360) % 360;
+    }
+
+    /**
+     * Обчислює найменшу різницю між двома кутами (Bearing) у градусах.
+     */
+    private static float getAngleDifference(float bearing1, float bearing2) {
+        float diff = Math.abs(bearing1 - bearing2);
+        // Якщо різниця більше 180, беремо менший кут (360 - різниця)
+        return diff > 180 ? 360 - diff : diff;
     }
 
 

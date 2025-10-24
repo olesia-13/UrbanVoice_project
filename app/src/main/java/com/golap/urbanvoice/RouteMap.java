@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,7 +28,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.Priority;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -50,6 +56,15 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
     private FusedLocationProviderClient fusedLocationClient;
     private boolean isAudioGuideRunning = false;
     private ActivityResultLauncher<String> requestPermissionLauncher;
+
+    // --- Контроль визначення напрямку ---
+    private static final long LOCATION_REQUEST_INTERVAL = 1000; // Оновлення кожну 1 секунду
+    private static final int MAX_DIRECTION_UPDATES = 3; // Чекаємо до 3 оновлень для визначення руху
+    private LocationCallback directionCheckLocationCallback; // Колбек для перевірки напрямку
+    private Location lastValidLocation; // Зберігає останню локацію для порівняння bearing
+    private boolean isCheckingDirection = false;
+    private int updateCount = 0;
+
 
     // --- UI Елементи ---
     private TextView routeTitle;
@@ -319,7 +334,8 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
                     if (isGranted) {
                         enableUserLocationLayer();
                         // Якщо дозволи надано, продовжуємо процес запуску гіда
-                        determineRouteDirectionAndStartGuide();
+                        // !!! ТЕПЕР ВИКЛИКАЄМО ТИМЧАСОВИЙ ЗБІР ДАНИХ ДЛЯ ВИЗНАЧЕННЯ НАПРЯМКУ !!!
+                        startDirectionCheck();
                     } else {
                         Toast.makeText(this, "Потрібен доступ до місцезнаходження для аудіогіда.", Toast.LENGTH_LONG).show();
                     }
@@ -356,7 +372,8 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     /**
-     * Визначає напрямок руху користувача та запускає сервіс.
+     * Запускає процес активного прослуховування локації для визначення напрямку.
+     * Замінює стару логіку getLastLocation().
      */
     @SuppressWarnings("MissingPermission")
     private void determineRouteDirectionAndStartGuide() {
@@ -365,37 +382,141 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
             return;
         }
 
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
-            if (location != null) {
-                LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+        // Нова логіка: запускаємо активну перевірку напрямку
+        startDirectionCheck();
+    }
 
-                // --- ВИПРАВЛЕНО: Викликаємо determineOptimalDirection з двома аргументами ---
-                String determinedDirection = MapDataManager.determineOptimalDirection(
-                        routeKey, // Передаємо ключ маршруту
-                        userLocation // Передаємо місцезнаходження користувача
+    /**
+     * Активно збирає дані GPS, щоб обчислити напрямок руху (Bearing).
+     */
+    @SuppressWarnings("MissingPermission")
+    private void startDirectionCheck() {
+        if (isCheckingDirection) return;
+        isCheckingDirection = true;
+        updateCount = 0;
+        lastValidLocation = null; // Скидаємо попередню локацію
+
+        Toast.makeText(this, "Визначаємо напрямок руху (3 сек.)...", Toast.LENGTH_SHORT).show();
+
+        // 1. Створення LocationRequest для активного збору даних
+        LocationRequest locationRequest = new LocationRequest.Builder(
+                Priority.PRIORITY_HIGH_ACCURACY, LOCATION_REQUEST_INTERVAL)
+                // ВИПРАВЛЕНО: Зменшуємо ліміт відстані до 1 метра
+                .setMinUpdateDistanceMeters(1)
+                .setMaxUpdates(MAX_DIRECTION_UPDATES)
+                .build();
+
+        // 2. Створення LocationCallback
+        directionCheckLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+                Location currentLocation = locationResult.getLastLocation();
+
+                // 1. Обробка, якщо локація недійсна або не надана
+                if (currentLocation == null) {
+                    updateCount++;
+                    if (updateCount >= MAX_DIRECTION_UPDATES) {
+                        handleDirectionFailure(null, "Не вдалося отримати GPS-координати.");
+                    }
+                    return;
+                }
+
+                // === КРИТИЧНЕ ВИПРАВЛЕННЯ ЛОГІКИ РУХУ ===
+
+                boolean movementDetected = false;
+
+                if (lastValidLocation != null) {
+                    // 2. Перевірка руху: порівнюємо з попереднім валідним значенням
+                    if (currentLocation.distanceTo(lastValidLocation) >= 2.0f) {
+                        movementDetected = true;
+                    }
+                }
+
+                // 3. Зберігаємо поточну локацію для наступного порівняння
+                lastValidLocation = currentLocation;
+                updateCount++;
+
+                // 4. Якщо руху недостатньо, і ще не досягнуто ліміту - чекаємо
+                if (!movementDetected && updateCount < MAX_DIRECTION_UPDATES) {
+                    return;
+                }
+
+                // 4. Якщо ліміт досягнуто АБО рух визначено - ПРИЙМАЄМО РІШЕННЯ
+
+                // Визначення Bearing (Bearing між двома точками: lastValidLocation та currentLocation)
+                float bearing = 0.0f; // Значення за замовчуванням
+
+                // Використовуємо Bearing від самого GPS-сенсора (якщо він є і швидкість достатня)
+                if (currentLocation.hasBearing() && currentLocation.getSpeed() > 0.5f) {
+                    bearing = currentLocation.getBearing();
+                }
+                // Якщо рух визначено, але Bearing від сенсора немає, обчислюємо його
+                else if (movementDetected) {
+                    // ТУТ БУЛА ПОТЕНЦІЙНА ПОМИЛКА: використовуйте lastValidLocation (який був встановлений на попередньому оновленні)
+                    // Зауваження: в цьому оновленому коді lastValidLocation - це завжди остання успішна локація
+                    // Використаємо простий bearing, якщо не визначено рух (як останній шанс)
+                    if (lastValidLocation != null) {
+                        bearing = lastValidLocation.bearingTo(currentLocation);
+                    }
+                }
+
+                // 5. Визначення напрямку
+                LatLng userLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+
+                String determinedDirection = MapDataManager.determineOptimalDirectionWithBearing(
+                        routeKey,
+                        userLocation,
+                        bearing
                 );
 
+                // 6. Фінальний запуск або виведення помилки
                 if (determinedDirection != null) {
                     currentDirection = determinedDirection;
-                    // Карта не оновлюється, лише запускається сервіс
-                    startAudioGuideService(determinedDirection);
+                    // !!! ВИКЛИК СЕРВІСУ !!!
+                    startAudioGuideService(determinedDirection, currentLocation);
                 } else {
-                    // Користувач занадто далеко від маршруту
-                    Toast.makeText(this, "Визначення напрямку не вдалося. Наблизьтесь до маршруту.", Toast.LENGTH_LONG).show();
+                    // !!! ВИКЛИК ПОМИЛКИ !!!
+                    handleDirectionFailure(null, "Напрямок не визначено або ви далеко від маршруту. Спробуйте почати рух.");
                 }
-            } else {
-                Toast.makeText(this, "Не вдалося отримати поточне місцезнаходження. Спробуйте пізніше.", Toast.LENGTH_LONG).show();
+
+                // В кінці завжди зупиняємо активну перевірку
+                stopDirectionCheck();
             }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(this, "Помилка отримання місцезнаходження.", Toast.LENGTH_LONG).show();
-        });
+        };
+
+        // 4. Запуск запиту на оновлення
+        fusedLocationClient.requestLocationUpdates(locationRequest, directionCheckLocationCallback, Looper.getMainLooper());
+    }
+
+    // 🆕 ДОДАЙТЕ НОВИЙ ДОПОМІЖНИЙ МЕТОД ДЛЯ ОБРОБКИ ПОМИЛКИ
+    private void handleDirectionFailure(Location location, String message) {
+        Toast.makeText(RouteMap.this, message, Toast.LENGTH_LONG).show();
+        stopDirectionCheck();
+        // ВАЖЛИВО: Оновіть UI, якщо гід не запущено
+        updateButtonUI(false);
+    }
+
+    // Функція для зупинки активного прослуховування локації
+    private void stopDirectionCheck() {
+        if (isCheckingDirection) {
+            fusedLocationClient.removeLocationUpdates(directionCheckLocationCallback);
+            lastValidLocation = null;
+            isCheckingDirection = false;
+            updateCount = 0;
+        }
     }
 
 
-    private void startAudioGuideService(String direction) {
+    /**
+     * Запускає LocationAudioService, передаючи визначений напрямок та початкові координати.
+     */
+    private void startAudioGuideService(String direction, Location location) {
         Intent serviceIntent = new Intent(this, LocationAudioService.class);
         serviceIntent.putExtra("ROUTE_KEY", routeKey);
-        serviceIntent.putExtra("DIRECTION", direction); // Використовуємо динамічно визначений напрямок
+        serviceIntent.putExtra("DIRECTION", direction);
+        // !!! ПЕРЕДАЄМО КООРДИНАТИ ДЛЯ ПОЧАТКОВОГО ВИЗНАЧЕННЯ СТАНЦІЇ !!!
+        serviceIntent.putExtra("START_LAT", location.getLatitude());
+        serviceIntent.putExtra("START_LON", location.getLongitude());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(serviceIntent);
@@ -418,7 +539,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
         // ПОТРІБЕН R.string.next_station_placeholder
         nextStationText.setText(getString(R.string.next_station_placeholder));
-        currentDirection = null; // Скидаємо визначений напрямок
+        // currentDirection = null; // ВИДАЛИТИ АБО ЗАКОМЕНТУВАТИ: Зберігаємо напрямок!
     }
 
     private void updateButtonUI(boolean isRunning) {
@@ -435,6 +556,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
     // =======================================================
 
     private void showFullTextGuide() {
+        // Текст можна дивитися лише після визначення напрямку
         if (currentRouteData == null || currentDirection == null) {
             Toast.makeText(this, "Спочатку запустіть аудіогід для визначення напрямку.", Toast.LENGTH_LONG).show();
             return;

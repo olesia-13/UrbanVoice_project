@@ -123,11 +123,11 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
         ));
 
         routes.add(new Route(
-                getString(R.string.route_type_bus),
+                getString(R.string.route_type_trolleybus),
                 "№38",
                 getString(R.string.route_38_desc_ab),
                 "R038",
-                R.drawable.ic_bus
+                R.drawable.ic_trolleybus
         ));
 
         routes.add(new Route(
