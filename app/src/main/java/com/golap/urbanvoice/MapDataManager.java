@@ -11,7 +11,6 @@ public class MapDataManager {
 
     private static final Map<String, RouteData> ALL_ROUTES_DATA;
 
-    public static final float GEOFENCE_RADIUS_METERS = 50f;
     public static final String ROUTE_TRAM_1_KEY = "R001";
     public static final String ROUTE_TROLLEYBUS_111_KEY = "R111";
     public static final String ROUTE_TROLLEYBUS_38_KEY = "R038";
