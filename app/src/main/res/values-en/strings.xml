@@ -13,7 +13,10 @@
     <string name="genre_melody">Melody</string>
     <string name="genre_classical">Classic music</string>
     <string name="genre_none">No music</string>
+    <string name="route_finished">Route finished</string>
+    <string name="route_loading_error">Route loading error</string>
     <string name="contacts_title">Contacts:</string>
+    <string name="next_station_placeholder">Waiting for GPS…</string>
     <string name="developer_contacts">osipolesia13@gmail.com\n
     vladonkapol@gmail.com\n
     ivanandryeyev@gmail.com\n
@@ -22,6 +25,20 @@
 
     <string name="search_hint">Search</string>
     <string name="retur">Go back</string>
+
+    <string name="how_works_content"><![CDATA[
+        <b>Step 1. Personalize your trip</b><br><br>
+        In the drop-down menu, select the desired language for the tour, as well as the genre of music to play in the background.
+
+        <br><br><b>Step 2. Select your mode of transportation</b><br><br>
+        On the main page, click the “Start your journey” button. A page with a window for entering your mode of transportation will appear. Specify your route (for example, “Tram 1”) and select it from the list of options.
+
+        <br><br><b>Step 3. Select the tour format that is most convenient for you.</b><br><br>
+        A map with stop markers and the route line will appear on the page. Below are three buttons: view photos of the most interesting sights on the route, start or stop the audio, and read the text version of the tour if you don’t have headphones with you.
+
+        <br><br><b>Done! Your journey begins.
+
+        ]]></string>
 
     <string name="route_type_trolleybus">Тrolleybus</string>
     <string name="route_type_tram">Tram</string>

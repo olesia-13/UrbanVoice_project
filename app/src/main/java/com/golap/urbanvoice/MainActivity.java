@@ -1,5 +1,7 @@
 package com.golap.urbanvoice;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +23,8 @@ import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "UrbanVoiceSettings";
@@ -36,6 +40,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvHowAppWorks;
 
     private String selectedLanguage = "ua";
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+
+        SharedPreferences settings = newBase.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String lang = settings.getString(PREF_LANGUAGE_KEY, "ua");
+
+
+        Context context = setLocale(newBase, lang);
+        super.attachBaseContext(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawer(GravityCompat.END);
-                // Intent intent = new Intent(MainActivity.this, InstructionsActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, HowWorks.class);
+                startActivity(intent);
             }
         });
 
@@ -105,15 +120,25 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener langClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String newLanguage;
                 if (v.getId() == R.id.lang_en) {
-                    selectedLanguage = "en";
+                    newLanguage = "en";
                 } else if (v.getId() == R.id.lang_ua) {
-                    selectedLanguage = "ua";
+                    newLanguage = "ua";
+                } else {
+                    return;
+                }
+
+
+                if (!newLanguage.equals(selectedLanguage)) {
+                    selectedLanguage = newLanguage;
+                    saveSettings();
+
+                    recreate();
                 }
 
                 updateLanguageUI();
-                saveSettings();
-                Toast.makeText(MainActivity.this, "Мова збережена: " + selectedLanguage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Мова встановлена: " + selectedLanguage, Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -139,19 +164,16 @@ public class MainActivity extends AppCompatActivity {
                 if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
                     drawerLayout.closeDrawer(GravityCompat.END);
                 } else {
-                    setEnabled(false);
-                    MainActivity.super.onBackPressed();
-                    setEnabled(true);
+                    finish();
                 }
             }
         });
-
-
     }
 
     private void loadSettings() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
+        // NOTE: Ми вже завантажили мову в attachBaseContext, але оновлюємо UI
         selectedLanguage = settings.getString(PREF_LANGUAGE_KEY, "ua");
         updateLanguageUI();
 
@@ -174,11 +196,34 @@ public class MainActivity extends AppCompatActivity {
         final float SELECTED_ALPHA = 1.0f;
         final float UNSELECTED_ALPHA = 0.4f;
 
-
+        // Ці методи тепер працюють лише з візуальним відображенням кнопок,
+        // а не фактичною зміною мови
         langUa.setAlpha(selectedLanguage.equals("ua") ? SELECTED_ALPHA : UNSELECTED_ALPHA);
         langEn.setAlpha(selectedLanguage.equals("en") ? SELECTED_ALPHA : UNSELECTED_ALPHA);
     }
 
+    // =======================================================
+    // 2. ДОПОМІЖНИЙ МЕТОД ДЛЯ ВСТАНОВЛЕННЯ ЛОКАЛІ
+    // =======================================================
+    @SuppressWarnings("deprecation")
+    public static Context setLocale(Context context, String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Resources resources = context.getResources();
+        Configuration config = resources.getConfiguration();
+
+        // Оновлення конфігурації для API 24+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            config.setLocale(locale);
+            return context.createConfigurationContext(config);
+        } else {
+            // Оновлення конфігурації для старих версій
+            config.locale = locale;
+            resources.updateConfiguration(config, resources.getDisplayMetrics());
+            return context;
+        }
+    }
 
 
 

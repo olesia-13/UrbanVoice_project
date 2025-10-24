@@ -1,5 +1,7 @@
 package com.golap.urbanvoice;
 
+import com.google.android.gms.maps.model.LatLng;
+import android.location.Location;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +17,9 @@ public class MapDataManager {
     public static final String ROUTE_TROLLEYBUS_38_KEY = "R038";
     public static final String DIRECTION_FORWARD = "FORWARD";
     public static final String DIRECTION_BACKWARD = "BACKWARD";
+    // Тепер це максимальна відстань до БУДЬ-ЯКОЇ станції на маршруті
+    private static final float MAX_DISTANCE_FOR_START = 500.0f;
+
 
     static {
         ALL_ROUTES_DATA = new HashMap<>();
@@ -410,12 +415,11 @@ public class MapDataManager {
                 R.string.text_r038_forward,
                 R.string.text_r038_backward
         ));
-
-
-
-
-
     }
+
+    // =================================================================
+    // ПУБЛІЧНІ МЕТОДИ
+    // =================================================================
 
     /**
      * Повертає повний об'єкт RouteData для заданого ключа маршруту.
@@ -460,5 +464,121 @@ public class MapDataManager {
         }
         return 0;
     }
+
+    // =================================================================
+    // НОВИЙ АЛГОРИТМ ВИЗНАЧЕННЯ НАПРЯМКУ (Працює і в середині маршруту)
+    // =================================================================
+
+    /**
+     * Визначає оптимальний напрямок (FORWARD або BACKWARD), порівнюючи відстань користувача
+     * до найближчої станції та її сусідів.
+     * @param routeKey Ключ маршруту, для якого визначаємо напрямок.
+     * @param userLocation Поточне місцезнаходження користувача.
+     * @return DIRECTION_FORWARD, DIRECTION_BACKWARD, або null, якщо надто далеко від маршруту.
+     */
+    public static String determineOptimalDirection(String routeKey, LatLng userLocation) {
+        RouteData data = getRouteData(routeKey);
+
+        if (userLocation == null || data == null) {
+            return null;
+        }
+
+        List<Station> allStations = data.getForwardStations();
+        if (allStations.isEmpty()) {
+            return null;
+        }
+
+        // 1. Знаходимо найближчу станцію на маршруті та її індекс
+        int nearestIndex = findNearestStationIndex(allStations, userLocation);
+        Station nearestStation = allStations.get(nearestIndex);
+
+        // Перевіряємо, чи користувач знаходиться в межах MAX_DISTANCE_FOR_START від найближчої станції
+        float distanceToNearest = calculateDistance(userLocation, nearestStation);
+
+        if (distanceToNearest > MAX_DISTANCE_FOR_START) {
+            // Користувач надто далеко від маршруту
+            return null;
+        }
+
+        // 2. Порівнюємо відстані до сусідів для визначення напрямку
+        Station nextStation = null;
+        Station prevStation = null;
+
+        // Визначаємо наступну станцію (якщо не остання)
+        if (nearestIndex < allStations.size() - 1) {
+            nextStation = allStations.get(nearestIndex + 1);
+        }
+
+        // Визначаємо попередню станцію (якщо не перша)
+        if (nearestIndex > 0) {
+            prevStation = allStations.get(nearestIndex - 1);
+        }
+
+        // 3. Логіка вибору:
+        // Випадок А: Найближча станція - початок (A) або кінець (F)
+        if (prevStation == null) {
+            // Користувач біля станції A. Напрямок може бути лише FWD (якщо є наступна)
+            return DIRECTION_FORWARD;
+        }
+        if (nextStation == null) {
+            // Користувач біля станції F. Напрямок може бути лише BWD (якщо є попередня)
+            return DIRECTION_BACKWARD;
+        }
+
+        // Випадок Б: Найближча станція - десь посередині (як C у вашому прикладі)
+        float distanceToNext = calculateDistance(userLocation, nextStation);
+        float distanceToPrev = calculateDistance(userLocation, prevStation);
+
+        if (distanceToNext < distanceToPrev) {
+            // Користувач ближче до наступної станції (C -> D)
+            return DIRECTION_FORWARD;
+        } else {
+            // Користувач ближче до попередньої станції (C -> B)
+            return DIRECTION_BACKWARD;
+        }
+    }
+
+
+    // =================================================================
+    // ПРИВАТНІ ДОПОМІЖНІ МЕТОДИ
+    // =================================================================
+
+    /**
+     * Приватний допоміжний метод для швидкого розрахунку відстані між двома точками у метрах.
+     */
+    private static float calculateDistance(LatLng point1, Station point2) {
+        android.location.Location loc1 = new android.location.Location("point1");
+        loc1.setLatitude(point1.latitude);
+        loc1.setLongitude(point1.longitude);
+
+        android.location.Location loc2 = new android.location.Location("point2");
+        loc2.setLatitude(point2.getLatitude());
+        loc2.setLongitude(point2.getLongitude());
+
+        return loc1.distanceTo(loc2);
+    }
+
+    /**
+     * Знаходить індекс найближчої станції до місцезнаходження користувача.
+     * @param stations Список станцій.
+     * @param userLocation Місцезнаходження користувача.
+     * @return Індекс найближчої станції.
+     */
+    private static int findNearestStationIndex(List<Station> stations, LatLng userLocation) {
+        float minDistance = Float.MAX_VALUE;
+        int nearestIndex = -1;
+
+        for (int i = 0; i < stations.size(); i++) {
+            Station station = stations.get(i);
+            float distance = calculateDistance(userLocation, station);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestIndex = i;
+            }
+        }
+        return nearestIndex;
+    }
+
 
 }

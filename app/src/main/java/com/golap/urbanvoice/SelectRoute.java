@@ -116,7 +116,7 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
                 getString(R.string.route_type_bus),
                 "№111",
                 getString(R.string.route_111_desc_ab),
-                "B111_A_B",
+                "R111",
                 R.drawable.ic_bus
         ));
 
@@ -124,7 +124,7 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
                 getString(R.string.route_type_bus),
                 "№38",
                 getString(R.string.route_38_desc_ab),
-                "B038_A_B",
+                "R038",
                 R.drawable.ic_bus
         ));
 
@@ -132,7 +132,7 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
                 getString(R.string.route_type_tram),
                 "№1",
                 getString(R.string.route_1_desc_ab),
-                "R001_A_B",
+                "R001",
                 R.drawable.ic_tram
         ));
 

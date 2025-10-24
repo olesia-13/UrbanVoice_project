@@ -18,6 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UrbanVoice">
         <activity
+            android:name=".PhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TextActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HowWorks"
+            android:exported="false" />
+        <activity
             android:name=".RouteMap"
             android:exported="false" />
 
@@ -27,9 +36,9 @@
 
         <service
             android:name=".LocationAudioService"
-            android:foregroundServiceType="location"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false"
+            android:foregroundServiceType="location" />
 
         <activity
             android:name=".MainActivity"

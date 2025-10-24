@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FFFAE6</color>
     <color name="line">#201010</color>
+    <color name="route_line_color">#061172</color>
 </resources>
