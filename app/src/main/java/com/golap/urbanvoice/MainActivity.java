@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView langEn;
     private ImageView langUa;
     private TextView tvHowAppWorks;
+    private TextView myroutes;
+    private TextView myexit;
 
     private String selectedLanguage = "ua";
 
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         langEn = findViewById(R.id.lang_en);
         langUa = findViewById(R.id.lang_ua);
         tvHowAppWorks = findViewById(R.id.tvHowAppWorks);
+        myroutes = findViewById(R.id.myroutes);
+        myexit = findViewById(R.id.myexit);
 
         loadSettings();
 
@@ -112,6 +116,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.closeDrawer(GravityCompat.END);
                 Intent intent = new Intent(MainActivity.this, HowWorks.class);
+                startActivity(intent);
+            }
+        });
+
+        myexit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        myroutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, YourRouteActivity.class);
                 startActivity(intent);
             }
         });
@@ -194,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateLanguageUI() {
         final float SELECTED_ALPHA = 1.0f;
-        final float UNSELECTED_ALPHA = 0.4f;
+        final float UNSELECTED_ALPHA = 0.3f;
 
         // Ці методи тепер працюють лише з візуальним відображенням кнопок,
         // а не фактичною зміною мови

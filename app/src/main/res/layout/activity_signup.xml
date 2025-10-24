@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".SignupActivity">
+
+    <ImageView
+        android:id="@+id/top_right_circle_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spot_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/bottom_left_circle_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spot_t"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:id="@+id/title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup"
+        android:textSize="40sp"
+        android:textColor="#201010"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="130dp" />
+
+    <TextView
+        android:id="@+id/subtitle_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new"
+        android:textSize="20sp"
+        android:textColor="#201010"
+        android:fontFamily="@font/nunito_regular"
+        app:layout_constraintTop_toBottomOf="@id/title_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/input_name_reg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/yellow_borders"
+        android:hint="@string/enter_name"
+        android:paddingHorizontal="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_regular"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/input_email_reg" />
+
+    <EditText
+        android:id="@+id/input_email_reg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/yellow_borders"
+        android:hint="@string/enter_email"
+        android:paddingHorizontal="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_regular"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/input_password_reg" />
+
+    <EditText
+        android:id="@+id/input_password_reg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/yellow_borders"
+        android:hint="@string/enter_password"
+        android:paddingHorizontal="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_regular"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/input_confirm_password_reg" />
+
+    <EditText
+        android:id="@+id/input_confirm_password_reg"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/yellow_borders"
+        android:hint="@string/confirm_password"
+        android:paddingHorizontal="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_regular"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/terms_group" />
+
+    <RadioGroup
+        android:id="@+id/terms_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_up">
+
+        <RadioButton
+            android:id="@+id/radio_terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/agree"
+            android:textSize="15sp"
+            android:textColor="#201010"
+            app:buttonTint="#FFC31F"
+            android:fontFamily="@font/nunito_regular"
+            android:checked="true" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/signup"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:backgroundTint="#FFC31F"
+        android:textColor="#201010"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

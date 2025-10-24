@@ -154,8 +154,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_gravity="end"
                 android:padding="16dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:contentDescription="@string/app_name"
                 android:layout_marginBottom="20dp"
                 />
@@ -168,7 +168,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="#201010"
-                android:paddingBottom="14dp"
+                android:paddingBottom="10dp"
                 />
 
             <View
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -198,7 +198,7 @@
                     android:id="@+id/lang_en"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:src="@drawable/lang_en"
+                    android:src="@drawable/english_switch"
                     android:contentDescription="@string/app_name"
                     android:layout_marginEnd="30dp"/>
 
@@ -221,14 +221,14 @@
                 android:textSize="15sp"
                 android:textColor="#201010"
                 android:fontFamily="@font/nunito_regular"
-                android:layout_marginTop="25dp"
-                android:paddingBottom="14dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
                 />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#201010"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="15dp"/>
 
             <RadioGroup
                 android:id="@+id/musicGenreGroup"
@@ -246,7 +246,7 @@
                     android:textSize="15sp"
                     android:fontFamily="@font/nunito_regular"
                     app:buttonTint="#FFC31F"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="3dp"/>
 
                 <RadioButton
                     android:id="@+id/radioClassical"
@@ -257,7 +257,7 @@
                     android:fontFamily="@font/nunito_regular"
                     app:buttonTint="#FFC31F"
                     android:text="@string/genre_classical"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="3dp"/>
 
                 <RadioButton
                     android:id="@+id/radioNone"
@@ -270,6 +270,24 @@
                     android:text="@string/genre_none"/>
             </RadioGroup>
 
+            <TextView
+                android:id="@+id/myroutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_routes"
+                android:textColor="#201010"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_regular"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="10dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="5dp"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -278,15 +296,15 @@
                 android:textColor="#201010"
                 android:textSize="15sp"
                 android:fontFamily="@font/nunito_regular"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="14dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
                 />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#201010"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -295,7 +313,26 @@
                 android:textColor="#201010"
                 android:fontFamily="@font/nunito_regular"
                 android:textSize="15sp"
+                android:layout_marginBottom="10dp"
+
                 />
+
+            <TextView
+                android:id="@+id/myexit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_exit"
+                android:textColor="#201010"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingBottom="10dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#201010"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
     </RelativeLayout>

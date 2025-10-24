@@ -16,6 +16,26 @@
     <string name="route_finished">Route finished</string>
     <string name="route_loading_error">Route loading error</string>
     <string name="contacts_title">Contacts:</string>
+    <string name="my_routes">My routes</string>
+    <string name="my_exit">Exit</string>
+    <string name="back">Welcome back</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="create_new">Create a new account</string>
+    <string name="enter_name">Enter name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="agree">I agree with Terms and Privacy Policy</string>
+    <string name="tram">Tram №1</string>
+    <string name="bus">Bus №111</string>
+
+
+    <string name="signup">Sign up</string>
+    <string name="login">Log in</string>
+
+
+
+
+
     <string name="next_station_placeholder">Waiting for GPS…</string>
     <string name="developer_contacts">osipolesia13@gmail.com\n
     vladonkapol@gmail.com\n

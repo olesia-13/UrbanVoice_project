@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/churches"
+        android:scaleType="centerCrop"
+        android:alpha="0.1"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintVertical_bias="1.0"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_part1"
+            android:textSize="40sp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="#201010"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="8dp"  />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Urban"
+                android:textSize="40sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#201010"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Voice"
+                android:textSize="40sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#1828BD"
+                android:includeFontPadding="false"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:textColor="#201010"
+        android:textSize="20sp"
+        android:background="@drawable/black_borders"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="200dp"
+    />
+
+    <Button
+        android:id="@+id/btnsignup"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/signup"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:textColor="#201010"
+        android:backgroundTint="#FFC31F"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        android:background="@drawable/black_borders"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnlogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="38dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

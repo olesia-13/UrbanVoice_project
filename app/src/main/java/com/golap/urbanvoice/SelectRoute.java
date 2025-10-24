@@ -23,6 +23,8 @@ import java.util.Locale;
 
 public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRouteClickListener {
 
+
+
     private LinearLayout goBackButton;
     private EditText editSearch;
     private RecyclerView recyclerView;
