@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UrbanVoice">
         <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name=".YourRouteActivity"
             android:exported="false" />
         <activity

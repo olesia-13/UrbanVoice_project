@@ -37,31 +37,21 @@ public class LocationAudioService extends Service {
     private static final String TAG = "AudioService";
     private static final String CHANNEL_ID = "AudioGuideChannel";
     private static final int NOTIFICATION_ID = 101;
-    // Радіус тригера (20 метрів) - ПРИЙНЯТНЕ ЗНАЧЕННЯ ДЛЯ ПІШОГО/ГРОМАДСЬКОГО ТРАНСПОРТУ
     private static final float GEOFENCE_RADIUS = 20.0f;
-    private static final String PREFS_NAME = "AppSettings";
+    private static final String PREFS_NAME = "UrbanVoiceSettings";
     private static final String PREF_MUSIC_GENRE = "music_genre";
 
-    // Action для локального широкомовлення (для RouteMap)
     public static final String ACTION_LOCATION_UPDATE = "com.golap.urbanvoice.LOCATION_UPDATE";
-    // ВИДАЛЕНО: public static final String EXTRA_NEXT_STATION_NAME = "NEXT_STATION_NAME";
     public static final String EXTRA_ROUTE_FINISHED = "ROUTE_FINISHED";
 
-    // Audio Players
     private MediaPlayer guidePlayer;
     private MediaPlayer musicPlayer;
-    private String musicGenre; // "Melody", "Classical", "None"
+    private String musicGenre;
 
-    // GPS Клієнт та запити
     private FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
 
-    // Дані маршруту
     private List<Station> stations;
-    /* КРИТИЧНО: currentStationIndex ВКАЗУЄ НА ПОТОЧНУ АКТИВНУ СТАНЦІЮ
-    (ту, від якої ми від'їжджаємо або на якій ми зараз знаходимося).
-    На UI відображається назва станції за цим індексом.
-    */
     private int currentStationIndex = -1;
     private String routeKey;
     private String currentDirection;
@@ -73,23 +63,16 @@ public class LocationAudioService extends Service {
         Log.d(TAG, "onCreate: Сервіс створено.");
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Ініціалізація плеєрів та їх слухачів
-        guidePlayer = new MediaPlayer();
-        musicPlayer = new MediaPlayer();
-        musicPlayer.setLooping(true);
+        // Ініціалізуємо змінну в null, щоб пізніше чистіше створювати плеєр
+        guidePlayer = null;
+        musicPlayer = null;
 
-        // Встановлення слухача для гіда (перенесено до triggerAudioGuide для коректного reset)
-        // guidePlayer.setOnCompletionListener(mp -> startMusic());
-
-        // Налаштування LocationCallback для обробки нових координат
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 if (locationResult == null) return;
-
                 Location lastLocation = locationResult.getLastLocation();
                 if (lastLocation != null) {
-                    // !!! checkCurrentLocation тепер перевіряє НАСТУПНУ ціль і автоматично перемикає індекс !!!
                     checkCurrentLocation(lastLocation);
                 }
             }
@@ -105,54 +88,39 @@ public class LocationAudioService extends Service {
         double startLat = intent.getDoubleExtra("START_LAT", 0);
         double startLon = intent.getDoubleExtra("START_LON", 0);
 
-        // 1. Зчитування налаштувань музики
         loadMusicSettings();
 
-        // 2. Завантаження даних маршруту
         RouteData routeData = MapDataManager.getRouteData(routeKey);
 
         if (routeData != null) {
             currentDirection = directionFromIntent;
-            // ВИКОРИСТОВУЄМО ОДНОРАЗОВО ВИЗНАЧЕНИЙ НАПРЯМОК
             stations = MapDataManager.getStationsForDirection(routeKey, currentDirection);
 
             if (stations != null && !stations.isEmpty()) {
-                // !!! ВИЗНАЧАЄМО СТАРТОВУ АКТИВНУ СТАНЦІЮ НА ОСНОВІ ПОЗИЦІЇ !!!
-                // Ця логіка тепер коректно встановлює індекс
                 currentStationIndex = findClosestStationIndex(startLat, startLon);
 
-                // *** ВИПРАВЛЕННЯ: Додаткова перевірка завершення маршруту при старті ***
                 if (currentStationIndex == stations.size() - 1) {
                     float distToLast = calculateDistanceToStation(startLat, startLon, stations.get(currentStationIndex));
                     if (distToLast < GEOFENCE_RADIUS) {
                         Log.i(TAG, "Користувач стартував на кінцевій станції. Завершуємо маршрут.");
-                        // ЗМІНЕНО: Видалено аргумент назви станції
                         sendUIUpdate(true);
                         stopSelf();
                         return START_STICKY;
                     }
                 }
-                // *** Кінець виправлення ***
-
-                // Забезпечуємо, що індекс не від'ємний
                 if (currentStationIndex < 0) currentStationIndex = 0;
             }
         }
 
         Log.d(TAG, "onStartCommand: Запущено маршрут: " + routeKey + ", напрямок: " + currentDirection + ". Початковий активний індекс: " + currentStationIndex);
 
-        // 3. Створення та запуск Foreground-режиму
         startForeground(NOTIFICATION_ID, buildNotification());
-
-        // 4. Запит на оновлення місцезнаходження
         requestLocationUpdates();
 
-        // 5. Оновлення UI: Всі виклики, які посилали назву станції, ВИДАЛЕНО або ЗМІНЕНО
-        // Видалення: if (stations != null && !stations.isEmpty() && currentStationIndex < stations.size()) {
-        //                updateUIForCurrentStation();
-        //            } else {
-        //                sendUIUpdate(getString(R.string.route_loading_error), false);
-        //            }
+        // КРИТИЧНЕ ВИПРАВЛЕННЯ: ЗАПУСКАЄМО МУЗИКУ ПІСЛЯ ЗАПУСКУ СЕРВІСУ!
+        // Музика мала б бути запущена, якщо не запускається аудіогід, але
+        // на початку, коли гід ще не спрацював, має бути музика.
+        startMusic();
 
         return START_STICKY;
     }
@@ -266,44 +234,31 @@ public class LocationAudioService extends Service {
             return;
         }
 
-        // Цільовий індекс - це наступна станція
         int targetIndex = currentStationIndex + 1;
 
-        // 1. Перевірка завершення маршруту
         if (targetIndex >= stations.size()) {
-            // Ми вже на останній активній станції. Маршрут по суті завершено.
             handleRouteFinished();
             return;
         }
 
-        // 2. Отримання наступної цільової станції
         Station targetStation = stations.get(targetIndex);
 
-        // Обчислення відстані
         Location targetLocation = new Location("target");
         targetLocation.setLatitude(targetStation.getLatitude());
         targetLocation.setLongitude(targetStation.getLongitude());
 
         float distanceToTarget = currentLocation.distanceTo(targetLocation);
 
-        // 3. Тригер: Якщо ми в радіусі GEOFENCE_RADIUS
         if (distanceToTarget <= GEOFENCE_RADIUS) {
             Log.d(TAG, String.format(Locale.getDefault(),
                     "ДОСЯГНУТО ЦІЛЬ: Станція %s. Дистанція: %.1fм", getString(targetStation.getNameResId()), distanceToTarget));
 
             stopMusic();
-            // !!! ЗАПУСКАЄМО АУДІОГІД ДЛЯ ЦІЄЇ НОВОЇ СТАНЦІЇ !!!
             triggerAudioGuide(targetStation);
 
-            // КРОК ВПЕРЕД: currentStationIndex стає новою активною станцією
             currentStationIndex = targetIndex;
 
-            // ***** ВИДАЛЕНО: АВТОМАТИЧНЕ ОНОВЛЕННЯ СТАНЦІЇ В UI *****
-            // Видалено: updateUIForCurrentStation();
-            // *******************************************************
-
         } else {
-            // Логування відстані
             Log.d(TAG, String.format(Locale.getDefault(),
                     "ACTIVE: %s -> NEXT TARGET: %s. Дистанція: %.1fм",
                     getString(stations.get(currentStationIndex).getNameResId()),
@@ -311,24 +266,8 @@ public class LocationAudioService extends Service {
         }
     }
 
-    /**
-     * ЗМІНЕНО: Цей метод тепер не потрібен для UI, але ми зберігаємо його для логічної структури
-     * та перевірки на завершення маршруту.
-     */
-    private void updateUIForCurrentStation() {
-        // ЛОГІКА ОНОВЛЕННЯ UI (відправки назви станції) ПОВНІСТЮ ВИДАЛЕНА
-        if (stations == null || currentStationIndex < 0) return;
-
-        if (currentStationIndex >= stations.size()) {
-            // Якщо індекс вийшов за межі
-            handleRouteFinished();
-        }
-    }
-
 
     private void handleRouteFinished() {
-        // ПОТРІБЕН R.string.route_finished
-        // ЗМІНЕНО: Видалено аргумент назви станції
         sendUIUpdate(true);
         stopSelf();
     }
@@ -343,47 +282,67 @@ public class LocationAudioService extends Service {
      */
     private void loadMusicSettings() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        // За замовчуванням "Melody"
-        musicGenre = prefs.getString(PREF_MUSIC_GENRE, "Melody");
+
+        // 1. Зчитуємо ID, який був збережений у MainActivity (за замовчуванням R.id.radioMelody)
+        // ПРИМІТКА: Потрібно, щоб у вас був доступний R.id.radioMelody
+        int savedRadioId = prefs.getInt(PREF_MUSIC_GENRE, R.id.radioMelody);
+
+        // 2. Перетворюємо ID на строкову назву жанру
+        musicGenre = getMusicGenreFromId(savedRadioId);
+
+        Log.d(TAG, "Налаштування музики завантажено: " + musicGenre + ", (ID: " + savedRadioId + ")");
+    }
+
+    private String getMusicGenreFromId(int radioId) {
+        if (radioId == R.id.radioClassical) {
+            return MusicManager.GENRE_CLASSICAL;
+        } else if (radioId == R.id.radioNone) {
+            return MusicManager.GENRE_NONE;
+        } else {
+            return MusicManager.GENRE_MELODY;
+        }
     }
 
     /**
      * Запускає фонову музику, якщо обрано жанр.
      */
+    /**
+     * ОНОВЛЕНО: Чиста логіка створення та запуску musicPlayer.
+     */
     private void startMusic() {
-        if (musicGenre.equals("None")) {
+        // КРИТИЧНЕ ВИПРАВЛЕННЯ: Порівнюємо з константою GENRE_NONE з MusicManager
+        if (musicGenre.equals(MusicManager.GENRE_NONE)) {
             Log.d(TAG, "Фонова музика вимкнена в налаштуваннях.");
             return;
         }
 
-        int musicResId;
-
-        // ПОТРІБНІ R.raw.music_melody та R.raw.music_classical
-        if (musicGenre.equals("Classical")) {
-            // ПОТРІБНА КОРЕКТНА ІНТЕГРАЦІЯ З MusicManager, якщо ви його використовуєте
-            // Наразі залишаємо оригінальну логіку з R.raw
-            musicResId = R.raw.music_classical;
-        } else { // "Melody" або будь-який інший дефолт
-            musicResId = R.raw.music_melody;
-        }
-
         try {
-            // *** ВИПРАВЛЕННЯ: Звільнення ресурсів перед створенням нового ***
-            if (musicPlayer != null) {
-                if (musicPlayer.isPlaying()) musicPlayer.stop();
-                musicPlayer.reset();
-                musicPlayer.release();
-            }
-            // Переініціалізація
-            musicPlayer = new MediaPlayer();
+            // Отримуємо ID ресурсу для випадкового треку обраного жанру
+            int musicResId = MusicManager.getRandomAudioResId(this, musicGenre);
 
-            // Створення нового екземпляра
+            if (musicResId == 0) {
+                // Це обробить ситуацію, якщо для обраного жанру (Melody/Classical)
+                // не було знайдено жодного аудіофайлу у res/raw.
+                Log.e(TAG, "Не знайдено музичних файлів для жанру: " + musicGenre);
+                return;
+            }
+
+            // 1. Зупиняємо та звільняємо старий плеєр (якщо існує)
+            if (musicPlayer != null) {
+                if (musicPlayer.isPlaying()) {
+                    musicPlayer.stop();
+                }
+                musicPlayer.release();
+                musicPlayer = null; // ВАЖЛИВО: Встановлюємо в null після звільнення
+            }
+
+            // 2. Створюємо та запускаємо новий плеєр
             musicPlayer = MediaPlayer.create(this, musicResId);
 
             if (musicPlayer != null) {
-                musicPlayer.setLooping(true);
+                musicPlayer.setLooping(true); // Зациклюємо відтворення
                 musicPlayer.start();
-                Log.i(TAG, "Фонова музика (" + musicGenre + ") ЗАПУЩЕНА.");
+                Log.i(TAG, "Фонова музика (" + musicGenre + ") ЗАПУЩЕНА. Ресурс: " + getResources().getResourceEntryName(musicResId));
             }
         } catch (Exception e) {
             Log.e(TAG, "Помилка відтворення музики", e);
@@ -396,7 +355,6 @@ public class LocationAudioService extends Service {
     private void stopMusic() {
         if (musicPlayer != null && musicPlayer.isPlaying()) {
             musicPlayer.pause();
-            // Немає потреби seekTo(0), якщо ми її потім відновимо або reset
             Log.i(TAG, "Фонова музика ЗУПИНЕНА.");
         }
     }
@@ -418,13 +376,12 @@ public class LocationAudioService extends Service {
     }
 
     private void triggerAudioGuide(Station station) {
-        stopMusic(); // Гарантуємо, що музика зупинена
+        stopMusic();
 
         String audioKey = station.getAudioResKey();
-        Log.i(TAG, "*** ТРИГЕР АУДІО! *** Запустити аудіогід для станції: " + getString(station.getNameResId()));
+        Log.i(TAG, "Запустити аудіогід для станції: " + getString(station.getNameResId()) + " з ключем: " + audioKey); // Додано логування ключа
 
-        // 1. Отримання ID ресурсу
-        int audioResId = getResources().getIdentifier(audioKey, "raw", getPackageName());
+        int audioResId = MusicManager.getSpecificAudioResId(this, audioKey);
 
         if (audioResId == 0) {
             Log.e(TAG, "Аудіофайл не знайдено для ключа: " + audioKey + ". Запускаємо музику.");
@@ -433,28 +390,28 @@ public class LocationAudioService extends Service {
         }
 
         try {
-            // 2. Ініціалізація та відтворення
+            // 1. Зупиняємо та звільняємо старий плеєр (якщо існує)
             if (guidePlayer != null) {
                 if (guidePlayer.isPlaying()) guidePlayer.stop();
-                guidePlayer.reset();
-                guidePlayer.release(); // Звільняємо старий плеєр
+                guidePlayer.release();
+                guidePlayer = null; // ВАЖЛИВО: Встановлюємо в null
             }
 
+            // 2. Створюємо новий плеєр
             guidePlayer = MediaPlayer.create(this, audioResId);
 
             if (guidePlayer != null) {
-                // Встановлюємо слухач, який запустить музику після завершення гіда
                 guidePlayer.setOnCompletionListener(mp -> {
                     Log.d(TAG, "Аудіогід завершено. Запускаємо фонову музику.");
                     startMusic();
                 });
 
                 guidePlayer.start();
-                Log.i(TAG, "Аудіогід ЗАПУЩЕНО: " + audioKey);
+                Log.i(TAG, "Аудіогід ЗАПУЩЕНО: " + getResources().getResourceEntryName(audioResId));
             }
         } catch (Exception e) {
             Log.e(TAG, "Помилка відтворення аудіогіда", e);
-            startMusic(); // Помилка відтворення -> запускаємо музику
+            startMusic();
         }
     }
 

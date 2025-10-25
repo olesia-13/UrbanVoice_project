@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:background="@color/background"
+    tools:context=".PrivacyPolicyActivity">
+
+    <TextView
+        android:id="@+id/privaty"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:textSize="15sp"
+        android:textColor="#201010"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/policy" />
+
+
+</ScrollView>

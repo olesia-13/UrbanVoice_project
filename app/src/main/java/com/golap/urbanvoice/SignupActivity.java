@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class SignupActivity extends AppCompatActivity {
 
     private Button btn_sign_up;
+    private RadioButton radio_terms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,20 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         btn_sign_up = findViewById(R.id.btn_sign_up);
+        radio_terms = findViewById(R.id.radio_terms);
 
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        radio_terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignupActivity.this, PrivacyPolicyActivity.class);
                 startActivity(intent);
             }
         });

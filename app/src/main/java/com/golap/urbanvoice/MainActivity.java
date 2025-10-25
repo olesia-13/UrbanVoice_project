@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "UrbanVoiceSettings";
     private static final String PREF_LANGUAGE_KEY = "selected_language";
-    private static final String PREF_MUSIC_GENRE_KEY = "music_genre_id";
+    private static final String PREF_MUSIC_GENRE_KEY = "music_genre"; // Уніфікуємо ключ із сервісом!
     private DrawerLayout drawerLayout;
     private ImageButton btnSettings;
     private ImageButton btnCloseDrawer;

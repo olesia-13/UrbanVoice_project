@@ -1,24 +1,126 @@
 package com.golap.urbanvoice;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.NestedScrollView;
 
 public class PhotoActivity extends AppCompatActivity {
+
+    private TextView routeTitle;
+    private LinearLayout photos_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_photo);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        routeTitle = findViewById(R.id.route_photo_title);
+        photos_container = findViewById(R.id.photos_container);
+        LinearLayout backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> finish());
+
+
+
+        // Отримуємо дані про маршрут
+        String routeDisplayName = getIntent().getStringExtra("ROUTE_DISPLAY_NAME");
+        String routeKey = getIntent().getStringExtra("ROUTE_KEY");
+
+        routeTitle.setText(routeDisplayName != null ? routeDisplayName : "Фотографії маршруту");
+
+        // Завантажуємо фотографії для поточного маршруту
+        loadRoutePhotos(routeKey);
+    }
+
+    private void loadRoutePhotos(String routeKey) {
+        if (routeKey == null) return;
+
+        // Отримуємо список фотографій для маршруту
+        String[] photoNames = getPhotoResourcesForRoute(routeKey);
+
+        for (String photoName : photoNames) {
+            int resId = getResources().getIdentifier(photoName, "drawable", getPackageName());
+
+            if (resId != 0) {
+                addPhotoToContainer(resId);
+            }
+        }
+
+        // Якщо фотографій не знайдено
+        if (photos_container.getChildCount() == 0) {
+            TextView noPhotosText = new TextView(this);
+            noPhotosText.setText("Фотографії для цього маршруту ще не додані");
+            noPhotosText.setTextSize(16);
+            noPhotosText.setPadding(50, 100, 50, 100);
+            photos_container.addView(noPhotosText);
+        }
+    }
+
+    private void addPhotoToContainer(int imageResId) {
+        ImageView imageView = new ImageView(this);
+
+        // Налаштування розмірів та відступів
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(30, 20, 30, 40);
+        imageView.setLayoutParams(params);
+
+        // Налаштування зображення
+        imageView.setImageResource(imageResId);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setAdjustViewBounds(true);
+
+        // Закруглення кутів (якщо потрібно)
+        imageView.setClipToOutline(true);
+
+        photos_container.addView(imageView);
+    }
+
+    /**
+     * Повертає масив назв ресурсів фотографій для конкретного маршруту
+     */
+    private String[] getPhotoResourcesForRoute(String routeKey) {
+        switch (routeKey) {
+            case "R001": // Трамвай №1
+                return new String[]{
+                        "photo_r001_1", "photo_r001_2", "photo_r001_3",
+                        "photo_r001_4", "photo_r001_5", "photo_r001_6",
+                        "photo_r001_7", "photo_r001_8", "photo_r001_9",
+                        "photo_r001_10", "photo_r001_11", "photo_r001_12",
+                        "photo_r001_13", "photo_r001_14", "photo_r001_15",
+                        "photo_r001_16", "photo_r001_17", "photo_r001_18",
+                        "photo_r001_19", "photo_r001_20", "photo_r001_21",
+                        "photo_r001_22", "photo_r001_23", "photo_r001_24",
+                        "photo_r001_25"
+                };
+
+            case "R111": // Тролейбус №111
+                return new String[]{
+                        "photo_r111_1", "photo_r111_2", "photo_r111_3",
+                        "photo_r111_4", "photo_r111_5"
+                };
+
+            case "R038": // Тролейбус №38
+                return new String[]{
+                        "photo_r038_1", "photo_r038_2", "photo_r038_3",
+                        "photo_r038_4", "photo_r038_5", "photo_r038_6",
+                        "photo_r038_7", "photo_r038_8", "photo_r038_9",
+                        "photo_r038_10", "photo_r038_11", "photo_r038_12",
+                        "photo_r038_13", "photo_r038_14", "photo_r038_15",
+                        "photo_r038_16", "photo_r038_17", "photo_r038_18",
+                        "photo_r038_19", "photo_r038_20", "photo_r038_21",
+                        "photo_r038_22", "photo_r038_23", "photo_r038_24",
+                };
+
+            default:
+                return new String[]{};
+        }
     }
 }
