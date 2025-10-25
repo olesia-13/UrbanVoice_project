@@ -104,7 +104,12 @@ public class PhotoActivity extends AppCompatActivity {
             case "R111": // Тролейбус №111
                 return new String[]{
                         "photo_r111_1", "photo_r111_2", "photo_r111_3",
-                        "photo_r111_4", "photo_r111_5"
+                        "photo_r111_4", "photo_r111_5", "photo_r111_6",
+                        "photo_r111_7", "photo_r111_8", "photo_r111_9",
+                        "photo_r111_10", "photo_r111_11", "photo_r111_12",
+                        "photo_r111_13", "photo_r111_14", "photo_r111_15",
+                        "photo_r111_16", "photo_r111_17", "photo_r111_18",
+                        "photo_r111_19"
                 };
 
             case "R038": // Тролейбус №38
