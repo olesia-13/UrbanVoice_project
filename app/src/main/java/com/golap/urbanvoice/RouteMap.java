@@ -10,6 +10,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -51,6 +52,8 @@ import java.util.Set;
 
 public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final String TAG = "RouteMap"; // Тег для логування
+
     // --- Карта та GPS ---
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
@@ -78,7 +81,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
     private String routeKey; // Базовий ключ (наприклад, R001)
     private String routeDisplayName;
     private RouteData currentRouteData;
-    // Напрямок, що визначається динамічно при старті
+    // Напрямок, що визначається динамічно при старті (наприклад, "_A" або "_B")
     private String currentDirection = null;
 
     // --- Local Broadcast ---
@@ -192,7 +195,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
                     if (isFinished) {
                         // Якщо маршрут завершено, зупиняємо сервіс і оновлюємо кнопку
-                        stopAudioGuide();
+                        stopAudioGuide(true); // Передаємо true, бо маршрут завершено
                         // Виводимо повідомлення про завершення (текст вже має бути у nextStationName)
                         Toast.makeText(context, nextStationName, Toast.LENGTH_LONG).show();
                     }
@@ -356,7 +359,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
     private void toggleAudioGuide() {
         if (isAudioGuideRunning) {
-            stopAudioGuide();
+            stopAudioGuide(false); // Зупиняємо, але зберігаємо напрямок
         } else {
             if (currentRouteData == null) {
                 Toast.makeText(this, "Помилка: Не знайдено даних маршруту.", Toast.LENGTH_SHORT).show();
@@ -452,9 +455,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
                 }
                 // Якщо рух визначено, але Bearing від сенсора немає, обчислюємо його
                 else if (movementDetected) {
-                    // ТУТ БУЛА ПОТЕНЦІЙНА ПОМИЛКА: використовуйте lastValidLocation (який був встановлений на попередньому оновленні)
                     // Зауваження: в цьому оновленому коді lastValidLocation - це завжди остання успішна локація
-                    // Використаємо простий bearing, якщо не визначено рух (як останній шанс)
                     if (lastValidLocation != null) {
                         bearing = lastValidLocation.bearingTo(currentLocation);
                     }
@@ -476,7 +477,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
                     startAudioGuideService(determinedDirection, currentLocation);
                 } else {
                     // !!! ВИКЛИК ПОМИЛКИ !!!
-                    handleDirectionFailure(null, "Напрямок не визначено або ви далеко від маршруту. Спробуйте почати рух.");
+                    handleDirectionFailure(currentLocation, "Напрямок не визначено або ви далеко від маршруту. Спробуйте почати рух.");
                 }
 
                 // В кінці завжди зупиняємо активну перевірку
@@ -488,7 +489,6 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
         fusedLocationClient.requestLocationUpdates(locationRequest, directionCheckLocationCallback, Looper.getMainLooper());
     }
 
-    // 🆕 ДОДАЙТЕ НОВИЙ ДОПОМІЖНИЙ МЕТОД ДЛЯ ОБРОБКИ ПОМИЛКИ
     private void handleDirectionFailure(Location location, String message) {
         Toast.makeText(RouteMap.this, message, Toast.LENGTH_LONG).show();
         stopDirectionCheck();
@@ -511,6 +511,8 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
      * Запускає LocationAudioService, передаючи визначений напрямок та початкові координати.
      */
     private void startAudioGuideService(String direction, Location location) {
+        Log.d(TAG, "Starting service with Direction: " + direction + " for RouteKey: " + routeKey);
+
         Intent serviceIntent = new Intent(this, LocationAudioService.class);
         serviceIntent.putExtra("ROUTE_KEY", routeKey);
         serviceIntent.putExtra("DIRECTION", direction);
@@ -529,7 +531,11 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
         Toast.makeText(this, "Аудіогід ЗАПУЩЕНО (" + direction + ")", Toast.LENGTH_SHORT).show();
     }
 
-    private void stopAudioGuide() {
+    /**
+     * Зупиняє сервіс.
+     * @param isRouteFinished Якщо true, скидаємо напрямок (маршрут пройдено).
+     */
+    private void stopAudioGuide(boolean isRouteFinished) {
         Intent serviceIntent = new Intent(this, LocationAudioService.class);
         stopService(serviceIntent);
 
@@ -539,7 +545,20 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
         // ПОТРІБЕН R.string.next_station_placeholder
         nextStationText.setText(getString(R.string.next_station_placeholder));
-        // currentDirection = null; // ВИДАЛИТИ АБО ЗАКОМЕНТУВАТИ: Зберігаємо напрямок!
+
+        // КЛЮЧОВА ЗМІНА: Скидаємо напрямок ТІЛЬКИ, якщо маршрут ЗАВЕРШЕНО
+        if (isRouteFinished) {
+            currentDirection = null;
+            Log.d(TAG, "Route finished. Direction reset to null.");
+        } else {
+            // Напрямок залишається збереженим для кнопки ТЕКСТУ
+            Log.d(TAG, "Audio guide stopped manually. Direction remains: " + currentDirection);
+        }
+    }
+
+    // Перевантажений метод для ручної зупинки
+    private void stopAudioGuide() {
+        stopAudioGuide(false);
     }
 
     private void updateButtonUI(boolean isRunning) {
@@ -558,6 +577,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
     private void showFullTextGuide() {
         // Текст можна дивитися лише після визначення напрямку
         if (currentRouteData == null || currentDirection == null) {
+            // Це спрацює, якщо не було жодного запуску АБО маршрут повністю пройдено
             Toast.makeText(this, "Спочатку запустіть аудіогід для визначення напрямку.", Toast.LENGTH_LONG).show();
             return;
         }
@@ -565,14 +585,25 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
         // Використовуємо визначений напрямок для вибору тексту
         int textResId = MapDataManager.getTextResIdForDirection(routeKey, currentDirection);
 
+        Log.d(TAG, "Showing text for saved Direction: " + currentDirection + " with ResId: " + textResId);
+
         if (textResId != 0) {
-            // !!! УЗГОДЖЕНЕ ІМ'Я КЛАСУ TextGuideActivity.class !!!
+            // !!! УЗГОДЖЕНЕ ІМ'Я КЛАСУ TextActivity.class !!!
             Intent textIntent = new Intent(this, TextActivity.class);
             textIntent.putExtra("ROUTE_DISPLAY_NAME", routeDisplayName);
+            // ПЕРЕДАЄМО ТІЛЬКИ ID РЕСУРСУ, ЩО МІСТИТЬ ПОВНИЙ ТЕКСТ ДЛЯ ВИЗНАЧЕНОГО НАПРЯМКУ
             textIntent.putExtra("TEXT_RES_ID", textResId);
+
+            // **********************************************
+            // 🚨 КРИТИЧНЕ ВИПРАВЛЕННЯ: Додаємо передачу ключа маршруту (R001)
+            textIntent.putExtra("ROUTE_KEY", routeKey);
+            // **********************************************
+
+            // Додатково передаємо напрямок, якщо TextActivity його використовує
+            textIntent.putExtra("DIRECTION", currentDirection);
             startActivity(textIntent);
         } else {
-            Toast.makeText(this, "Текстовий гід не знайдено.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Текстовий гід не знайдено для напрямку " + currentDirection, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -131,7 +131,7 @@ public class MapDataManager {
                 forwardStations,
                 backwardStations,
                 polylineEncodedTram1,
-                R.string.text_r001_forward,
+                R.string.route_r001_forward_text_composite,
                 R.string.text_r001_backward
         ));
 
@@ -487,71 +487,51 @@ public class MapDataManager {
         }
 
         List<Station> forwardStations = data.getForwardStations();
-
-        if (forwardStations.isEmpty()) {
+        if (forwardStations == null || forwardStations.isEmpty()) {
             return null;
         }
 
-        // Вкладаємо всю чутливу логіку в try-catch для запобігання крашу
         try {
-            // 1. Знаходимо найближчу станцію на маршруті та її індекс
+            // 1️⃣ Знаходимо найближчу станцію
             int nearestIndex = findNearestStationIndex(forwardStations, userLocation);
-
-            // 🚨 КРИТИЧНА ПЕРЕВІРКА ІНДЕКСУ 🚨
             if (nearestIndex == -1) {
-                return null; // Успішно запобігаємо IndexOutOfBoundsException
-            }
-
-            Station nearestStation = forwardStations.get(nearestIndex);
-
-            // Перевіряємо, чи користувач знаходиться в межах MAX_DISTANCE_FOR_START
-            float distanceToNearest = calculateDistance(userLocation, nearestStation);
-
-            if (distanceToNearest > MAX_DISTANCE_FOR_START) {
-                // Користувач надто далеко від маршруту
                 return null;
             }
 
-            // 2. Обчислюємо кути руху (bearing) вздовж маршруту від найближчої точки
+            Station nearestStation = forwardStations.get(nearestIndex);
+            float distanceToNearest = calculateDistance(userLocation, nearestStation);
 
-            // Кут FWD: Кут від найближчої станції до наступної
+            // Якщо користувач далеко — не визначаємо напрямок
+            if (distanceToNearest > MAX_DISTANCE_FOR_START * 2) {
+                return null;
+            }
+
+            // 2️⃣ Визначаємо напрям маршруту поблизу користувача
             float forwardRouteBearing;
-
-            // Якщо це не остання станція
             if (nearestIndex < forwardStations.size() - 1) {
-                Station nextStation = forwardStations.get(nearestIndex + 1);
-                forwardRouteBearing = calculateBearing(nearestStation, nextStation);
+                Station next = forwardStations.get(nearestIndex + 1);
+                forwardRouteBearing = calculateBearing(nearestStation, next);
             } else if (nearestIndex > 0) {
-                // Якщо це остання станція (F), беремо кут від попередньої (E) до неї (F)
-                Station prevStation = forwardStations.get(nearestIndex - 1);
-                forwardRouteBearing = calculateBearing(prevStation, nearestStation);
+                Station prev = forwardStations.get(nearestIndex - 1);
+                forwardRouteBearing = calculateBearing(prev, nearestStation);
             } else {
-                // Маршрут занадто короткий (1 або 0 станцій)
+                // Якщо лише одна станція — приймаємо напрямок уперед
                 return DIRECTION_FORWARD;
             }
 
-            // Кут BWD: Кут у протилежному напрямку (просто розворот FWD)
-            float backwardRouteBearing = normalizeBearing(forwardRouteBearing + 180);
-
-            // 3. Порівнюємо кут користувача з кутами маршруту
-
+            // 3️⃣ Обчислюємо кут зворотного напрямку
+            float backwardRouteBearing = normalizeBearing(forwardRouteBearing + 180f);
             float normalizedUserBearing = normalizeBearing(userBearing);
 
-            // Функція 'angle difference' знаходить найменший кут між двома напрямками
-            float diffForward = getAngleDifference(normalizedUserBearing, normalizeBearing(forwardRouteBearing));
+            // 4️⃣ Знаходимо різницю між кутом користувача і маршруту
+            float diffForward = getAngleDifference(normalizedUserBearing, forwardRouteBearing);
             float diffBackward = getAngleDifference(normalizedUserBearing, backwardRouteBearing);
 
-            // Вибираємо напрямок з найменшою різницею кута
-            if (diffForward < diffBackward) {
-                return DIRECTION_FORWARD;
-            } else {
-                return DIRECTION_BACKWARD;
-            }
+            // 5️⃣ Вибираємо напрям з меншим відхиленням
+            return diffForward <= diffBackward ? DIRECTION_FORWARD : DIRECTION_BACKWARD;
 
         } catch (Exception e) {
-            // Якщо будь-яка непередбачена помилка (краш) сталася під час обчислень,
-            // ми її ловимо і коректно повертаємо null. Це запобіжить вильоту програми.
-            // e.printStackTrace(); // Можна додати для налагодження
+            e.printStackTrace(); // 🔧 залиш для налагодження, потім можеш прибрати
             return null;
         }
     }

@@ -8,10 +8,10 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences; // <<< ДОДАНО
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.media.MediaPlayer; // <<< ДОДАНО
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
@@ -37,9 +37,10 @@ public class LocationAudioService extends Service {
     private static final String TAG = "AudioService";
     private static final String CHANNEL_ID = "AudioGuideChannel";
     private static final int NOTIFICATION_ID = 101;
-    private static final float GEOFENCE_RADIUS = 20.0f; // Радіус тригера (20 метрів)
-    private static final String PREFS_NAME = "AppSettings"; // <<< ДОДАНО
-    private static final String PREF_MUSIC_GENRE = "music_genre"; // <<< ДОДАНО
+    // Радіус тригера (20 метрів) - ПРИЙНЯТНЕ ЗНАЧЕННЯ ДЛЯ ПІШОГО/ГРОМАДСЬКОГО ТРАНСПОРТУ
+    private static final float GEOFENCE_RADIUS = 20.0f;
+    private static final String PREFS_NAME = "AppSettings";
+    private static final String PREF_MUSIC_GENRE = "music_genre";
 
     // Action для локального широкомовлення (для RouteMap)
     public static final String ACTION_LOCATION_UPDATE = "com.golap.urbanvoice.LOCATION_UPDATE";
@@ -47,9 +48,9 @@ public class LocationAudioService extends Service {
     public static final String EXTRA_ROUTE_FINISHED = "ROUTE_FINISHED";
 
     // Audio Players
-    private MediaPlayer guidePlayer; // <<< ДОДАНО
-    private MediaPlayer musicPlayer; // <<< ДОДАНО
-    private String musicGenre; // "Melody", "Classical", "None" <<< ДОДАНО
+    private MediaPlayer guidePlayer;
+    private MediaPlayer musicPlayer;
+    private String musicGenre; // "Melody", "Classical", "None"
 
     // GPS Клієнт та запити
     private FusedLocationProviderClient fusedLocationClient;
@@ -57,6 +58,10 @@ public class LocationAudioService extends Service {
 
     // Дані маршруту
     private List<Station> stations;
+    /* КРИТИЧНО: currentStationIndex ВКАЗУЄ НА ПОТОЧНУ АКТИВНУ СТАНЦІЮ
+    (ту, від якої ми від'їжджаємо або на якій ми зараз знаходимося).
+    На UI відображається назва станції за цим індексом.
+    */
     private int currentStationIndex = -1;
     private String routeKey;
     private String currentDirection;
@@ -71,13 +76,10 @@ public class LocationAudioService extends Service {
         // Ініціалізація плеєрів та їх слухачів
         guidePlayer = new MediaPlayer();
         musicPlayer = new MediaPlayer();
-        musicPlayer.setLooping(true); // Музика має грати по колу
+        musicPlayer.setLooping(true);
 
-        // Встановлення слухача для гіда
-        guidePlayer.setOnCompletionListener(mp -> {
-            Log.d(TAG, "Аудіогід завершено. Запускаємо фонову музику.");
-            startMusic(); // Запуск музики після завершення аудіогіда
-        });
+        // Встановлення слухача для гіда (перенесено до triggerAudioGuide для коректного reset)
+        // guidePlayer.setOnCompletionListener(mp -> startMusic());
 
         // Налаштування LocationCallback для обробки нових координат
         locationCallback = new LocationCallback() {
@@ -87,6 +89,7 @@ public class LocationAudioService extends Service {
 
                 Location lastLocation = locationResult.getLastLocation();
                 if (lastLocation != null) {
+                    // !!! checkCurrentLocation тепер перевіряє НАСТУПНУ ціль і автоматично перемикає індекс !!!
                     checkCurrentLocation(lastLocation);
                 }
             }
@@ -99,7 +102,6 @@ public class LocationAudioService extends Service {
 
         routeKey = intent.getStringExtra("ROUTE_KEY");
         String directionFromIntent = intent.getStringExtra("DIRECTION");
-        // !!! НОВІ ПАРАМЕТРИ ДЛЯ ВИЗНАЧЕННЯ ПОЧАТКОВОЇ СТАНЦІЇ !!!
         double startLat = intent.getDoubleExtra("START_LAT", 0);
         double startLon = intent.getDoubleExtra("START_LON", 0);
 
@@ -107,7 +109,7 @@ public class LocationAudioService extends Service {
         loadMusicSettings();
 
         // 2. Завантаження даних маршруту
-        RouteData routeData = MapDataManager.getRouteData(routeKey); // Припускаємо, що RouteData існує
+        RouteData routeData = MapDataManager.getRouteData(routeKey);
 
         if (routeData != null) {
             currentDirection = directionFromIntent;
@@ -115,22 +117,28 @@ public class LocationAudioService extends Service {
             stations = MapDataManager.getStationsForDirection(routeKey, currentDirection);
 
             if (stations != null && !stations.isEmpty()) {
-                // !!! ВИЗНАЧАЄМО СТАРТОВУ СТАНЦІЮ НА ОСНОВІ ПОЗИЦІЇ !!!
+                // !!! ВИЗНАЧАЄМО СТАРТОВУ АКТИВНУ СТАНЦІЮ НА ОСНОВІ ПОЗИЦІЇ !!!
+                // Ця логіка тепер коректно встановлює індекс
                 currentStationIndex = findClosestStationIndex(startLat, startLon);
 
-                // Перевірка на випадок, якщо користувач вже на кінцевій станції
-                if (currentStationIndex == stations.size() - 1 &&
-                        calculateDistanceToStation(startLat, startLon, stations.get(currentStationIndex)) < GEOFENCE_RADIUS) {
-                    // Якщо ми вже на кінцевій станції і близько до неї, ініціюємо завершення
-                    currentStationIndex++; // Перехід за межі списку для завершення при наступній перевірці
+                // *** ВИПРАВЛЕННЯ: Додаткова перевірка завершення маршруту при старті ***
+                if (currentStationIndex == stations.size() - 1) {
+                    float distToLast = calculateDistanceToStation(startLat, startLon, stations.get(currentStationIndex));
+                    if (distToLast < GEOFENCE_RADIUS) {
+                        Log.i(TAG, "Користувач стартував на кінцевій станції. Завершуємо маршрут.");
+                        sendUIUpdate(getString(R.string.route_finished), true);
+                        stopSelf();
+                        return START_STICKY;
+                    }
                 }
+                // *** Кінець виправлення ***
 
-                // Якщо індекс -1 (нічого не знайдено), повертаємо 0
-                if (currentStationIndex == -1) currentStationIndex = 0;
+                // Забезпечуємо, що індекс не від'ємний
+                if (currentStationIndex < 0) currentStationIndex = 0;
             }
         }
 
-        Log.d(TAG, "onStartCommand: Запущено маршрут: " + routeKey + ", напрямок: " + currentDirection + ". Початковий індекс: " + currentStationIndex);
+        Log.d(TAG, "onStartCommand: Запущено маршрут: " + routeKey + ", напрямок: " + currentDirection + ". Початковий активний індекс: " + currentStationIndex);
 
         // 3. Створення та запуск Foreground-режиму
         startForeground(NOTIFICATION_ID, buildNotification());
@@ -138,15 +146,11 @@ public class LocationAudioService extends Service {
         // 4. Запит на оновлення місцезнаходження
         requestLocationUpdates();
 
-        // 5. Оновлення UI: відображаємо першу цільову станцію
-        if (stations != null && currentStationIndex < stations.size() && currentStationIndex >= 0) {
-            sendUIUpdate(getString(stations.get(currentStationIndex).getNameResId()), false);
-        } else if (stations != null && currentStationIndex >= stations.size()) {
-            // Маршрут завершено при старті
-            sendUIUpdate(getString(R.string.route_finished), true); // ПОТРІБЕН R.string.route_finished
-            stopSelf();
+        // 5. Оновлення UI: відображаємо поточну активну станцію (це може бути A, коли їдемо до B)
+        if (stations != null && !stations.isEmpty() && currentStationIndex < stations.size()) {
+            updateUIForCurrentStation(); // НОВИЙ/ВИПРАВЛЕНИЙ ВИКЛИК: ВІДОБРАЖАЄМО АКТУАЛЬНУ СТАНЦІЮ
         } else {
-            sendUIUpdate(getString(R.string.route_loading_error), false); // ПОТРІБЕН R.string.route_loading_error
+            sendUIUpdate(getString(R.string.route_loading_error), false);
         }
 
         return START_STICKY;
@@ -161,7 +165,7 @@ public class LocationAudioService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
-                    "Аудіогід UrbanVoice", // ПОТРІБЕН R.string.channel_name
+                    "Аудіогід UrbanVoice",
                     NotificationManager.IMPORTANCE_LOW
             );
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -172,14 +176,16 @@ public class LocationAudioService extends Service {
 
         // Інтент для повернення до RouteMap
         Intent notificationIntent = new Intent(this, RouteMap.class);
+        // Додаємо FLAG_IMMUTABLE
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Створення сповіщення
+        // ПОТРІБЕН R.drawable.ic_bus
         return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle(getString(R.string.app_name)) // ПОТРІБЕН R.string.app_name
-                .setContentText("Аудіогід активовано. Слідкування за маршрутом...") // ПОТРІБЕН R.string.notification_text
-                .setSmallIcon(R.drawable.ic_bus) // ПОТРІБЕН R.drawable.ic_bus
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText("Аудіогід активовано. Слідкування за маршрутом...")
+                .setSmallIcon(R.drawable.ic_bus)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setOngoing(true)
@@ -206,101 +212,129 @@ public class LocationAudioService extends Service {
     }
 
     /**
-     * Знаходить індекс найближчої станції (яка буде наступною ціллю) при старті.
-     * Якщо користувач знаходиться біля станції X, ціллю стає X+1.
+     * ЛОГІКА ІНІЦІАЛІЗАЦІЇ: Знаходить індекс ПОЧАТКОВОЇ АКТИВНОЇ СТАНЦІЇ.
+     * @return Індекс станції.
      */
     private int findClosestStationIndex(double startLat, double startLon) {
-        if (stations == null || stations.isEmpty()) return -1;
+        if (stations == null || stations.isEmpty()) return 0; // Повертаємо 0, якщо список порожній
 
         float minDistance = Float.MAX_VALUE;
-        int closestIndex = -1;
+        int closestIndex = 0;
 
+        // 1. Знаходимо АБСОЛЮТНО найближчу станцію
         for (int i = 0; i < stations.size(); i++) {
-            Station station = stations.get(i);
-            float distance = calculateDistanceToStation(startLat, startLon, station);
+            float distance = calculateDistanceToStation(startLat, startLon, stations.get(i));
 
-            // Знаходимо найближчу станцію
             if (distance < minDistance) {
                 minDistance = distance;
                 closestIndex = i;
             }
         }
 
-        if (closestIndex == -1) return 0; // На всякий випадок, повертаємо першу
+        // 2. Логіка визначення ПОЧАТКОВОЇ АКТИВНОЇ СТАНЦІЇ
 
-        // КОРИГУЮЧА ЛОГІКА:
-        // Якщо ми знаходимось в радіусі GEOFENCE_RADIUS (20м) від найближчої станції (ClosestIndex)
+        // A. Якщо ми знаходимося ВЖЕ НА СТАНЦІЇ (в межах GEOFENCE_RADIUS):
         if (minDistance <= GEOFENCE_RADIUS) {
-            // Ціль повинна бути НАСТУПНА станція (ClosestIndex + 1), якщо вона існує.
-            if (closestIndex < stations.size() - 1) {
-                return closestIndex + 1;
-            } else {
-                // Це кінцева станція, ми знаходимося на ній.
-                // Ми залишаємо індекс кінцевої станції (closestIndex),
-                // оскільки логіка onStartCommand та checkCurrentLocation обробляє це.
-                return closestIndex;
-            }
-        } else {
-            // Якщо ми далеко від найближчої станції, наша ціль - сама ClosestIndex
+            // Ми на станції 'X'. Вона і є нашою поточною активною станцією.
+            Log.d(TAG, "findClosestStation: В межах радіуса станції. Активна: " + closestIndex);
             return closestIndex;
+        }
+
+        // B. Якщо ми знаходимося МІЖ станціями (далеко від найближчої):
+        if (closestIndex > 0) {
+            // Ми далеко від ClosestIndex (наприклад, C), отже, ми рухаємося ДО неї.
+            // Поточною АКТИВНОЮ (пройденою) має бути ClosestIndex - 1 (наприклад, B).
+            Log.d(TAG, "findClosestStation: Між станціями. Активна станція " + (closestIndex - 1));
+            return closestIndex - 1;
+        } else {
+            // Якщо найближча станція 0 (перша), і ми від неї далеко.
+            // Поточна активна станція = 0.
+            Log.d(TAG, "findClosestStation: Близько до початку. Активна станція 0.");
+            return 0;
         }
     }
 
 
+    /**
+     * КРИТИЧНА ЗМІНА: Перевіряє розташування відносно НАСТУПНОЇ ЦІЛІ (currentStationIndex + 1).
+     * Якщо досягнуто ціль, currentStationIndex збільшується, і UI оновлюється.
+     */
     private void checkCurrentLocation(Location currentLocation) {
-        // Перевірка кінця маршруту (Індекс вийшов за межі масиву)
-        if (stations == null || stations.isEmpty() || currentStationIndex < 0 || currentStationIndex >= stations.size()) {
-            if (stations != null && currentStationIndex >= stations.size()) {
-                Log.i(TAG, "Кінець маршруту. Зупиняємо сервіс.");
-                // Виклик методу для завершення роботи сервісу та оновлення UI
-                handleRouteFinished();
-            }
+        if (stations == null || stations.isEmpty() || currentStationIndex < 0) {
+            handleRouteFinished();
             return;
         }
 
-        Station targetStation = stations.get(currentStationIndex);
+        // Цільовий індекс - це наступна станція
+        int targetIndex = currentStationIndex + 1;
+
+        // 1. Перевірка завершення маршруту
+        if (targetIndex >= stations.size()) {
+            // Ми вже на останній активній станції. Маршрут по суті завершено.
+            // Потрібно лише очікувати, поки користувач від'їде від кінцевої.
+            // Але для UI це вже завершення.
+            handleRouteFinished();
+            return;
+        }
+
+        // 2. Отримання наступної цільової станції
+        Station targetStation = stations.get(targetIndex);
 
         // Обчислення відстані
         Location targetLocation = new Location("target");
         targetLocation.setLatitude(targetStation.getLatitude());
         targetLocation.setLongitude(targetStation.getLongitude());
 
-        float distanceToTarget = currentLocation.distanceTo(targetLocation); // Відстань у метрах
+        float distanceToTarget = currentLocation.distanceTo(targetLocation);
 
-        // 1. Тригер: Якщо ми в радіусі GEOFENCE_RADIUS (20м)
+        // 3. Тригер: Якщо ми в радіусі GEOFENCE_RADIUS
         if (distanceToTarget <= GEOFENCE_RADIUS) {
             Log.d(TAG, String.format(Locale.getDefault(),
-                    "ДОСЯГНУТО: Станція %s. Дистанція: %.1fм", getString(targetStation.getNameResId()), distanceToTarget));
+                    "ДОСЯГНУТО ЦІЛЬ: Станція %s. Дистанція: %.1fм", getString(targetStation.getNameResId()), distanceToTarget));
 
-            stopMusic(); // Зупиняємо фонову музику перед початком аудіогіда
-            triggerAudioGuide(targetStation); // Запускаємо аудіогід
+            stopMusic();
+            // !!! ЗАПУСКАЄМО АУДІОГІД ДЛЯ ЦІЄЇ НОВОЇ СТАНЦІЇ !!!
+            triggerAudioGuide(targetStation);
 
-            // Перехід до наступної станції
-            currentStationIndex++;
+            // КРОК ВПЕРЕД: currentStationIndex стає новою активною станцією
+            currentStationIndex = targetIndex;
 
-            // Оновлення UI: наступна станція (якщо не кінець)
-            if (currentStationIndex < stations.size()) {
-                Station nextStation = stations.get(currentStationIndex);
-                sendUIUpdate(getString(nextStation.getNameResId()), false);
-            } else {
-                // Це був останній тригер
-                handleRouteFinished();
-            }
+            // ******* АВТОМАТИЧНЕ ОНОВЛЕННЯ СТАНЦІЇ В UI ********
+            // Надсилає назву нової поточної станції (наприклад, C) в RouteMap
+            updateUIForCurrentStation();
+            // ***************************************************************
 
         } else {
+            // Логування відстані
             Log.d(TAG, String.format(Locale.getDefault(),
-                    "NEXT: %s. Дистанція: %.1fм", getString(targetStation.getNameResId()), distanceToTarget));
+                    "ACTIVE: %s -> NEXT TARGET: %s. Дистанція: %.1fм",
+                    getString(stations.get(currentStationIndex).getNameResId()),
+                    getString(targetStation.getNameResId()), distanceToTarget));
         }
     }
 
+    private void updateUIForCurrentStation() {
+        if (stations == null || currentStationIndex < 0) return;
+
+        if (currentStationIndex < stations.size()) {
+            // Якщо індекс у межах, показуємо цю станцію
+            sendUIUpdate(getString(stations.get(currentStationIndex).getNameResId()), false);
+        } else {
+            // Якщо індекс вийшов за межі
+            handleRouteFinished();
+        }
+    }
+
+
     private void handleRouteFinished() {
-        sendUIUpdate(getString(R.string.route_finished), true); // ПОТРІБЕН R.string.route_finished
+        // ПОТРІБЕН R.string.route_finished
+        sendUIUpdate(getString(R.string.route_finished), true);
         stopSelf();
     }
 
 
     // =======================================================
-    // III. ЛОГІКА АУДІО (Відновлено логіку MediaPlayer)
+    // III. ЛОГІКА АУДІО
     // =======================================================
 
     /**
@@ -331,13 +365,18 @@ public class LocationAudioService extends Service {
         }
 
         try {
-            if (musicPlayer.isPlaying()) {
-                musicPlayer.stop();
+            // *** ВИПРАВЛЕННЯ: Звільнення ресурсів перед створенням нового ***
+            if (musicPlayer != null) {
+                if (musicPlayer.isPlaying()) musicPlayer.stop();
                 musicPlayer.reset();
+                musicPlayer.release();
             }
+            // Переініціалізація
+            musicPlayer = new MediaPlayer();
 
-            musicPlayer.release(); // Звільняємо старий ресурс перед створенням нового
+            // Створення нового екземпляра
             musicPlayer = MediaPlayer.create(this, musicResId);
+
             if (musicPlayer != null) {
                 musicPlayer.setLooping(true);
                 musicPlayer.start();
@@ -353,29 +392,26 @@ public class LocationAudioService extends Service {
      */
     private void stopMusic() {
         if (musicPlayer != null && musicPlayer.isPlaying()) {
-            musicPlayer.pause(); // Краще пауза, якщо потрібно швидко відновити, або stop/reset
-            musicPlayer.seekTo(0);
+            musicPlayer.pause();
+            // Немає потреби seekTo(0), якщо ми її потім відновимо або reset
             Log.i(TAG, "Фонова музика ЗУПИНЕНА.");
         }
     }
 
     /**
-     * Зупиняє та звільняє обидва плеєри.
+     * Зупиняє та звільняє обидва плеєри. (Викликається в onDestroy)
      */
-    private void stopAudioGuide() {
+    private void releasePlayers() {
         if (guidePlayer != null) {
             if (guidePlayer.isPlaying()) guidePlayer.stop();
             guidePlayer.release();
+            guidePlayer = null;
         }
         if (musicPlayer != null) {
             if (musicPlayer.isPlaying()) musicPlayer.stop();
             musicPlayer.release();
+            musicPlayer = null;
         }
-        // Переініціалізуємо для наступного запуску, якщо сервіс не зупинився
-        guidePlayer = new MediaPlayer();
-        guidePlayer.setOnCompletionListener(mp -> startMusic());
-        musicPlayer = new MediaPlayer();
-        musicPlayer.setLooping(true);
     }
 
     private void triggerAudioGuide(Station station) {
@@ -398,18 +434,20 @@ public class LocationAudioService extends Service {
             if (guidePlayer != null) {
                 if (guidePlayer.isPlaying()) guidePlayer.stop();
                 guidePlayer.reset();
+                guidePlayer.release(); // Звільняємо старий плеєр
+            }
 
+            guidePlayer = MediaPlayer.create(this, audioResId);
+
+            if (guidePlayer != null) {
                 // Встановлюємо слухач, який запустить музику після завершення гіда
                 guidePlayer.setOnCompletionListener(mp -> {
                     Log.d(TAG, "Аудіогід завершено. Запускаємо фонову музику.");
                     startMusic();
                 });
 
-                guidePlayer = MediaPlayer.create(this, audioResId);
-                if (guidePlayer != null) {
-                    guidePlayer.start();
-                    Log.i(TAG, "Аудіогід ЗАПУЩЕНО: " + audioKey);
-                }
+                guidePlayer.start();
+                Log.i(TAG, "Аудіогід ЗАПУЩЕНО: " + audioKey);
             }
         } catch (Exception e) {
             Log.e(TAG, "Помилка відтворення аудіогіда", e);
@@ -440,12 +478,12 @@ public class LocationAudioService extends Service {
             return;
         }
 
-        // LocationRequest: оновлення кожні 5 секунд
+        // LocationRequest: оновлення кожні 5 секунд, мінімальна відстань 10 метрів
         LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000)
-                // ВИПРАВЛЕНО: використання нового методу для встановлення мінімальної відстані
-                .setMinUpdateDistanceMeters(10) // Оновлення, якщо пройшли 10 метрів
+                .setMinUpdateDistanceMeters(10)
                 .build();
 
+        // Використовуємо Looper.getMainLooper()
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
         Log.d(TAG, "Запит на оновлення місцезнаходження запущено.");
     }
@@ -465,7 +503,7 @@ public class LocationAudioService extends Service {
     @Override
     public void onDestroy() {
         stopLocationUpdates();
-        stopAudioGuide(); // Звільнення плеєрів
+        releasePlayers(); // Звільнення плеєрів
         stopForeground(true);
 
         Log.d(TAG, "onDestroy: Сервіс успішно знищено.");

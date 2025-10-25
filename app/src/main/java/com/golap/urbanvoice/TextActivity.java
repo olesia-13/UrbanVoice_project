@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.text.Html;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -14,7 +15,6 @@ public class TextActivity extends AppCompatActivity {
 
     private TextView titleTextView;
     private TextView contentTextView;
-    private LinearLayout backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class TextActivity extends AppCompatActivity {
 
         titleTextView = findViewById(R.id.text_guide_title);
         contentTextView = findViewById(R.id.text_guide_content);
-        backButton = findViewById(R.id.back_button);
+        LinearLayout backButton = findViewById(R.id.back_button);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -32,31 +32,53 @@ public class TextActivity extends AppCompatActivity {
             return insets;
         });
 
-        // 3. Обробка кнопки "Повернутися"
         backButton.setOnClickListener(v -> finish());
-
-        // 4. Завантаження та відображення даних
         loadTextData();
     }
 
     private void loadTextData() {
         Intent intent = getIntent();
         String routeDisplayName = intent.getStringExtra("ROUTE_DISPLAY_NAME");
+        String routeKey = intent.getStringExtra("ROUTE_KEY");
+        String direction = intent.getStringExtra("DIRECTION");
         int textResId = intent.getIntExtra("TEXT_RES_ID", 0);
 
-        // Встановлення заголовка маршруту
         if (titleTextView != null) {
             titleTextView.setText(routeDisplayName != null ? routeDisplayName : "Текстовий гід");
         }
 
-        // Встановлення вмісту тексту
-        if (contentTextView != null) {
-            if (textResId != 0) {
-                contentTextView.setText(getString(textResId));
-            } else {
-                contentTextView.setText("Текст гіда не знайдено. Переконайтеся, що ви передали правильний ресурсний ID.");
+        if (contentTextView == null) return;
+
+        // Якщо маємо routeKey і direction — шукаємо великий текст
+        if (routeKey != null && direction != null) {
+            StringBuilder fullText = new StringBuilder();
+
+            // Назва основи для текстів: наприклад text_r111_a_1, text_r111_a_2, text_r111_a_3
+            String baseName = String.format("text_%s_%s_",
+                    routeKey.toLowerCase(), direction.toLowerCase());
+
+            int partIndex = 1;
+            while (true) {
+                int resId = getResources().getIdentifier(baseName + partIndex, "string", getPackageName());
+                if (resId == 0) break; // якщо не знайдено більше частин
+                String partText = getString(resId);
+                if (partIndex > 1) fullText.append("<br><br><hr><br><br>");
+                fullText.append(partText);
+                partIndex++;
+            }
+
+            if (fullText.length() > 0) {
+                contentTextView.setText(Html.fromHtml(fullText.toString(), Html.FROM_HTML_MODE_LEGACY));
+                return;
             }
         }
-    }
 
+        // Якщо великого тексту не знайдено — показуємо короткий або повідомлення
+        if (textResId != 0) {
+            String shortText = getString(textResId);
+            contentTextView.setText(Html.fromHtml(shortText, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            contentTextView.setText("Текст гіда не знайдено для цього маршруту або напрямку.");
+        }
+    }
 }

@@ -88,8 +88,12 @@
     <string name="station_r001_15">Galytska Square</string>
     <string name="station_r001_16">Starovokzalna</string>
 
+    <string name="route_r001_forward_text_composite" translatable="false">
+        COMPOSITE_ID_R001_FORWARD
+    </string>
 
-    <string name="text_r001_forward"><![CDATA[<p><b>We set off from Mykhailivska Borshchahivka station</b>, a quiet and somewhat dreamy part of Kyiv. Here, you can still hear the wind blowing across the remains of old fields and the asphalt crunching under your feet.</p>
+
+    <string name="text_r001_forward_1"><![CDATA[<p><b>We set off from Mykhailivska Borshchahivka station</b>, a quiet and somewhat dreamy part of Kyiv. Here, you can still hear the wind blowing across the remains of old fields and the asphalt crunching under your feet.</p>
 <p>But we are not on foot. We are on a tram.</p>
 <p>And that means that a routine trip is no longer just “from point A to point B.” It is a little journey.</p>
 <p>This area began to develop actively in the 1970s as part of a grand plan to expand the capital. Once upon a time, there were fields, dachas, and dirt roads here. Now there are supermarkets, residential complexes, overpasses, and schools.</p>
@@ -173,9 +177,9 @@
 <p>We are approaching Industrialna. A stop with a name that hides nothing.</p>
 <p>This is an area of factories, warehouses, and workshops. Once upon a time, life was bustling here: the Kyiv Electrical Equipment Factory, the Tochelectroprylad Factory, and dozens of other enterprises that supplied not only the capital but the entire Soviet Union. Dynasties worked here — father, son, grandson.</p>
 <p>Imagine, in the 1970s, in workshops standing right next to each other, parts for the first Soviet televisions and radio receivers were manufactured. And also parts for military communication systems. And all this — simply under the modest name of “Industrialna.”</p>
-<p>Now the factories have either been turned into business centers or lie dormant, silent witnesses to the past. But if you look closely through the window, you may see an old sign or a brick chimney that remembers the smoke of working days.</p>
+<p>Now the factories have either been turned into business centers or lie dormant, silent witnesses to the past. But if you look closely through the window, you may see an old sign or a brick chimney that remembers the smoke of working days.</p>]]></string>
 
-<p>Industrial Station. If you get off, don’t forget to look under your feet: there may be a nut from 1973 here. And if you continue on, it gets even more interesting ahead.</p>
+<string name="text_r001_forward_2"> <![CDATA[<p>Industrial Station. If you get off, don’t forget to look under your feet: there may be a nut from 1973 here. And if you continue on, it gets even more interesting ahead.</p>
 <p>The rails under the wheels rattle as if someone is whispering old stories. The high-speed tram breaks away from the industrial past and takes us to a place named after a man who did not submit to the system.</p>
 <p>Oleksa Tykhyi. A man who refused to remain silent. A teacher, linguist, and human rights activist. One of the founders of the Ukrainian Helsinki Group. He was persecuted for speaking Ukrainian, writing about human rights, and opposing the Russification of Donbas back in the 1960s. Can you imagine?</p>
 <p>In 1977, he was arrested again, this time for “anti-Soviet activities.” The real reason? His writings, which contained more truth than party newspapers had in decades. He was sentenced to 10 years in prison camps and 5 years in exile. He did not survive his imprisonment. He died in a camp in 1984.</p>
