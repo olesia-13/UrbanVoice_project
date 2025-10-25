@@ -44,7 +44,7 @@ public class LocationAudioService extends Service {
 
     // Action для локального широкомовлення (для RouteMap)
     public static final String ACTION_LOCATION_UPDATE = "com.golap.urbanvoice.LOCATION_UPDATE";
-    public static final String EXTRA_NEXT_STATION_NAME = "NEXT_STATION_NAME";
+    // ВИДАЛЕНО: public static final String EXTRA_NEXT_STATION_NAME = "NEXT_STATION_NAME";
     public static final String EXTRA_ROUTE_FINISHED = "ROUTE_FINISHED";
 
     // Audio Players
@@ -126,7 +126,8 @@ public class LocationAudioService extends Service {
                     float distToLast = calculateDistanceToStation(startLat, startLon, stations.get(currentStationIndex));
                     if (distToLast < GEOFENCE_RADIUS) {
                         Log.i(TAG, "Користувач стартував на кінцевій станції. Завершуємо маршрут.");
-                        sendUIUpdate(getString(R.string.route_finished), true);
+                        // ЗМІНЕНО: Видалено аргумент назви станції
+                        sendUIUpdate(true);
                         stopSelf();
                         return START_STICKY;
                     }
@@ -146,12 +147,12 @@ public class LocationAudioService extends Service {
         // 4. Запит на оновлення місцезнаходження
         requestLocationUpdates();
 
-        // 5. Оновлення UI: відображаємо поточну активну станцію (це може бути A, коли їдемо до B)
-        if (stations != null && !stations.isEmpty() && currentStationIndex < stations.size()) {
-            updateUIForCurrentStation(); // НОВИЙ/ВИПРАВЛЕНИЙ ВИКЛИК: ВІДОБРАЖАЄМО АКТУАЛЬНУ СТАНЦІЮ
-        } else {
-            sendUIUpdate(getString(R.string.route_loading_error), false);
-        }
+        // 5. Оновлення UI: Всі виклики, які посилали назву станції, ВИДАЛЕНО або ЗМІНЕНО
+        // Видалення: if (stations != null && !stations.isEmpty() && currentStationIndex < stations.size()) {
+        //                updateUIForCurrentStation();
+        //            } else {
+        //                sendUIUpdate(getString(R.string.route_loading_error), false);
+        //            }
 
         return START_STICKY;
     }
@@ -271,8 +272,6 @@ public class LocationAudioService extends Service {
         // 1. Перевірка завершення маршруту
         if (targetIndex >= stations.size()) {
             // Ми вже на останній активній станції. Маршрут по суті завершено.
-            // Потрібно лише очікувати, поки користувач від'їде від кінцевої.
-            // Але для UI це вже завершення.
             handleRouteFinished();
             return;
         }
@@ -299,10 +298,9 @@ public class LocationAudioService extends Service {
             // КРОК ВПЕРЕД: currentStationIndex стає новою активною станцією
             currentStationIndex = targetIndex;
 
-            // ******* АВТОМАТИЧНЕ ОНОВЛЕННЯ СТАНЦІЇ В UI ********
-            // Надсилає назву нової поточної станції (наприклад, C) в RouteMap
-            updateUIForCurrentStation();
-            // ***************************************************************
+            // ***** ВИДАЛЕНО: АВТОМАТИЧНЕ ОНОВЛЕННЯ СТАНЦІЇ В UI *****
+            // Видалено: updateUIForCurrentStation();
+            // *******************************************************
 
         } else {
             // Логування відстані
@@ -313,13 +311,15 @@ public class LocationAudioService extends Service {
         }
     }
 
+    /**
+     * ЗМІНЕНО: Цей метод тепер не потрібен для UI, але ми зберігаємо його для логічної структури
+     * та перевірки на завершення маршруту.
+     */
     private void updateUIForCurrentStation() {
+        // ЛОГІКА ОНОВЛЕННЯ UI (відправки назви станції) ПОВНІСТЮ ВИДАЛЕНА
         if (stations == null || currentStationIndex < 0) return;
 
-        if (currentStationIndex < stations.size()) {
-            // Якщо індекс у межах, показуємо цю станцію
-            sendUIUpdate(getString(stations.get(currentStationIndex).getNameResId()), false);
-        } else {
+        if (currentStationIndex >= stations.size()) {
             // Якщо індекс вийшов за межі
             handleRouteFinished();
         }
@@ -328,7 +328,8 @@ public class LocationAudioService extends Service {
 
     private void handleRouteFinished() {
         // ПОТРІБЕН R.string.route_finished
-        sendUIUpdate(getString(R.string.route_finished), true);
+        // ЗМІНЕНО: Видалено аргумент назви станції
+        sendUIUpdate(true);
         stopSelf();
     }
 
@@ -359,6 +360,8 @@ public class LocationAudioService extends Service {
 
         // ПОТРІБНІ R.raw.music_melody та R.raw.music_classical
         if (musicGenre.equals("Classical")) {
+            // ПОТРІБНА КОРЕКТНА ІНТЕГРАЦІЯ З MusicManager, якщо ви його використовуєте
+            // Наразі залишаємо оригінальну логіку з R.raw
             musicResId = R.raw.music_classical;
         } else { // "Melody" або будь-який інший дефолт
             musicResId = R.raw.music_melody;
@@ -459,9 +462,12 @@ public class LocationAudioService extends Service {
     // IV. ОНОВЛЕННЯ UI (LocalBroadcast)
     // =======================================================
 
-    private void sendUIUpdate(String nextStationName, boolean isFinished) {
+    /**
+     * ЗМІНЕНО: Тепер надсилається лише статус завершення маршруту, без назви станції.
+     */
+    private void sendUIUpdate(boolean isFinished) {
         Intent intent = new Intent(ACTION_LOCATION_UPDATE);
-        intent.putExtra(EXTRA_NEXT_STATION_NAME, nextStationName);
+        // ВИДАЛЕНО: intent.putExtra(EXTRA_NEXT_STATION_NAME, nextStationName);
         intent.putExtra(EXTRA_ROUTE_FINISHED, isFinished);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }

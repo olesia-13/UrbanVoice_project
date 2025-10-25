@@ -71,7 +71,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
     // --- UI Елементи ---
     private TextView routeTitle;
-    private TextView nextStationText;
+    // ВИДАЛЕНО: private TextView nextStationText;
     private ImageButton startAudioButton;
     private ImageView routeIcon;
     private ImageButton textButton;
@@ -122,7 +122,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
         // 3. Ініціалізація UI
         routeTitle = findViewById(R.id.route_map_title);
-        nextStationText = findViewById(R.id.next_station_text);
+        // ВИДАЛЕНО: nextStationText = findViewById(R.id.next_station_text);
         startAudioButton = findViewById(R.id.start_audio_button);
         routeIcon = findViewById(R.id.route_map_icon);
         textButton = findViewById(R.id.text_button);
@@ -130,8 +130,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
 
         routeTitle.setText(routeDisplayName != null ? routeDisplayName : "Маршрут");
         routeIcon.setImageResource(iconId);
-        // ПОТРІБЕН R.string.next_station_placeholder
-        nextStationText.setText(getString(R.string.next_station_placeholder));
+        // ВИДАЛЕНО: nextStationText.setText(getString(R.string.next_station_placeholder));
 
         // 4. Налаштування кнопок верхньої панелі та UI
         findViewById(R.id.back_button).setOnClickListener(v -> finish());
@@ -187,17 +186,16 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (LocationAudioService.ACTION_LOCATION_UPDATE.equals(intent.getAction())) {
-                    String nextStationName = intent.getStringExtra(LocationAudioService.EXTRA_NEXT_STATION_NAME);
+                    // ВИДАЛЕНО: String nextStationName = intent.getStringExtra(LocationAudioService.EXTRA_NEXT_STATION_NAME);
                     boolean isFinished = intent.getBooleanExtra(LocationAudioService.EXTRA_ROUTE_FINISHED, false);
 
-                    // Оновлення UI
-                    nextStationText.setText(nextStationName);
+                    // ВИДАЛЕНО: nextStationText.setText(nextStationName);
 
                     if (isFinished) {
                         // Якщо маршрут завершено, зупиняємо сервіс і оновлюємо кнопку
                         stopAudioGuide(true); // Передаємо true, бо маршрут завершено
-                        // Виводимо повідомлення про завершення (текст вже має бути у nextStationName)
-                        Toast.makeText(context, nextStationName, Toast.LENGTH_LONG).show();
+                        // ПОТРІБЕН R.string.route_finished
+                        Toast.makeText(context, getString(R.string.route_finished), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -543,8 +541,7 @@ public class RouteMap extends AppCompatActivity implements OnMapReadyCallback {
         updateButtonUI(false);
         Toast.makeText(this, "Аудіогід ЗУПИНЕНО.", Toast.LENGTH_SHORT).show();
 
-        // ПОТРІБЕН R.string.next_station_placeholder
-        nextStationText.setText(getString(R.string.next_station_placeholder));
+        // ВИДАЛЕНО: nextStationText.setText(getString(R.string.next_station_placeholder));
 
         // КЛЮЧОВА ЗМІНА: Скидаємо напрямок ТІЛЬКИ, якщо маршрут ЗАВЕРШЕНО
         if (isRouteFinished) {
