@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadSettings() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
-        // NOTE: Ми вже завантажили мову в attachBaseContext, але оновлюємо UI
+
         selectedLanguage = settings.getString(PREF_LANGUAGE_KEY, "ua");
         updateLanguageUI();
 
@@ -216,15 +216,12 @@ public class MainActivity extends AppCompatActivity {
         final float SELECTED_ALPHA = 1.0f;
         final float UNSELECTED_ALPHA = 0.3f;
 
-        // Ці методи тепер працюють лише з візуальним відображенням кнопок,
-        // а не фактичною зміною мови
+
         langUa.setAlpha(selectedLanguage.equals("ua") ? SELECTED_ALPHA : UNSELECTED_ALPHA);
         langEn.setAlpha(selectedLanguage.equals("en") ? SELECTED_ALPHA : UNSELECTED_ALPHA);
     }
 
-    // =======================================================
-    // 2. ДОПОМІЖНИЙ МЕТОД ДЛЯ ВСТАНОВЛЕННЯ ЛОКАЛІ
-    // =======================================================
+
     @SuppressWarnings("deprecation")
     public static Context setLocale(Context context, String languageCode) {
         Locale locale = new Locale(languageCode);
@@ -233,12 +230,12 @@ public class MainActivity extends AppCompatActivity {
         Resources resources = context.getResources();
         Configuration config = resources.getConfiguration();
 
-        // Оновлення конфігурації для API 24+
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             config.setLocale(locale);
             return context.createConfigurationContext(config);
         } else {
-            // Оновлення конфігурації для старих версій
+
             config.locale = locale;
             resources.updateConfiguration(config, resources.getDisplayMetrics());
             return context;

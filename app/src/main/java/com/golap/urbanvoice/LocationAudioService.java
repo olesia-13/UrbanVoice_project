@@ -31,7 +31,7 @@ import com.google.android.gms.location.Priority;
 import java.util.List;
 import java.util.Locale;
 
-// УВАГА: Припускається, що MapDataManager, RouteData та R.raw.* існують.
+
 public class LocationAudioService extends Service {
 
     private static final String TAG = "AudioService";
@@ -63,7 +63,7 @@ public class LocationAudioService extends Service {
         Log.d(TAG, "onCreate: Сервіс створено.");
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Ініціалізуємо змінну в null, щоб пізніше чистіше створювати плеєр
+
         guidePlayer = null;
         musicPlayer = null;
 
@@ -117,20 +117,16 @@ public class LocationAudioService extends Service {
         startForeground(NOTIFICATION_ID, buildNotification());
         requestLocationUpdates();
 
-        // КРИТИЧНЕ ВИПРАВЛЕННЯ: ЗАПУСКАЄМО МУЗИКУ ПІСЛЯ ЗАПУСКУ СЕРВІСУ!
-        // Музика мала б бути запущена, якщо не запускається аудіогід, але
-        // на початку, коли гід ще не спрацював, має бути музика.
+
         startMusic();
 
         return START_STICKY;
     }
 
-    // =======================================================
-    // I. ЛОГІКА FOREGROUND ТА СПОВІЩЕНЬ
-    // =======================================================
+
 
     private Notification buildNotification() {
-        // Створення каналу сповіщень
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
@@ -143,14 +139,13 @@ public class LocationAudioService extends Service {
             }
         }
 
-        // Інтент для повернення до RouteMap
+
         Intent notificationIntent = new Intent(this, RouteMap.class);
-        // Додаємо FLAG_IMMUTABLE
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // Створення сповіщення
-        // ПОТРІБЕН R.drawable.ic_bus
+
         return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText("Аудіогід активовано. Слідкування за маршрутом...")
@@ -161,13 +156,7 @@ public class LocationAudioService extends Service {
                 .build();
     }
 
-    // =======================================================
-    // II. ЛОГІКА GPS ТА ТРИГЕРІВ
-    // =======================================================
 
-    /**
-     * Обчислює відстань до станції (допоміжний метод).
-     */
     private float calculateDistanceToStation(double lat, double lon, Station station) {
         Location userLoc = new Location("user");
         userLoc.setLatitude(lat);
@@ -180,17 +169,14 @@ public class LocationAudioService extends Service {
         return userLoc.distanceTo(stationLoc);
     }
 
-    /**
-     * ЛОГІКА ІНІЦІАЛІЗАЦІЇ: Знаходить індекс ПОЧАТКОВОЇ АКТИВНОЇ СТАНЦІЇ.
-     * @return Індекс станції.
-     */
+
     private int findClosestStationIndex(double startLat, double startLon) {
         if (stations == null || stations.isEmpty()) return 0; // Повертаємо 0, якщо список порожній
 
         float minDistance = Float.MAX_VALUE;
         int closestIndex = 0;
 
-        // 1. Знаходимо АБСОЛЮТНО найближчу станцію
+
         for (int i = 0; i < stations.size(); i++) {
             float distance = calculateDistanceToStation(startLat, startLon, stations.get(i));
 
@@ -200,34 +186,27 @@ public class LocationAudioService extends Service {
             }
         }
 
-        // 2. Логіка визначення ПОЧАТКОВОЇ АКТИВНОЇ СТАНЦІЇ
 
-        // A. Якщо ми знаходимося ВЖЕ НА СТАНЦІЇ (в межах GEOFENCE_RADIUS):
         if (minDistance <= GEOFENCE_RADIUS) {
-            // Ми на станції 'X'. Вона і є нашою поточною активною станцією.
+
             Log.d(TAG, "findClosestStation: В межах радіуса станції. Активна: " + closestIndex);
             return closestIndex;
         }
 
-        // B. Якщо ми знаходимося МІЖ станціями (далеко від найближчої):
+
         if (closestIndex > 0) {
-            // Ми далеко від ClosestIndex (наприклад, C), отже, ми рухаємося ДО неї.
-            // Поточною АКТИВНОЮ (пройденою) має бути ClosestIndex - 1 (наприклад, B).
+
             Log.d(TAG, "findClosestStation: Між станціями. Активна станція " + (closestIndex - 1));
             return closestIndex - 1;
         } else {
-            // Якщо найближча станція 0 (перша), і ми від неї далеко.
-            // Поточна активна станція = 0.
+
             Log.d(TAG, "findClosestStation: Близько до початку. Активна станція 0.");
             return 0;
         }
     }
 
 
-    /**
-     * КРИТИЧНА ЗМІНА: Перевіряє розташування відносно НАСТУПНОЇ ЦІЛІ (currentStationIndex + 1).
-     * Якщо досягнуто ціль, currentStationIndex збільшується, і UI оновлюється.
-     */
+
     private void checkCurrentLocation(Location currentLocation) {
         if (stations == null || stations.isEmpty() || currentStationIndex < 0) {
             handleRouteFinished();
@@ -273,21 +252,14 @@ public class LocationAudioService extends Service {
     }
 
 
-    // =======================================================
-    // III. ЛОГІКА АУДІО
-    // =======================================================
 
-    /**
-     * Завантажує налаштування музики з SharedPreferences.
-     */
     private void loadMusicSettings() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-        // 1. Зчитуємо ID, який був збережений у MainActivity (за замовчуванням R.id.radioMelody)
-        // ПРИМІТКА: Потрібно, щоб у вас був доступний R.id.radioMelody
+
         int savedRadioId = prefs.getInt(PREF_MUSIC_GENRE, R.id.radioMelody);
 
-        // 2. Перетворюємо ID на строкову назву жанру
+
         musicGenre = getMusicGenreFromId(savedRadioId);
 
         Log.d(TAG, "Налаштування музики завантажено: " + musicGenre + ", (ID: " + savedRadioId + ")");
@@ -303,44 +275,38 @@ public class LocationAudioService extends Service {
         }
     }
 
-    /**
-     * Запускає фонову музику, якщо обрано жанр.
-     */
-    /**
-     * ОНОВЛЕНО: Чиста логіка створення та запуску musicPlayer.
-     */
+
     private void startMusic() {
-        // КРИТИЧНЕ ВИПРАВЛЕННЯ: Порівнюємо з константою GENRE_NONE з MusicManager
+
         if (musicGenre.equals(MusicManager.GENRE_NONE)) {
             Log.d(TAG, "Фонова музика вимкнена в налаштуваннях.");
             return;
         }
 
         try {
-            // Отримуємо ID ресурсу для випадкового треку обраного жанру
+
             int musicResId = MusicManager.getRandomAudioResId(this, musicGenre);
 
             if (musicResId == 0) {
-                // Це обробить ситуацію, якщо для обраного жанру (Melody/Classical)
-                // не було знайдено жодного аудіофайлу у res/raw.
+
                 Log.e(TAG, "Не знайдено музичних файлів для жанру: " + musicGenre);
                 return;
             }
 
-            // 1. Зупиняємо та звільняємо старий плеєр (якщо існує)
+
             if (musicPlayer != null) {
                 if (musicPlayer.isPlaying()) {
                     musicPlayer.stop();
                 }
                 musicPlayer.release();
-                musicPlayer = null; // ВАЖЛИВО: Встановлюємо в null після звільнення
+                musicPlayer = null;
             }
 
-            // 2. Створюємо та запускаємо новий плеєр
+
             musicPlayer = MediaPlayer.create(this, musicResId);
 
             if (musicPlayer != null) {
-                musicPlayer.setLooping(true); // Зациклюємо відтворення
+                musicPlayer.setLooping(true);
                 musicPlayer.start();
                 Log.i(TAG, "Фонова музика (" + musicGenre + ") ЗАПУЩЕНА. Ресурс: " + getResources().getResourceEntryName(musicResId));
             }
@@ -349,9 +315,7 @@ public class LocationAudioService extends Service {
         }
     }
 
-    /**
-     * Зупиняє фонову музику.
-     */
+
     private void stopMusic() {
         if (musicPlayer != null && musicPlayer.isPlaying()) {
             musicPlayer.pause();
@@ -359,9 +323,7 @@ public class LocationAudioService extends Service {
         }
     }
 
-    /**
-     * Зупиняє та звільняє обидва плеєри. (Викликається в onDestroy)
-     */
+
     private void releasePlayers() {
         if (guidePlayer != null) {
             if (guidePlayer.isPlaying()) guidePlayer.stop();
@@ -390,14 +352,14 @@ public class LocationAudioService extends Service {
         }
 
         try {
-            // 1. Зупиняємо та звільняємо старий плеєр (якщо існує)
+
             if (guidePlayer != null) {
                 if (guidePlayer.isPlaying()) guidePlayer.stop();
                 guidePlayer.release();
-                guidePlayer = null; // ВАЖЛИВО: Встановлюємо в null
+                guidePlayer = null;
             }
 
-            // 2. Створюємо новий плеєр
+
             guidePlayer = MediaPlayer.create(this, audioResId);
 
             if (guidePlayer != null) {
@@ -415,23 +377,15 @@ public class LocationAudioService extends Service {
         }
     }
 
-    // =======================================================
-    // IV. ОНОВЛЕННЯ UI (LocalBroadcast)
-    // =======================================================
 
-    /**
-     * ЗМІНЕНО: Тепер надсилається лише статус завершення маршруту, без назви станції.
-     */
     private void sendUIUpdate(boolean isFinished) {
         Intent intent = new Intent(ACTION_LOCATION_UPDATE);
-        // ВИДАЛЕНО: intent.putExtra(EXTRA_NEXT_STATION_NAME, nextStationName);
+
         intent.putExtra(EXTRA_ROUTE_FINISHED, isFinished);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
-    // =======================================================
-    // V. СИСТЕМНІ МЕТОДИ ТА ЗВІЛЬНЕННЯ РЕСУРСІВ
-    // =======================================================
+
 
     @SuppressWarnings("MissingPermission")
     private void requestLocationUpdates() {
@@ -441,12 +395,12 @@ public class LocationAudioService extends Service {
             return;
         }
 
-        // LocationRequest: оновлення кожні 5 секунд, мінімальна відстань 10 метрів
+
         LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000)
                 .setMinUpdateDistanceMeters(10)
                 .build();
 
-        // Використовуємо Looper.getMainLooper()
+
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
         Log.d(TAG, "Запит на оновлення місцезнаходження запущено.");
     }
@@ -466,7 +420,7 @@ public class LocationAudioService extends Service {
     @Override
     public void onDestroy() {
         stopLocationUpdates();
-        releasePlayers(); // Звільнення плеєрів
+        releasePlayers();
         stopForeground(true);
 
         Log.d(TAG, "onDestroy: Сервіс успішно знищено.");

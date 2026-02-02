@@ -49,18 +49,18 @@ public class TextActivity extends AppCompatActivity {
 
         if (contentTextView == null) return;
 
-        // Якщо маємо routeKey і direction — шукаємо великий текст
+
         if (routeKey != null && direction != null) {
             StringBuilder fullText = new StringBuilder();
 
-            // Назва основи для текстів: наприклад text_r111_a_1, text_r111_a_2, text_r111_a_3
+
             String baseName = String.format("text_%s_%s_",
                     routeKey.toLowerCase(), direction.toLowerCase());
 
             int partIndex = 1;
             while (true) {
                 int resId = getResources().getIdentifier(baseName + partIndex, "string", getPackageName());
-                if (resId == 0) break; // якщо не знайдено більше частин
+                if (resId == 0) break;
                 String partText = getString(resId);
                 if (partIndex > 1) fullText.append("<br><br><hr><br><br>");
                 fullText.append(partText);
@@ -73,7 +73,7 @@ public class TextActivity extends AppCompatActivity {
             }
         }
 
-        // Якщо великого тексту не знайдено — показуємо короткий або повідомлення
+
         if (textResId != 0) {
             String shortText = getString(textResId);
             contentTextView.setText(Html.fromHtml(shortText, Html.FROM_HTML_MODE_LEGACY));

@@ -27,20 +27,20 @@ public class PhotoActivity extends AppCompatActivity {
 
 
 
-        // Отримуємо дані про маршрут
+
         String routeDisplayName = getIntent().getStringExtra("ROUTE_DISPLAY_NAME");
         String routeKey = getIntent().getStringExtra("ROUTE_KEY");
 
         routeTitle.setText(routeDisplayName != null ? routeDisplayName : "Фотографії маршруту");
 
-        // Завантажуємо фотографії для поточного маршруту
+
         loadRoutePhotos(routeKey);
     }
 
     private void loadRoutePhotos(String routeKey) {
         if (routeKey == null) return;
 
-        // Отримуємо список фотографій для маршруту
+
         String[] photoNames = getPhotoResourcesForRoute(routeKey);
 
         for (String photoName : photoNames) {
@@ -51,7 +51,7 @@ public class PhotoActivity extends AppCompatActivity {
             }
         }
 
-        // Якщо фотографій не знайдено
+
         if (photos_container.getChildCount() == 0) {
             TextView noPhotosText = new TextView(this);
             noPhotosText.setText("Фотографії для цього маршруту ще не додані");
@@ -64,7 +64,7 @@ public class PhotoActivity extends AppCompatActivity {
     private void addPhotoToContainer(int imageResId) {
         ImageView imageView = new ImageView(this);
 
-        // Налаштування розмірів та відступів
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -72,20 +72,18 @@ public class PhotoActivity extends AppCompatActivity {
         params.setMargins(30, 20, 30, 40);
         imageView.setLayoutParams(params);
 
-        // Налаштування зображення
+
         imageView.setImageResource(imageResId);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setAdjustViewBounds(true);
 
-        // Закруглення кутів (якщо потрібно)
+
         imageView.setClipToOutline(true);
 
         photos_container.addView(imageView);
     }
 
-    /**
-     * Повертає масив назв ресурсів фотографій для конкретного маршруту
-     */
+
     private String[] getPhotoResourcesForRoute(String routeKey) {
         switch (routeKey) {
             case "R001": // Трамвай №1

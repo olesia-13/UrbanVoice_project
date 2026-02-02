@@ -99,15 +99,15 @@ public class SelectRoute extends AppCompatActivity implements RouteAdapter.OnRou
                 "Обрано маршрут: " + route.getDisplayText(),
                 Toast.LENGTH_SHORT).show();
 
-        // 2. Створення Intent для запуску RouteMap
+
         Intent mapIntent = new Intent(this, RouteMap.class);
 
-        // 3. Передача даних маршруту, які RouteMap використає для ініціалізації
+
         mapIntent.putExtra("ROUTE_KEY", route.getKey());
         mapIntent.putExtra("ROUTE_DISPLAY_NAME", route.getDisplayText());
         mapIntent.putExtra("ROUTE_ICON_ID", route.getIconResId());
 
-        // 4. Запуск нової активності
+
         startActivity(mapIntent);
     }
 

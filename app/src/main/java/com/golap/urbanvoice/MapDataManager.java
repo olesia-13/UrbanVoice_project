@@ -16,7 +16,6 @@ public class MapDataManager {
     public static final String ROUTE_TROLLEYBUS_38_KEY = "R038";
     public static final String DIRECTION_FORWARD = "FORWARD";
     public static final String DIRECTION_BACKWARD = "BACKWARD";
-    // Тепер це максимальна відстань до БУДЬ-ЯКОЇ станції на маршруті
     private static final float MAX_DISTANCE_FOR_START = 500.0f;
 
 
@@ -24,11 +23,11 @@ public class MapDataManager {
         ALL_ROUTES_DATA = new HashMap<>();
 
         // -----------------------------------------------------------------
-        // 🚨 МАРШРУТ: Трамвай №1 (R001)
+        // МАРШРУТ: Трамвай №1 (R001)
         // Михайлівська Борщагівка (1) <-> Старовокзальна (16)
         // -----------------------------------------------------------------
 
-        // Зберігаємо координати для повторного використання у зворотному напрямку
+
         final double LAT_1 = 50.4083436923589; final double LON_1 = 30.406895340303663; // Михайлівська Б.
         final double LAT_2 = 50.40933925862721; final double LON_2 = 30.400403911953777; // Кікабідзе
         final double LAT_3 = 50.41394384986361; final double LON_3 = 30.395447710840326; // Махова
@@ -87,7 +86,7 @@ public class MapDataManager {
         // --- 2. Станції "Назад" (16 -> 1) ---
         List<Station> backwardStations = new ArrayList<>();
 
-        // !!! КООРДИНАТИ ТА ПОРЯДОК ВИПРАВЛЕНО ДЛЯ ДЗЕРКАЛЬНОГО ВІДОБРАЖЕННЯ !!!
+
 
         // BWD_01: Старовокзальна (Початок) - Використовуємо координати FWD_16
         backwardStations.add(new Station(R.string.station_r001_16, LAT_16, LON_16, "r001_bwd_01"));
@@ -123,8 +122,7 @@ public class MapDataManager {
         backwardStations.add(new Station(R.string.station_r001_1, LAT_1, LON_1, "r001_bwd_16"));
 
 
-        // --- 3. Збереження об'єкта RouteData ---
-        // Використовується ваш приклад закодованої полілінії
+
         String polylineEncodedTram1 = "cktrHczqxDgErg@w[|]mS~f@oSri@ea@oM}V{I_TiqAmQ{eA_Noy@uOabAm`@cvCaCqjA~CibCjLgJ";
 
         ALL_ROUTES_DATA.put(ROUTE_TRAM_1_KEY, new RouteData(
@@ -136,7 +134,7 @@ public class MapDataManager {
         ));
 
         // -----------------------------------------------------------------
-        // 🚨 МАРШРУТ 2: Тролейбус №111 (R111)
+        // МАРШРУТ 2: Тролейбус №111 (R111)
         // Пл. Українських Героїв (1) <-> Пл. Дарницька (23)
         // -----------------------------------------------------------------
 
@@ -268,8 +266,7 @@ public class MapDataManager {
         backwardStationsR111.add(new Station(R.string.station_r111_1, R111_LAT_1, R111_LON_1, "r111_bwd_23"));
 
 
-        // --- 3. Збереження об'єкта RouteData (R111) ---
-        // ЗАМІНІТЬ 'polylineEncodedTram1' на закодовану полілінію для TROLLEYBUS_111
+
         String polylineEncodedTrolleybus111 = "onzrHkfgyDuGd^}A?gJky@aWkGeNcFuGaMyt@nHsaAz^if@e`Jjo@{h@hGqFx^qVoAuRtVoA~RyOrYy_@zUc\\pSu^`[kM~Aq_@cD{VyEoX";
 
         ALL_ROUTES_DATA.put(ROUTE_TROLLEYBUS_111_KEY, new RouteData(
@@ -281,7 +278,7 @@ public class MapDataManager {
         ));
 
         // =================================================================
-        // 🚨 МАРШРУТ 3: Тролейбус №38 (R038)
+        // МАРШРУТ 3: Тролейбус №38 (R038)
         // National Museum of Ukrainian History in World War II (1) <-> Vydubychi Metro (21)
         // =================================================================
 
@@ -403,8 +400,7 @@ public class MapDataManager {
         backwardStationsR038.add(new Station(R.string.station_r038_1, R038_LAT_1, R038_LON_1, "r038_bwd_21"));
 
 
-        // --- 3. Збереження об'єкта RouteData (R038) ---
-        // ЗАМІНІТЬ 'key' на закодовану полілінію для TROLLEYBUS_38
+
         String polylineEncodedTrolleybus38 = "ybyrHk_oyDyMdJ}RvBiQ~YeKjNlQrLvQKp_@hCrHpGlIbR~WgMxGyH~Xo\\tKwAr[UdO}F~RsKvOjAfK}o@";
 
         ALL_ROUTES_DATA.put(ROUTE_TROLLEYBUS_38_KEY, new RouteData(
@@ -416,25 +412,16 @@ public class MapDataManager {
         ));
     }
 
-    // Припускаючи, що цей файл містить клас MapDataManager, константи та допоміжні класи.
 
-// =================================================================
-// ПУБЛІЧНІ МЕТОДИ (НЕЗМІННІ)
-// =================================================================
 
-    /**
-     * Повертає повний об'єкт RouteData для заданого ключа маршруту.
-     */
+
+
+
     public static RouteData getRouteData(String routeKey) {
         return ALL_ROUTES_DATA.get(routeKey);
     }
 
-    /**
-     * Повертає список станцій для заданого маршруту та напрямку.
-     * @param routeKey Ключ маршруту (напр., "R001")
-     * @param direction Напрямок ("FORWARD" або "BACKWARD")
-     * @return Список об'єктів Station у правильному порядку.
-     */
+
     public static List<Station> getStationsForDirection(String routeKey, String direction) {
         RouteData data = getRouteData(routeKey);
         if (data == null) {
@@ -449,13 +436,11 @@ public class MapDataManager {
         return new ArrayList<>();
     }
 
-    /**
-     * Повертає ID текстового ресурсу (повний текст гіда) для заданого маршруту та напрямку.
-     */
+
     public static int getTextResIdForDirection(String routeKey, String direction) {
         RouteData data = getRouteData(routeKey);
         if (data == null) {
-            return 0; // 0 - це безпечний ID, якщо ресурс не знайдено
+            return 0;
         }
 
         if (direction.equals(DIRECTION_FORWARD)) {
@@ -466,19 +451,7 @@ public class MapDataManager {
         return 0;
     }
 
-// =================================================================
-// НОВИЙ АЛГОРИТМ ВИЗНАЧЕННЯ НАПРЯМКУ ЗА КУТОМ РУХУ (BEARING)
-// =================================================================
 
-    /**
-     * Визначає оптимальний напрямок (FORWARD або BACKWARD), порівнюючи кут руху користувача (Bearing)
-     * з кутом, який утворює маршрут біля найближчої станції.
-     * * Цей метод замінює стару, менш надійну логіку визначення напрямку за відстанню до сусідів.
-     * @param routeKey Ключ маршруту, для якого визначаємо напрямок.
-     * @param userLocation Поточне місцезнаходження користувача.
-     * @param userBearing Кут руху користувача (0-360 градусів).
-     * @return DIRECTION_FORWARD, DIRECTION_BACKWARD, або null, якщо надто далеко від маршруту.
-     */
     public static String determineOptimalDirectionWithBearing(String routeKey, LatLng userLocation, float userBearing) {
         RouteData data = getRouteData(routeKey);
 
@@ -492,7 +465,7 @@ public class MapDataManager {
         }
 
         try {
-            // 1️⃣ Знаходимо найближчу станцію
+
             int nearestIndex = findNearestStationIndex(forwardStations, userLocation);
             if (nearestIndex == -1) {
                 return null;
@@ -501,12 +474,12 @@ public class MapDataManager {
             Station nearestStation = forwardStations.get(nearestIndex);
             float distanceToNearest = calculateDistance(userLocation, nearestStation);
 
-            // Якщо користувач далеко — не визначаємо напрямок
+
             if (distanceToNearest > MAX_DISTANCE_FOR_START * 2) {
                 return null;
             }
 
-            // 2️⃣ Визначаємо напрям маршруту поблизу користувача
+
             float forwardRouteBearing;
             if (nearestIndex < forwardStations.size() - 1) {
                 Station next = forwardStations.get(nearestIndex + 1);
@@ -515,36 +488,28 @@ public class MapDataManager {
                 Station prev = forwardStations.get(nearestIndex - 1);
                 forwardRouteBearing = calculateBearing(prev, nearestStation);
             } else {
-                // Якщо лише одна станція — приймаємо напрямок уперед
+
                 return DIRECTION_FORWARD;
             }
 
-            // 3️⃣ Обчислюємо кут зворотного напрямку
+
             float backwardRouteBearing = normalizeBearing(forwardRouteBearing + 180f);
             float normalizedUserBearing = normalizeBearing(userBearing);
 
-            // 4️⃣ Знаходимо різницю між кутом користувача і маршруту
+
             float diffForward = getAngleDifference(normalizedUserBearing, forwardRouteBearing);
             float diffBackward = getAngleDifference(normalizedUserBearing, backwardRouteBearing);
 
-            // 5️⃣ Вибираємо напрям з меншим відхиленням
+
             return diffForward <= diffBackward ? DIRECTION_FORWARD : DIRECTION_BACKWARD;
 
         } catch (Exception e) {
-            e.printStackTrace(); // 🔧 залиш для налагодження, потім можеш прибрати
+            e.printStackTrace();
             return null;
         }
     }
 
-// =================================================================
-// ПРИВАТНІ ДОПОМІЖНІ МЕТОДИ
-// =================================================================
 
-// ... (методи calculateDistance та findNearestStationIndex залишаються без змін)
-
-    /**
-     * Приватний допоміжний метод для швидкого розрахунку відстані між двома точками у метрах.
-     */
     private static float calculateDistance(LatLng point1, Station point2) {
         android.location.Location loc1 = new android.location.Location("point1");
         loc1.setLatitude(point1.latitude);
@@ -557,12 +522,7 @@ public class MapDataManager {
         return loc1.distanceTo(loc2);
     }
 
-    /**
-     * Знаходить індекс найближчої станції до місцезнаходження користувача.
-     * @param stations Список станцій.
-     * @param userLocation Місцезнаходження користувача.
-     * @return Індекс найближчої станції.
-     */
+
     private static int findNearestStationIndex(List<Station> stations, LatLng userLocation) {
         float minDistance = Float.MAX_VALUE;
         int nearestIndex = -1;
@@ -579,9 +539,7 @@ public class MapDataManager {
         return nearestIndex;
     }
 
-    /**
-     * Обчислює Bearing (кут руху) між двома станціями.
-     */
+
     private static float calculateBearing(Station from, Station to) {
         android.location.Location loc1 = new android.location.Location("");
         loc1.setLatitude(from.getLatitude());
@@ -591,23 +549,19 @@ public class MapDataManager {
         loc2.setLatitude(to.getLatitude());
         loc2.setLongitude(to.getLongitude());
 
-        // bearingTo повертає кут від першої точки до другої (-180 до 180)
+
         return loc1.bearingTo(loc2);
     }
 
-    /**
-     * Нормалізує кут до діапазону [0, 360).
-     */
+
     private static float normalizeBearing(float bearing) {
         return (bearing % 360 + 360) % 360;
     }
 
-    /**
-     * Обчислює найменшу різницю між двома кутами (Bearing) у градусах.
-     */
+
     private static float getAngleDifference(float bearing1, float bearing2) {
         float diff = Math.abs(bearing1 - bearing2);
-        // Якщо різниця більше 180, беремо менший кут (360 - різниця)
+
         return diff > 180 ? 360 - diff : diff;
     }
 
