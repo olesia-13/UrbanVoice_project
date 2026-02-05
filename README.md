@@ -51,9 +51,9 @@ UrbanVoice aims to change the way residents and tourists interact with the urban
 
 ##  Authors
 
-- **Olesia Osipova**  `programmer` 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
-- **Vladyslava Polishchyk** 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
-- **Nadia Lynovytsyka** 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
+- **Olesia Osipova**  `Programmer` 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
+- **Vladyslava Polishchyk** `QA engineer`, `Designer`, `Content researcher` 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
+- **Nadia Lynovitsyka** `Content researcher` 10th grade Student of Polytechnic Lyceum “KPI”, Kyiv, Ukraine
 
 ---
 
